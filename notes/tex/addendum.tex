@@ -1,0 +1,85 @@
+% Addendum to "The finite-degree profile of essential dimension of a Z/p^n-torsor
+% in characteristic p": Section 10 (characteristic 0), Section 11 (supplements at
+% (2,2) and (2,3)) and Appendices A-F.  Compiled standalone with page/section
+% counters continuing the main paper, and appended to the original PDF.
+% To integrate into the source: \input the three body files after Section 9
+% (placement comments at the top of body_sec11.tex say where each subsection
+% belongs) and append the bibliography items [17]-[30].
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array,booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+
+\newcommand{\ed}{\operatorname{ed}}
+\newcommand{\edd}[1]{\ed^{[#1]}}
+\newcommand{\tr}{\operatorname{trdeg}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\gen}{\mathrm{gen}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\A}{\mathbb A}
+\newcommand{\Gam}{\Gamma}
+\newcommand{\stag}[1]{\hfill{\normalfont[#1]}}
+\newcommand{\res}{\operatorname{res}}
+\newcommand{\cores}{\operatorname{cores}}
+
+\setcounter{section}{9}
+\setcounter{page}{17}
+
+\begin{document}
+\pagestyle{myheadings}
+\markboth{THE FINITE-DEGREE PROFILE OF ESSENTIAL DIMENSION}{THE FINITE-DEGREE PROFILE OF ESSENTIAL DIMENSION}
+
+\input{body_sec10}
+\input{body_sec11}
+\input{body_app}
+
+\begin{thebibliography}{99}
+\setcounter{enumiv}{16}
+\bibitem{Ar} J.~Kr.~Arason, \emph{Cohomologische Invarianten quadratischer Formen},
+J. Algebra 36 (1975), 448--491.
+\bibitem{BF} G.~Berhuy and G.~Favi, \emph{Essential dimension: a functorial point of
+view (after A.~Merkurjev)}, Doc. Math. 8 (2003), 279--330. (= [1])
+\bibitem{BR} J.~Buhler and Z.~Reichstein, \emph{On the essential dimension of a finite
+group}, Compositio Math. 106 (1997), 159--179. (= [2])
+\bibitem{Cr} R.~Crew, \emph{\'Etale $p$-covers in characteristic $p$}, Compositio Math.
+52 (1984), 31--45.
+\bibitem{DR} A.~Duncan and Z.~Reichstein, \emph{Versality of algebraic group actions
+and rational points on twisted varieties}, J. Algebraic Geom. 24 (2015), 499--530.
+(= [3])
+\bibitem{FJ} M.~D.~Fried and M.~Jarden, \emph{Field arithmetic}, 3rd ed., Springer,
+2008.
+\bibitem{Ga} M.~Garuti, \emph{Linear systems attached to cyclic inertia}, in:
+Arithmetic fundamental groups and noncommutative algebra, Proc. Sympos. Pure Math. 70,
+AMS, 2002, pp. 377--386.
+\bibitem{KM} N.~Karpenko and A.~Merkurjev, \emph{Essential dimension of finite
+$p$-groups}, Invent. Math. 172 (2008), 491--508.
+\bibitem{LT} S.~Lang and J.~Tate, \emph{Principal homogeneous spaces over abelian
+varieties}, Amer. J. Math. 80 (1958), 659--684.
+\bibitem{Le07} A.~Ledet, \emph{Finite groups of essential dimension one}, J. Algebra
+311 (2007), 31--37. (= [6])
+\bibitem{Me} A.~S.~Merkurjev, \emph{Essential dimension: a survey}, Transform. Groups
+18 (2013), 415--481. (= [9])
+\bibitem{MR} A.~Meyer and Z.~Reichstein, \emph{Some consequences of the
+Karpenko--Merkurjev theorem}, Doc. Math. Extra Vol. (2010), 445--457.
+\bibitem{RS} Z.~Reichstein and F.~Scavia, \emph{The behavior of essential dimension
+under specialization}, \'Epijournal G\'eom. Alg\'ebrique 6 (2022), Art. 21. (= [12])
+\bibitem{Se} J.-P.~Serre, \emph{Galois cohomology}, Springer, 1997.
+\bibitem{Th} L.~Thomas, \emph{Ramification groups in Artin--Schreier--Witt extensions},
+J. Th\'eor. Nombres Bordeaux 17 (2005), 689--720.
+\end{thebibliography}
+
+\end{document}

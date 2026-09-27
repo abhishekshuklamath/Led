@@ -1,0 +1,438 @@
+% ---------------------------------------------------------------------------
+% Section 11: supplements to Sections 6, 7 and 9 (p = 2, n = 2 and n = 3).
+% Placement in the source of the paper:
+%   11.1 -> after Theorem 6.2 (it settles the "[open]" item there and the p = 2
+%           part of Question 6.4);
+%   11.2 -> after Proposition 3.7 / Remark 4.5 (Riemann-Roch bound), and its
+%           corollary at (2,3) after Theorem 7.1;
+%   11.3 -> after Remark 7.6 (Case A empty; U_3 never a quadratic witness; new
+%           families with ed = 2; structure of a witness);
+%   11.4 -> after Proposition 7.5 / in Section 9 (the cubic slot);
+%   11.5 -> replaces the status table of Theorem 7.1 and updates Section 9.2.
+% Appendices A-E hold the supporting material.
+% ---------------------------------------------------------------------------
+\section{Supplements at \texorpdfstring{$(p,n)=(2,2)$ and $(2,3)$}{(p,n)=(2,2) and (2,3)}:
+the cubic slot, quadratic witnesses, and a Riemann--Roch bound}\label{sec:supp}
+
+\noindent\textit{Addendum (27 September 2026).} This section settles the open item
+of Theorem~6.2, gives a general Riemann--Roch bound for the prime-to-$p$ jump degree,
+shows that the Artin--Schreier--Witt curve never carries a quadratic witness at $(2,3)$
+and that a quadratic witness can never have a descent field inside $K$, produces new
+families of quadratic extensions with essential dimension exactly $2$, and reformulates
+the cubic slot. Notation is that of Sections 2, 5--7: $k$ algebraically closed of
+characteristic $2$, $K=k(s_0,s_1,s_2)$, $L=k(z_0,z_1,z_2)$, $s=\wp(z)$, $K_2=k(s_0,s_1)$,
+$\tau_2$ the generic $\Z/4$-torsor, $E'\colon w^2+w=u(u+1)(u+s_0)+s_1$, $\bar U_n$ the
+Artin--Schreier--Witt curve $\wp y=[t]$, $\Phi_2$ the polynomial of Proposition~7.5 (written
+out in \eqref{eq:Phi2}). We write $(s_0,s_1)_K$ for the $\Z/4$-class $(s_0,s_1)\in W_2(K)/\wp$,
+i.e.\ $\tau_2\otimes_{K_2}K$; by Lemma~4.1(i), $\ed_k((s_0,s_1)_K)=\ed_k(\tau_2)=2$. Every
+separable quadratic extension of $K$ is $K(v_f)$, $v_f^2+v_f=f$, $f\in K/\wp K$
+(Proposition~3.6). Scripts referred to are listed in Appendix~\ref{app:scripts}.
+
+\subsection{Supplement to Theorem 6.2: the prime-to-\texorpdfstring{$2$}{2} jump degree at
+\texorpdfstring{$n=2$}{n=2}}
+
+\begin{theorem}\label{thm:A}
+Let $p=2$, $n=2$. Let $u$ be a root of
+\[
+P(u):=u^3+(1+s_0)u^2+s_0u+s_1\;=\;u(u+1)(u+s_0)+s_1 .
+\]
+Then $F'=K_2(u)$ is a separable cubic extension of $K_2$ and
+$(s_0,s_1)\equiv[s_0+u^2+u]$ mod $\wp W_2(F')$. Hence $\ed_k(\tau_2\otimes F')=1$ and
+\[
+d_1^{(p')}(\tau_2)=3 .
+\]
+More precisely, the cubic closed points of $E'$ over $K_2$ are exactly the sections by
+the lines $w=\alpha u+\beta$, $\alpha,\beta\in K_2$; each is a single free point of degree
+$3$, and over its residue field $(s_0,s_1)$ is Teichm\"uller. Consequently
+$D(U_2)=\Z_{\ge2}$, and the profile of $\tau_2$ is completely known:
+$\edd1=2$, $\edd2=\edd3=1$, $\edd4=0$, $d_1=2$, $d_1^{(p')}=3$, $d_0=4$.
+\stag{proved}
+\end{theorem}
+
+\begin{proof}
+$P\in k(s_0)[u][s_1]$ is of degree $1$ in $s_1$ with coprime coefficients $1$ and
+$u(u+1)(u+s_0)$, hence irreducible in $k(s_0)[u,s_1]$, hence (Gauss, $P$ monic in $u$)
+irreducible in $K_2[u]$; an irreducible cubic in characteristic $2$ is separable. By
+(3)--(4), for $h=(u,0)\in W_2(F')$: $(s+\wp h)_0=s_0+u^2+u$ and
+$(s+\wp h)_1=s_1+u^3+u^2+s_0u^2+s_0u=P(u)=0$, so $s+\wp h=[s_0+u^2+u]$; equivalently
+$(u,0)$ is an $F'$-point of $E'^\circ=\tau_2U_2$ and the last sentence of Theorem~6.2
+applies. So $\ed_k(\tau_2\otimes F')\le1$, and $\ge1$ since $3<4=d_0$. As
+$d_1^{(p')}$ is odd and $\ge d_1(\tau_2)=2$ (Proposition~6.1), $d_1^{(p')}(\tau_2)=3$.
+
+Cubic points: $E'(K_2)=\{\infty'\}$ (Theorem~6.2), so $\operatorname{Pic}^0(E')(K_2)=0$
+and every effective $K_2$-divisor of degree $3$ is linearly equivalent to $3\infty'$,
+i.e.\ is the zero divisor of an element of $L(3\infty')=\langle1,u,w\rangle$; the
+sections $u=c$ are a degree-$2$ fibre plus $\infty'$, so the cubic points are the
+sections by lines $w=\alpha u+\beta$. Such a section is a single closed point of degree
+$3$ because a $K_2$-rational component would be a $K_2$-point of $E'^\circ$. It lies in
+$E'^\circ$, hence is free. $D(U_2)\supseteq\{2,3\}$ and Appendix~\ref{app:genus} gives
+all of $\Z_{\ge2}$.
+\end{proof}
+
+\begin{remark}
+(i) This closes the item marked [open] in Theorem~6.2 and the $p=2$ part of
+Question~6.4: the ``group-theoretic'' obstruction $E'(K_2)=0$ kills degree-$1$ points and
+\emph{produces} the cubic ones. (ii) For odd $p$ the same mechanism gives
+$d_1^{(p')}(\tau_2)\le p^2-p+1$ (Theorem~\ref{thm:B}); Question~6.4 for degrees in
+$[2,p-1]$ is untouched.
+\end{remark}
+
+\subsection{Supplement to Proposition 3.7 and Remark 4.5: a Riemann--Roch bound}
+
+Let $l_n=l_n(p)$ be the largest lower ramification break of $\bar U_n\to\mathbb P^1_t$ at
+$\infty$, i.e.\ the pole order at $\infty$ of the reduced top Witt coordinate of $U_n$;
+by Appendix~\ref{app:genus},
+\begin{equation}\label{eq:ln}
+l_n(p)=1+(p-1)\sum_{j=1}^{n-1}p^{2j-1}:\qquad
+l_2(2)=3,\quad l_2(p)=p^2-p+1,\quad l_3(2)=11,\quad l_4(2)=43 .
+\end{equation}
+
+\begin{theorem}\label{thm:B}
+For every $(p,n)$, $D(U_n)$ contains an integer prime to $p$ and $\le l_n$; hence
+\[
+d_1^{(p')}(\tau_\gen)\le l_n(p).
+\]
+This is the best bound obtainable from the pencils $|d\cdot\infty''|$ on
+$\tau_\gen\bar U_n$: every function regular on the affine curve $U_n$ with pole order prime
+to $p$ has pole order $\ge l_n$.
+\stag{proved; the closed formula \eqref{eq:ln} is proved for $(2,2)$, $(2,3)$, $(p,2)$
+and cited in general}
+\end{theorem}
+
+\begin{proof}
+$X:=\tau_\gen\bar U_n$ is a smooth projective geometrically integral $K$-curve with the
+$K$-point $\infty''$ (twist of the $G$-fixed point), and its free locus is
+$X\smallsetminus\{\infty''\}$ (Proposition~3.7(c)). Riemann--Roch dimensions
+$\ell(d\infty'')$ are invariant under base change to $\bar K$, where
+$(X,\infty'')\cong(\bar U_n,\infty)$; so the Weierstrass semigroup of $\infty''$ on $X$ is
+that of $\infty$ on $\bar U_n$. The top layer $U_n\to U_{n-1}$ is $y^p-y=c$ with
+$v_\infty(c)=-l_n$ on $U_{n-1}$ and $\infty$ totally ramified, so $v(y)=-l_n$ on $U_n$
+and $l_n$ is a pole order. Hence there is $f\in K(X)$ with pole divisor exactly
+$l_n\infty''$. For $c\in K$ the divisor $\operatorname{div}(f-c)+l_n\infty''$ is
+effective, $K$-rational, of degree $l_n$ and supported on $X\smallsetminus\{\infty''\}$.
+Its closed points have degrees summing to $l_n\equiv1\pmod p$, so one of them has degree
+$e$ prime to $p$, $e\le l_n$, and it is free; Theorem~4.2 gives $\edd e_k(\tau_\gen)\le1$.
+For optimality: the coordinate ring of $U_n$ is free over that of $U_{n-1}$ with basis
+$1,y,\dots,y^{p-1}$, and $v(a_jy^j)=p\,v_{U_{n-1}}(a_j)-jl_n$ are pairwise distinct
+modulo $p$, so a function with pole order prime to $p$ has a dominant term with $j\ge1$
+and pole order $\ge l_n$.
+\end{proof}
+
+\begin{corollary}\label{cor:B23}
+At $(p,n)=(2,3)$: the fibres of the pole-order-$11$ pencil are free divisors of degree
+$11$ without degree-$1$ components (Proposition~7.5), so each contains a free point of
+odd degree in $\{3,5,7,9,11\}$, and $11\in D(U_3)$ exactly (Appendix~\ref{app:genus}).
+Hence
+\[
+d_1^{(p')}(\tau_\gen)\in\{3,5,7,9,11\},\qquad \delta_{\rm free}(U_3)\in\{3,5,7,9,11\},
+\]
+the second by Corollary~\ref{cor:noquad} below. This refines ``$d_1^{(p')}\ge3$ finite''
+in Theorem~7.1. \stag{proved}
+\end{corollary}
+
+\begin{remark}
+The naive argument ``$\ell(d\infty'')\ge2$ for $d\ge g+1$, take $d$ odd'' does not
+work: the fibres of $f\in L(d\infty'')$ have degree equal to the actual pole order of
+$f$, which lies in the Weierstrass semigroup and may be even. At $(2,3)$, $g(\bar U_3)=7$
+and the semigroup of $\infty$ is $\langle4,6,11\rangle$, whose gaps are
+$\{1,2,3,5,7,9,13\}$: every function of pole order $\le10$ has even pole order.
+\end{remark}
+
+\subsection{Supplement to Section 7: quadratic witnesses}
+
+Fix $f\in K\smallsetminus\wp K$ and $K'=K(v_f)$. A \emph{witness} is such a $K'$ with
+$\ed_k(\tau_\gen\otimes K')=1$; a \emph{descent field} is a subfield $k\subset F_0\subset
+K'$ of transcendence degree $1$ with a class $\beta\in W_3(F_0)/\wp$, $s\equiv\beta$ in
+$W_3(K')/\wp$.
+
+\begin{theorem}[no descent field inside $K$]\label{thm:caseA}
+Let $K'=K(v_f)$ be a witness with descent field $F_0$ and class $\beta$.
+\begin{enumerate}
+\item[(a)] If $F_0\subset K$ then $F_0=k(t)$ is rational, $s\equiv\beta+\varepsilon(0,0,f)$
+mod $\wp W_3(K)$ with $\varepsilon\in\{0,1\}$, and $\ed_k(\tau_\gen)\le\tr_kk(t,f)\le2$.
+\item[(b)] The case (a) does not occur: $F_0\not\subset K$.
+\item[(c)] The truncation of $\beta$ is a descent of $(s_0,s_1)_K\otimes K'$, so
+$f\in\mathfrak F:=\{f\in K/\wp K:\ed_k((s_0,s_1)_K\otimes K(v_f))=1\}$.
+\end{enumerate}
+\stag{proved}
+\end{theorem}
+
+\begin{proof}
+(a) $\ker(H^1(K,\Z/8)\to H^1(K',\Z/8))=\operatorname{Hom}(\Z/2,\Z/8)\cong\Z/2$ by
+inflation--restriction, generated by the induced class $V^2[f]=(0,0,f)$ (Section~2.2).
+Since $s$ and $\beta$ both lie in $W_3(K)/\wp$ and agree over $K'$, $s\equiv\beta+
+\varepsilon(0,0,f)=(\beta_0,\beta_1,\beta_2+\varepsilon f)$ by (2); and a subfield of
+transcendence degree $1$ of $k(s_0,s_1,s_2)$ is $k(t)$ (a curve dominated by $\A^3$ is
+dominated by a line, Lemma~2.5(i)). (b) Truncate the congruence of (a) to $W_2$: the
+term $(0,0,f)$ dies and $(s_0,s_1)\equiv(\beta_0,\beta_1)$ mod $\wp W_2(K)$ with
+$\beta_0,\beta_1\in F_0$, so $\ed_k((s_0,s_1)_K)\le1$, contradicting
+$\ed_k((s_0,s_1)_K)=2$. (c) Truncation commutes with $\wp$ and with base change.
+\end{proof}
+
+So a quadratic witness, if one exists, has a descent field \emph{not} contained in $K$
+and can never be turned into a counterexample to Ledet's conjecture by this route; the
+truncation argument is the one used in the proof of Proposition~7.5 (the step
+``$\varepsilon=1\Rightarrow$ a $K$-point of $E'$''), applied to an arbitrary descent
+class instead of $[t]$.
+
+\begin{corollary}[$\bar U_3$ admits no quadratic witness]\label{cor:noquad}
+For every quadratic $K'/K$, $\tau_\gen\bar U_3$ has no free $K'$-point: $s$ is not
+Teichm\"uller over any quadratic extension of $K$, and $D(U_3)\cap\{1,2\}=\emptyset$.
+In particular Algorithm~9.1 has nothing to find, and the ``points not coming from the
+$s_2$-line'' of Remark~7.6 do not exist. \stag{proved}
+\end{corollary}
+
+\begin{proof}
+By Proposition~7.5 a free $K'$-point needs $Q=(u,w_1)\in E'(K')$ with $u\notin K$. Let
+$\sigma$ generate $\operatorname{Gal}(K'/K)$. $Q+\sigma Q$ is $\sigma$-invariant, hence
+lies in $E'(K)=\{\infty'\}$ (Lemma~4.1(ii)); so $\sigma Q=-Q=(u,w_1+1)$, whence
+$\sigma(u)=u$ and $u\in K$.
+\end{proof}
+
+The same argument at level $2$ shows that $E'(K(v_f))\ne\{\infty'\}$ iff $f\equiv
+s_1+u(u+1)(u+s_0)$ mod $\wp K$ for some $u\in K$: the $E_0$-witnesses of Theorem~6.2
+are exactly the $u$-fibres (Proposition~\ref{prop:FE0}).
+
+\begin{proposition}[fixed-field trick]\label{prop:fft}
+Let $K'=K(v_f)$ with $f\notin\{0,s_0\}+\wp K$, so that $L'=L\otimes_KK'=L(v_f)$ is a
+field. Suppose there are a subfield $M\subset L'$ and $x\in L'$ with $L'=M(x)$ purely
+transcendental, such that $M$ is fixed pointwise by some $1\ne h\in G$. Then
+$\ed_k(\tau_\gen\otimes K')\ge2$. The same holds for $(s_0,s_1)_K\otimes K'$, with $L'$
+replaced by $k(z_0,z_1,s_2)(v_f)$ and $G$ by $\Z/4$. \stag{proved}
+\end{proposition}
+
+\begin{proof}
+A witness gives, by Corollary~4.4, a smooth projective curve $C$ with faithful
+$G$-action and a $G$-equivariant dominant rational map from a model of $L'$; take the
+model $B\times\A^1$ with $k(B)=M$. Lemma~7.2 for $B\times\A^1\to B$ gives: either a fibre
+$\A^1$ maps nonconstantly to $C$, so $C\cong\mathbb P^1$ (Lemma~2.5(i)), impossible
+(Lemma~2.5(ii)); or $k(C)\subset M\subset(L')^h$, so $h$ acts trivially on $C$,
+contradicting faithfulness.
+\end{proof}
+
+\begin{theorem}[quadratic extensions with $\ed$ exactly $2$]\label{thm:fam}
+$\ed_k(\tau_\gen\otimes K(v_f))=2$ for every $f\notin\wp K$ in each of the classes
+\begin{enumerate}
+\item[(a)] $f\in K_2+\wp K$ (this contains $K(v_1)$ and $K(z_0)$ of Theorem~7.3);
+\item[(b)] $f\in s_2+K_2+\wp K$ (this contains $K(v_2)$, not covered by Theorem~7.3);
+\item[(c)] $f\in k(g)+\wp K$ for any $g\in K$ with $K=K_2(g)$, e.g.\ $f\in k(s_2)$,
+$f=1/(s_2+s_0s_1)$;
+\item[(d)] $f\in k(s_0,s_1)[s_2]$ a polynomial in $s_2$ of degree $\le7$.
+\end{enumerate}
+In cases (a), (c) already $\ed_k((s_0,s_1)_K\otimes K(v_f))=2$, i.e.\ $f\notin\mathfrak F$.
+\stag{proved}
+\end{theorem}
+
+\begin{proof}
+The upper bound is Theorem~7.1. (a) Replace $f$ by $e\in K_2$ with $f\equiv e$. If
+$e\equiv s_0$, Proposition~3.9. Otherwise $M:=k(z_0,z_1,v_e)$ is algebraic over
+$k(z_0,z_1)$, $L'=M(z_2)$, and $g^4\colon z\mapsto z+V^2(1)=(z_0,z_1,z_2+1)$ fixes $M$;
+apply Proposition~\ref{prop:fft}. (b) Write $f=s_2+e+\wp h$, $e\in K_2$. Over
+$K'=K(v_f)$, $s_2=\wp(v_f+h)+e$, so $s=(s_0,s_1,e)+\wp V^2(v_f+h)\equiv(s_0,s_1,e)$ by
+(2). Now $K'=K_2(v_f)$ is purely transcendental over $K_2$, so by Lemma~4.1(i)
+$\ed_k(\tau_\gen\otimes K')=\ed_k((s_0,s_1,e)_{K_2})\ge\ed_k((s_0,s_1)_{K_2})=2$.
+(c) Replace $f$ by an element of $k(g)$. Put $F:=k(g,v_f)$; then $K'=F(s_0,s_1)$ with
+$s_0,s_1$ algebraically independent over $F$, and the total space of $(s_0,s_1)_K\otimes
+K'$ is $k(z_0,z_1,g,v_f)=F(z_0,z_1)$, a field on which $\Z/4$ acts fixing $F$; the
+argument of Proposition~\ref{prop:fft} with the fibration $B\times\A^2\to B$ excludes a
+faithful $\Z/4$-curve, so $\ed_k((s_0,s_1)_K\otimes K')=2$, and a descent of $s$ over
+$K'$ would truncate to a descent of $(s_0,s_1)_K\otimes K'$. (d) If $f\in K_2+\wp K$ use
+(a); otherwise Theorem~\ref{thm:struct}(b) gives a witness curve of $p$-rank $0$ and
+genus $\le6$, contradicting Corollary~\ref{cor:g7}.
+\end{proof}
+
+\begin{theorem}[structure of a quadratic witness]\label{thm:struct}
+Let $K'=K(v_f)$ be a witness with $f\notin K_2+\wp K$, $C$ its curve, $C'=C/G$. For
+$a\in k^2$ let $D_{f,a}\colon y^2+y=f(a_0,a_1,s_2)$ (a curve over $k$ in the $s_2$-line)
+and, for $b\in\wp_2^{-1}(a)\subset\A^2_z$, let $D_b$ be its pullback along
+$z_2\mapsto s_2=z_2^2+z_2+C(b_0,b_1)$.
+\begin{enumerate}
+\item[(a)] For $a$ in a dense open subset of $\A^2(k)$: $D_{f,a}$ is integral and
+dominates $C'$, and every irreducible component of $D_b$ dominates $C$. Hence
+$g(C)\le g(\hat D_b)$ and $\sigma(C)\le\sigma(\hat D_b)$ ($\sigma$ the $p$-rank, $\hat D_b$
+the normalisation of a component).
+\item[(b)] If $f\in k(s_0,s_1)[s_2]$ has $s_2$-degree $m\ge1$, then $\sigma(C)=0$,
+$C\to C'$ is totally ramified at exactly one point and \'etale elsewhere, $C'$ has
+$p$-rank $0$ and genus $\le\lfloor(m-1)/2\rfloor$, and $7\le g(C)\le m-1$. In particular
+$m\ge8$, and for $8\le m\le15$ one has $C'\cong\mathbb P^1$: $C$ is the
+Artin--Schreier--Witt curve of a polynomial Witt vector $\beta\in W_3(k[t])$, and
+$s\equiv\beta(t)$ over $K'$ with $t\in K'\smallsetminus K$.
+\end{enumerate}
+\stag{proved}
+\end{theorem}
+
+\begin{proof}
+(a) Let $B_f\colon y^2+y=f(s_0,s_1,s_2)$ over $\A^3_s$, $k(B_f)=K'$. Its generic fibre
+over $\A^2_{(s_0,s_1)}$ is the Artin--Schreier curve $y^2+y=f$ over $K_2$ in the
+$s_2$-line, geometrically integral because $f\notin K_2+\wp K$ (a constant quadratic
+subextension $K_2(v_e)\subset K'$ would force $f\equiv e$). Apply Lemma~7.2 to $B_f\to
+\A^2_s$ and the dominant rational map $B_f\dashrightarrow C'$ given by $k(C')\subset K'$:
+the alternative $k(C')\subset k(s_0,s_1)\subset K$ is excluded by
+Theorem~\ref{thm:caseA}(b), so $D_{f,a}\dashrightarrow C'$ is dominant for general $a$.
+Let $Y_f$ be the normalisation of $\A^3_z\times_{\A^3_s}B_f$, with function field $L'$;
+the equivariant map $Y_f\dashrightarrow C$ composed with $C\to C'$ factors through
+$Y_f\to B_f\dashrightarrow C'$, and the fibre of $Y_f$ over $a$ is
+$\bigsqcup_{b\in\wp_2^{-1}(a)}D_b$, permuted transitively by $G$. Each $D_b\to D_{f,a}
+\to C'$ is nonconstant, hence so is $D_b\to C$. Genus and $p$-rank do not increase under
+dominant maps of curves. (b) $D_{f,a}$ is $y^2+y=$ (polynomial of degree $m$ in $s_2$),
+with a single branch point, so $\sigma(D_{f,a})=0$ (Deuring--Shafarevich) and
+$g\le\lfloor(m-1)/2\rfloor$; $D_b$ is $y^2+y=$ (polynomial of degree $2m$ in $z_2$),
+again with one branch point, so $\sigma=0$ and, after Artin--Schreier reduction to odd
+degree $\le2m-1$, $g(D_b)\le m-1$. By (a), $\sigma(C)=\sigma(C')=0$ and $g(C)\le m-1$;
+Lemma~\ref{lem:prank0} and Corollary~\ref{cor:g7} give the ramification structure and
+$g(C)\ge7$. If $g(C')=1$ then Riemann--Hurwitz gives $2g(C)-2\ge0+28$, so $m\ge16$; for
+$m\le15$, $C'=\mathbb P^1$ and the cover is \'etale outside one point, so its class
+lies in $H^1(\A^1,\Z/8)=W_3(k[t])/\wp$, with $\beta_0$ nonconstant since
+$s_0\notin\wp K'$ (else $K'=K(z_0)$).
+\end{proof}
+
+\begin{corollary}[minimal genus]\label{cor:g7}
+A smooth projective curve with faithful $\Z/8$-action and $p$-rank $0$ in
+characteristic $2$ has genus $\ge7$, with equality iff $C/G\cong\mathbb P^1$ and the
+upper ramification breaks at the unique ramified point are $(1,2,4)$; $\bar U_3$ is an
+example, $g(\bar U_3)=7$. A faithful $\Z/4$-curve of $p$-rank $0$ has genus $\ge1$, with
+equality iff it is $(E_0,\text{Witt action})$ of Theorem~6.2. \stag{proved}
+\end{corollary}
+
+\begin{proof}
+Lemma~\ref{lem:prank0}: one totally ramified point, $C/G$ of $p$-rank $0$. The different
+exponent at that point is $(u_1+1)+2(u_2+1)+4(u_3+1)$ in terms of the upper breaks, with
+$u_1\ge1$ and $u_{i+1}\ge2u_i$ \cite{Ga,Th}, so $2g-2\ge-16+28=12$. For $\Z/4$:
+$2g-2\ge-8+2+6=0$, and the genus-$1$ case is $(E_0,\text{Witt})$ by
+Lemma~\ref{lem:Z4ss}.
+\end{proof}
+
+\begin{remark}
+(i) Theorem~7.3's proofs for $K(v_1)$ and $K(v_1,v_2)$ are instances of the mechanism
+of Theorem~\ref{thm:struct}; for $f\in K_2$ the fixed-field trick is shorter, but for
+the quartic tower it does not apply directly ($g^4$ moves $y'=v_2+z_2$) and the argument
+of Theorem~7.3 is needed. (ii) The only genus-$1$ faithful $\Z/8$-curves are ordinary
+elliptic curves with $G$ acting by translation by a point of order $8$
+(Appendix~\ref{app:RH}); by Theorem~\ref{thm:struct}(a) they can occur as witness curves
+only if $f$ has, for general $a$, at least two poles on the $s_2$-line, and then
+$\tau_\gen\otimes K'$ is the \'etale $\Z/8$-isogeny torsor of an ordinary elliptic curve
+at a non-constant point (Appendix~\ref{app:isog}). This and polynomial $f$ of
+$s_2$-degree $\ge8$ are the only remaining shapes of a quadratic witness.
+\end{remark}
+
+\subsection{Supplement to Proposition 7.5 and Question (Q2): the cubic slot}
+
+Let $F'/K$ be cubic (separable without loss, Proposition~3.6). Then $L\otimes_KF'$ is a
+field and Corollary~4.4 applies: a witness for $\edd3(\tau_\gen)=1$ is a faithful
+$\Z/8$-curve $C$ with a free $F'$-point on $\tau_\gen C$.
+
+\begin{proposition}\label{prop:cubiccurves}
+A cubic witness curve $C$ has genus $\ge3$ and, if its $p$-rank is $0$, genus $\ge7$.
+Ordinary elliptic curves with translation action carry no free point of odd degree.
+\stag{proved}
+\end{proposition}
+
+\begin{proof}
+$\mathbb P^1$ and supersingular elliptic curves are excluded by Lemma~2.5. If $C$ is an
+ordinary elliptic curve with $G$ acting by translation by $P$ of order $8$ (the only
+genus-$1$ case, Appendix~\ref{app:RH}), then $\tau_\gen C$ is a principal homogeneous
+space under $C$ whose period divides $8$; period and index have the same prime divisors
+\cite{LT}, so a nontrivial such torsor has no closed point of odd degree, and a trivial
+one has a $K$-point, free since the action is free, forcing $\ed_k(\tau_\gen)\le1$,
+false. Genus $2$: the hyperelliptic involution is central, and the image of $\Z/8$ in
+$\operatorname{Aut}(\mathbb P^1)$ is $\Z/8$ or $\Z/4$, excluded by Lemma~2.5(ii).
+$p$-rank $0$: Corollary~\ref{cor:g7}.
+\end{proof}
+
+On $\bar U_3$ the question is completely explicit. By Proposition~5.2(a) and (3)--(4), a
+free $F'$-point of $\tau_\gen\bar U_3$ is $h=(u,w_1,w_2)\in W_3(F')$ with
+\begin{equation}\label{eq:U3eq}
+w_1^2+w_1=u(u+1)(u+s_0)+s_1,\qquad w_2^2+w_2=e_Q:=s_2+\Phi_2(s_0,s_1,u,w_1),
+\end{equation}
+and then $s\equiv[s_0+u^2+u]$ over $F'$.
+
+\begin{proposition}[reformulation]\label{prop:C}
+$\edd3(\tau_\gen)=1$ is witnessed on $\bar U_3$ iff there are $\alpha,\beta\in K$ such
+that, for $u$ a root of
+\[
+u^3+(1+s_0+\alpha^2)u^2+(s_0+\alpha)u+(s_1+\beta^2+\beta)=0,
+\]
+one has $e_Q=s_2+\Phi_2(s_0,s_1,u,\alpha u+\beta)\in\wp K(u)$. Every such cubic is
+irreducible over $K$, and these are all the cubic points of $E'$ over $K$.
+\stag{proved}
+\end{proposition}
+
+\begin{proof}
+As in Theorem~\ref{thm:A}, $E'(K)=\{\infty'\}$ (Lemma~4.1(ii)) gives
+$\operatorname{Pic}^0(E')(K)=0$, so the cubic points of $E'$ over $K$ are the line
+sections, each irreducible. A free $F'$-point with $[F':K]=3$ has $F'=K(u)$: if $u\in K$
+then $t=s_0+u^2+u\in K$ and $s\equiv[t]$ over $F'$ would give $s\equiv[t]$ over $K$,
+since $\res_{F'/K}$ is injective on $H^1(\cdot,\Z/8)$ ($\cores\circ\res=3$ is a unit
+mod $8$).
+\end{proof}
+
+\begin{proposition}[necessary condition and a partial obstruction]\label{prop:D}
+\begin{enumerate}
+\item[(a)] If $s\equiv[t]$ over a cubic $F'=K(u)$ then $s\equiv3\cdot\cores_{F'/K}[t]$ in
+$W_3(K)/\wp$, where $\cores$ is the Witt-vector trace
+$[t]+[t']+[t'']=(e_1,e_2,e_1e_3+e_1^2e_2)$ ($e_i$ the elementary symmetric functions of
+the conjugates). Coordinates $0$ and $1$ of this condition hold automatically for every
+line, and coordinate $2$ reads
+\begin{equation}\label{eq:N1}
+\operatorname{Tr}_{K(u)/K}(e_Q)=s_2+R(s_0,s_1,\alpha,\beta)\in\wp K
+\end{equation}
+with $R$ the explicit polynomial of Appendix~\ref{app:cubic}.
+\item[(b)] \eqref{eq:N1} fails for all $\alpha,\beta\in K_2$, and more generally for all
+$\alpha,\beta$ with pole order $\le1$ at $s_2=\infty$. Hence a cubic witness on
+$\bar U_3$, if any, has a line with $\alpha$ or $\beta$ of pole order $\ge2$ at
+$s_2=\infty$.
+\end{enumerate}
+\stag{(a) proved, coordinates checked symbolically; (b) proved, with computer-verified
+coefficients}
+\end{proposition}
+
+\begin{proof}
+(a) $\cores\circ\res=3$ on $H^1(K,\Z/8)$ and $3^2\equiv1\pmod8$. Corestriction is a
+morphism of $\delta$-functors for $0\to\Z/8\to W_3\xrightarrow{\wp}W_3\to0$, and on
+$H^0$ it is the norm, i.e.\ the Witt trace; the formula for $[t]+[t']+[t'']$ follows from
+(3), and the coordinate computations are in Appendix~\ref{app:cubic}. (b) For
+$\alpha,\beta\in K_2$, $s_2+R$ has a simple pole at $s_2=\infty$ (Remark~7.4). In
+general write $\alpha=\sum_{i\le1}a_is_2^i$, $\beta=\sum_{i\le1}b_is_2^i$ in
+$K_2((1/s_2))$. Membership in $\wp$ of the completion forces, for every odd $i_0\ge1$, the
+chain condition $\sum_{j}c_{i_02^j}^{2^{J-j}}=0$ on the coefficients $c_i$ of $s_2^i$ in
+$s_2+R$ (Appendix~\ref{app:cubic}). The only monomial of $R$ producing $s_2^{11}$ from
+exponents $\le1$ is $\alpha^{11}$, giving $c_{11}=a_1^{11}$ and $a_1=0$; then
+$c_3=b_1^3$ gives $b_1=0$; then $\alpha,\beta$ are integral at $\infty$ and
+$s_2+R$ has a simple pole, contradicting the chain condition for $i_0=1$.
+\end{proof}
+
+Exhaustive searches over $\mathbb F_2$-polynomial lines (about $2.4\cdot10^6$ pairs
+$(\alpha,\beta)$ of small degree, Appendix~\ref{app:cubic}) found no line satisfying
+\eqref{eq:N1}. Note that \eqref{eq:N1} is only necessary: the kernel of $\cores$ on
+$H^1(K(u),\Z/2)$ is large. Our expectation is that no cubic witness exists on
+$\bar U_3$; whether another faithful $\Z/8$-curve of genus $\ge3$ carries one is a
+separate question, so (Q2) remains open.
+
+\subsection{Updated status at \texorpdfstring{$(2,3)$}{(2,3)} and revised questions}
+
+\begin{theorem}[status at $(2,3)$]\label{thm:status}
+\[
+\edd1\in\{2,3\},\quad\edd2\in\{1,2\},\quad\edd3\in\{1,2\},\quad
+\edd4=\dots=\edd7=1,\quad\edd8=0;
+\]
+$d_2\in\{1,2\}$, $d_1\in\{2,3,4\}$, $d_0=8$, $d_1^{(p')}\in\{3,5,7,9,11\}$. Moreover:
+a quadratic witness for $d_1=2$ has no descent field inside $K$, is not $\bar U_3$,
+is not any $f$ of Theorem~\ref{thm:fam}, and for polynomial $f$ is an
+Artin--Schreier--Witt curve of a polynomial Witt vector of $s_2$-degree $\ge8$;
+$D(U_3)\cap\{1,2\}=\emptyset$, $D(U_3)\supseteq\langle4,6,11\rangle\smallsetminus\{0\}$,
+and $D(U_3)\cap\{3,5,7,9,13\}$ is unknown. \stag{proved}
+\end{theorem}
+
+The open questions of Section~9.2 are refined as follows. (Q1): is there
+$f\in K/\wp K$, with at least two poles on the $s_2$-line for general $(s_0,s_1)$ or a
+polynomial of $s_2$-degree $\ge8$, such that $K(v_f)$ is a witness? The first shape
+requires the \'etale $\Z/8$-isogeny torsor of an ordinary elliptic curve
+(Appendix~\ref{app:isog}); the level-$2$ version (is $(s_0,s_1)_K\otimes K(v_f)$ the
+\'etale $\Z/4$-isogeny torsor of an ordinary elliptic curve at a non-constant point?) is
+the natural first step, since a negative answer there kills all such level-$3$
+witnesses by truncation. (Q2): does \eqref{eq:N1} fail for all $\alpha,\beta\in K$
+(a local analysis at $s_2=\infty$ for pole orders $\ge2$ is the missing piece), and
+which of $3,5,7,9$ lie in $D(U_3)$? The splitting type over $K$ of the degree-$11$
+fibres of the pole-order-$11$ pencil is a finite computation that would decide the
+latter. (Q3), (Q4) are unchanged, except that $d_1^{(p')}(\tau_2)\le p^2-p+1$ for all
+$p$ and $=3$ for $p=2$.

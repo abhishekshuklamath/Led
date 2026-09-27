@@ -1,0 +1,312 @@
+% ---------------------------------------------------------------------------
+% Appendices: supporting material for Section 11 (tangential results).
+% ---------------------------------------------------------------------------
+\appendix
+
+\section{Witt-vector computations at \texorpdfstring{$p=2$, $n=3$}{p=2, n=3}}\label{app:witt}
+
+All formulas were re-derived from the ghost components $w_0=x_0$, $w_1=x_0^2+2x_1$,
+$w_2=x_0^4+2x_1^2+4x_2$ over $\Z$ and reduced modulo $2$ (script \texttt{witt\_check.py});
+they agree with (3)--(4). \stag{computed}
+
+\emph{Negation.} $-(a_0,a_1,a_2)=(a_0,\ a_1+a_0^2,\ a_2+a_1^2+a_0^2a_1+a_0^4)$; in
+particular $-x\ne x$, but $\{s-\wp x\}=\{s+\wp x\}$ as $x$ ranges over $W_3(K)$.
+
+\emph{The general translate.} For $x=(x_0,x_1,x_2)\in W_3(K)$,
+$s+\wp x=(t,r_1,r_2)$ with
+\begin{align*}
+t&=s_0+x_0^2+x_0,\\
+r_1&=s_1+x_0(x_0+1)(x_0+s_0)+\wp(x_1),\\
+r_2&=s_2+\Phi_2(s_0,s_1,x_0,x_1)+\wp(x_2),
+\end{align*}
+where
+\begin{equation}\label{eq:Phi2}
+\begin{aligned}
+\Phi_2={}&s_0^3(x_0^2+x_0)+s_0s_1(x_0^2+x_0)+s_0(x_0^6+x_0^4)+s_0(x_0^2+x_0)(x_1^2+x_1)\\
+&+s_1(x_0^3+x_0^2)+s_1(x_1^2+x_1)+x_0^7+x_0^4+(x_0^3+x_0^2)(x_1^2+x_1)+x_1^3+x_1^2 .
+\end{aligned}
+\end{equation}
+Thus the $u$-fibre family of Theorem~6.2 is the $x_1$-independent part of $r_1$:
+$(s+\wp(c,x_1))_1-(c(c+1)(c+s_0)+s_1)=\wp(x_1)$, and
+$(s-\wp x)_1-(s+\wp x)_1=x_0^4+x_0^2\in\wp K$.
+
+\section{Genus, ramification and Weierstrass semigroup of \texorpdfstring{$\bar U_n$}{U\_n}}
+\label{app:genus}
+
+\emph{Ramification at $\infty$.} $\bar U_n\to\mathbb P^1_t$ is a $\Z/p^n$-cover, \'etale
+over $\A^1$ and totally ramified at $\infty$, of Witt class $[t]$ with $v_\infty(t)=-1$.
+By the conductor formula for Artin--Schreier--Witt extensions \cite{Th} (upper breaks
+$u_j=\max_{i<j}p^{\,j-1-i}m_i$ for reduced pole orders $m_i$) the upper breaks are
+$u_j=p^{j-1}$, and Herbrand's function converts them to the lower breaks
+\[
+l_1=1,\qquad l_{j+1}=l_j+p^j(u_{j+1}-u_j)=l_j+(p-1)p^{2j-1},
+\]
+which gives \eqref{eq:ln}. \stag{cited} Direct verification at $(2,3)$ \stag{computed,
+\texttt{genus\_U3.py}}: the tower $U_3\to U_2=E_0\to\mathbb P^1_{y_0}\to\mathbb P^1_t$
+has layers $y_0^2+y_0=t$ (break $1$), $y_1^2+y_1=y_0^3+y_0^2$ (break $3$) and
+$y_2^2+y_2=C(y_0,y_1)$ with $C$ from (4). On $E_0$, using $y_1^2=y_1+y_0^3+y_0^2$,
+$C=y_0^7+y_0^6+(y_0^3+y_0^2)y_1$, of pole order $14$; one reduction step,
+$C+\wp(y_0^2y_1)=y_0^4y_1+y_0^3y_1$, has odd pole order $8+3=11$. So the lower breaks
+are $(1,3,11)$ and the upper breaks $(1,2,4)$, as predicted.
+
+\emph{Genus.} With $l_0:=-1$, Riemann--Hurwitz gives
+$2g(\bar U_n)-2=-2p^n+\sum_{j=1}^n(p^{\,n-j+1}-1)(l_j-l_{j-1})$, whence
+\[
+g(\bar U_2)=\tfrac12p(p-1)^2,\qquad g(\bar U_3)=7\ (p=2),\qquad g(\bar U_4)=35\ (p=2),
+\qquad g(\bar U_3)=78\ (p=3).
+\]
+Cross-check at $(2,3)$: the different exponent is $(u_1+1)+2(u_2+1)+4(u_3+1)=2+6+20=28$
+and $2g-2=-16+28=12$. \stag{computed}
+
+\emph{Weierstrass semigroup at $(2,3)$.} The functions $y_0$, $y_1$, $y_2+y_0^2y_1$ are
+regular on $U_3$ with pole orders $4$, $6$, $11$ at $\infty$; $\langle4,6,11\rangle$ has
+exactly the $7=g$ gaps $\{1,2,3,5,7,9,13\}$, so it is the full semigroup of $\infty$.
+The smallest odd pole order of a function regular on $U_3$ is therefore $11$.
+
+\emph{Degrees realised on $\bar U_n$.} Let $H$ be the semigroup of $\infty$ on
+$\bar U_n$. For $d\in H$ choose $f\in K(\tau_\gen\bar U_n)$ with pole divisor $d\infty''$
+and $df\ne0$ (possible for every $d\in H$ prime to $p$, and at $(2,3)$ for every
+$d\in\langle4,6,11\rangle$, e.g.\ $y_0$, $y_1$, $y_0^2+y_1$, $y_0y_1$ for $4,6,8,10$).
+Then $K(\tau_\gen\bar U_n)$ is a separable extension of degree $d$ of $K(f)$, and since
+$K=k(s_0,\dots,s_{n-1})$ is Hilbertian \cite{FJ}, for infinitely many $c\in K$ the fibre
+$f=c$ is a single closed point of degree $d$ in the free locus. Hence
+\[
+D(U_n)\supseteq\{d\in H\smallsetminus\{0\}:d\text{ prime to }p\},\qquad
+D(U_3)\supseteq\langle4,6,11\rangle\smallsetminus\{0\},\qquad D(U_2)=\Z_{\ge2}\ (p=2).
+\]
+With Corollary~\ref{cor:noquad}, $D(U_3)\cap\{1,2\}=\emptyset$; the unknown part of
+$D(U_3)$ is $\{3,5,7,9,13\}$, and the odd degrees realised on $\bar U_3$ so far are the
+odd elements $\ge11$ of $\langle4,6,11\rangle$ ($13$ is a gap). \stag{proved, modulo
+Hilbert irreducibility}
+
+\section{Cyclic \texorpdfstring{$2$}{2}-power actions on curves in characteristic
+\texorpdfstring{$2$}{2}}\label{app:RH}
+
+Let $C$ be a smooth projective curve over $k$ with a faithful action of $G=\Z/2^n$,
+$\sigma(\cdot)$ the $p$-rank. For a $G$-orbit with inertia of order $2^a$ and upper
+breaks $u_1<\dots<u_a$ one has $u_1\ge1$ and $u_{i+1}\ge2u_i$ \cite{Ga,Th}; the different
+exponent at a point of that orbit is $\sum_{i=1}^a(2^i-2^{i-1})(u_i+1)$ in terms of the
+upper breaks of the inertia group. Deuring--Shafarevich \cite{Cr}:
+\[
+\sigma(C)-1=2^n(\sigma(C/G)-1)+\sum_{\text{orbits}}2^n\Bigl(1-\frac1{e_{\rm orbit}}\Bigr).
+\]
+
+\begin{lemma}\label{lem:prank0}
+If $\sigma(C)=0$ then $\sigma(C/G)=0$, and $C\to C/G$ is totally ramified at exactly
+one point and \'etale elsewhere. Conversely such a cover of a $p$-rank-$0$ curve has
+$p$-rank $0$. \stag{proved}
+\end{lemma}
+
+\begin{proof}
+$2^n\sigma(C/G)+\sum2^n(1-1/e)=2^n-1$; each orbit with $e\ge2$ contributes at least
+$2^{n-1}$, and $2^n-1$ is reached only by a single orbit with $e=2^n$.
+\end{proof}
+
+\begin{lemma}\label{lem:Z4ss}
+Let $E$ be the supersingular elliptic curve over $k$. Every faithful $\Z/4$-action on
+$E$ is conjugate in $\operatorname{Aut}(E)$ to one fixing $O$, and the six elements of
+order $4$ of $\operatorname{Aut}(E,O)\cong\mathrm{SL}_2(\mathbb F_3)$ form one conjugacy
+class; so up to isomorphism of $G$-curves (and replacing the generator by its inverse)
+$(E,\Z/4)$ is $(E_0,\text{Witt action})$. There is no faithful $\Z/8$-action on $E$
+(Lemma~2.5(iii)). \stag{proved}
+\end{lemma}
+
+\begin{proof}
+Write $\varphi=t_P\circ\alpha$ with $\alpha\in\operatorname{Aut}(E,O)$. If $\alpha=1$,
+$\operatorname{ord}\varphi=\operatorname{ord}P$ is odd ($E(k)[2]=0$); if $\alpha=-1$,
+$\varphi^2=t_{P+\alpha P}=1$. So order $4$ forces $\operatorname{ord}\alpha=4$, and
+$t_Q\varphi t_{-Q}=t_{(1-\alpha)Q}\alpha$ with $1-\alpha$ a nonzero isogeny, surjective
+on $E(k)$; choose $Q$ with $(1-\alpha)Q=-P$. The conjugacy classes of
+$\mathrm{SL}_2(\mathbb F_3)$ are $\{1\}$, $\{-1\}$, two of order $3$, two of order $6$
+and one of order $4$, of size $6$.
+\end{proof}
+
+\emph{Enumeration} (\texttt{rh\_enum.py}, output \texttt{rh\_enum.out}) \stag{computed}.
+Imposing only the necessary conditions above (integrality and non-negativity of genus and
+$p$-rank at every level of the tower $C\to C/\langle g^{2^{n-1}}\rangle\to\dots\to C/G$,
+Hasse--Arf, $u_{i+1}\ge2u_i$), the possible $(g(C),g(C/G),\sigma(C/G),\sigma(C))$ for
+faithful $\Z/8$-curves with $g(C)\le10$ are:
+\begin{center}\small
+\begin{tabular}{@{}llll@{}}
+\toprule
+$g(C)$ & $C/G$ & ramification & $\sigma(C)$\\
+\midrule
+$1$ & ordinary elliptic & free action (translation by an $8$-torsion point) & $1$\\
+$5$ & ordinary elliptic & one orbit with inertia $\Z/2$ & $5$\\
+$7$ & $\mathbb P^1$ & one totally ramified point, lower breaks $(1,3,11)$ & $0$\\
+$9$ & $\mathbb P^1$ & one totally ramified point, lower breaks $(1,3,15)$ & $0$\\
+$9$ & genus $1$ or $2$ & various (one or two orbits, or free) & $5,7,9$ or $1$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Consequences: a faithful $\Z/8$-curve of genus $\le6$ is an ordinary elliptic curve
+with translation action or has genus $5$ and $p$-rank $5$; no faithful $\Z/8$-curve has
+genus $2,3,4,6,8$; and a $p$-rank-$0$ one of genus $\le10$ has genus $7$ or $9$, with
+$C/G=\mathbb P^1$, $\Z/4$-quotient a supersingular elliptic curve and $\Z/2$-quotient
+$\mathbb P^1$. For $\Z/4$ and $g(C)\le6$: the $p$-rank-$0$ entries have a single totally
+ramified point with lower breaks $(1,2j+1)$ (genus $j$) or $C/G$ of genus $1$; the only
+other genus-$1$ entry is an ordinary elliptic curve with translation by a $4$-torsion
+point. A genus-$2$ faithful $\Z/4$-curve has $p$-rank $0$, quotient $\mathbb P^1$ and
+lower breaks $(1,5)$.
+
+\section{The level-\texorpdfstring{$2$}{2} set \texorpdfstring{$\mathfrak F$}{F} and the
+isogeny mechanism}\label{app:isog}
+
+Recall $\mathfrak F=\{f\in K/\wp K:\ed_k((s_0,s_1)_K\otimes K(v_f))=1\}$
+(Theorem~\ref{thm:caseA}(c)). Call a descent of $(s_0,s_1)_K\otimes K(v_f)$ ``of Case A''
+if its descent field lies inside $K$.
+
+\begin{proposition}[level-$2$ Case A is explicit]\label{prop:FA}
+$f$ admits a level-$2$ Case-A descent, i.e.\ $(s_0,s_1)\equiv\beta(t)$ over $K(v_f)$
+with $t\in K$ and $\beta\in W_2(k(T))$, iff
+\[
+f\equiv s_1+x_0(x_0+1)(x_0+s_0)+\beta_1(t)\pmod{\wp K}
+\]
+for some $x_0,t\in K$ and $\beta_0,\beta_1\in k(T)$ with $\beta_0(t)=s_0+x_0^2+x_0$.
+This set $\mathfrak F_A$ contains $\{s_1+x_0(x_0+1)(x_0+s_0)+b(s_0+x_0^2+x_0):x_0\in K,\
+b\in k(T)\}$ (the case $\beta_0=T$). \stag{proved}
+\end{proposition}
+
+\begin{proof}
+``$\Leftarrow$'': over $K'=K(v_f)$ put $x_1:=v_f+h$ where $f=s_1+x_0(x_0+1)(x_0+s_0)+
+\beta_1(t)+\wp h$; by Appendix~\ref{app:witt},
+$(s_0,s_1)+\wp(x_0,x_1)=(\beta_0(t),\beta_1(t))$. ``$\Rightarrow$'': the descent field is
+$k(t)$ (Theorem~\ref{thm:caseA}(a)); $(s_0,s_1)$ and $\beta(t)$ agree over $K'$, so
+$(s_0,s_1)\equiv\beta(t)+\varepsilon(0,f)$ over $K$ with $\varepsilon=1$ since
+$\ed_k((s_0,s_1)_K)=2$; read off the coordinates of $(s_0,s_1)+\wp(x_0,x_1)=
+(\beta_0(t),\beta_1(t)+f)$.
+\end{proof}
+
+\begin{proposition}[the $E_0$-part of $\mathfrak F$]\label{prop:FE0}
+$\{f:E'(K(v_f))\ne\{\infty'\}\}=\{s_1+u(u+1)(u+s_0):u\in K\}+\wp K\subset\mathfrak F_A$.
+Equivalently, the quadratic twist $E'^{(f)}\colon w^2+w=u(u+1)(u+s_0)+s_1+f$ has an
+affine $K$-point iff $f$ is in this family, and never one with $u\notin K$. \stag{proved}
+\end{proposition}
+
+\begin{proof}
+As in Corollary~\ref{cor:noquad}, every $Q\in E'(K')$ has $\sigma Q=-Q$, so $u(Q)\in K$;
+then $w\in K'\smallsetminus K$ with $w^2+w\in K$ forces $w=a+v_f$, $a\in K$, and
+$f\equiv s_1+u(u+1)(u+s_0)$. Conversely such $f$ gives the point $(u,v_f+a)$.
+\end{proof}
+
+\begin{proposition}[$f\in k(s_0)$]\label{prop:ks0}
+For $e\in k(s_0)$ with $e\notin\{0,s_0\}+\wp k(s_0)$: $\ed_k(\tau_2\otimes K_2(v_e))=2$.
+Hence $k(s_0)\cap\mathfrak F=\{s_0\}+\wp K$. \stag{proved}
+\end{proposition}
+
+\begin{proof}
+The total space of $\tau_2\otimes K_2(v_e)$ is $k(z_0,v_e)(z_1)=M(z_1)$ with
+$M=k(z_0,v_e)$ fixed by $g^2\colon(z_0,z_1)\mapsto(z_0,z_1+1)$; apply
+Proposition~\ref{prop:fft} for $\Z/4$. (No genus hypothesis on the curve
+$v^2+v=e(z_0^2+z_0)$ is needed; for $e\in k(s_0)$ the twist $E'^{(e)}$ is isomorphic to
+$E'$ via $s_1\mapsto s_1+e$, which shows directly $E'^{(e)}(K_2)=0$, consistent with
+Proposition~\ref{prop:FE0}.)
+\end{proof}
+
+\begin{proposition}[corestriction exclusion of constant descents]\label{prop:cores}
+Let $M_0\subset K$ be a subfield algebraically closed in $K$, $f'\in M_0$ with
+$f\equiv f'$ mod $\wp K$, $M=M_0(v_{f'})$, so $K'=K\otimes_{M_0}M$. If $s_0\notin
+M_0+\wp K$ (e.g.\ $M_0\subset k(s_1,s_2)$), then no descent field of
+$(s_0,s_1)_K\otimes K'$, in particular none of $\tau_\gen\otimes K'$, is contained in
+$M$. \stag{proved}
+\end{proposition}
+
+\begin{proof}
+Let $(s_0,s_1)\equiv\beta$ over $K'$ with $\beta\in W_2(M)/\wp$. Corestriction is
+compatible with base change along $M_0\to K$, so $\cores_{K'/K}(\beta)=\gamma$ comes from
+$W_2(M_0)/\wp$, while $\cores_{K'/K}\res(s_0,s_1)=2(s_0,s_1)=VF(s_0,s_1)=(0,s_0^2)\equiv
+(0,s_0)$. So $(0,s_0)\equiv(\gamma_0,\gamma_1)$ over $K$; $\gamma_0\in\wp K\cap M_0=
+\wp M_0$, so after modifying $\gamma$ by $\wp(h,0)$, $\gamma_0=0$ and
+$s_0+\gamma_1\in\wp K$ by (5), contradicting $s_0\notin M_0+\wp K$.
+\end{proof}
+
+This does not exclude a general Case-B descent: for a $\sigma$-stable descent field it
+only says that $(0,s_0)=\operatorname{Ind}(s_0)$, which already has $\ed=1$, descends to
+it.
+
+\emph{The isogeny mechanism.} By Theorem~\ref{thm:struct}(a) and Appendix~\ref{app:RH},
+a witness curve of genus $\le6$ is an ordinary elliptic curve $C$ with $G$ acting by
+translation by a point $P$ of order $8$, so $C'=C/\langle P\rangle$ is ordinary elliptic,
+$C\to C'$ is the \'etale $\Z/8$-isogeny (the dual of $V^3$, i.e.\ $C=C'^{(8)}$), and $C'$
+is dominated by $D_{f,a}$ for general $a$: the Jacobians of the curves $D_{f,a}$ must have
+a \emph{fixed} ordinary elliptic factor, which requires $f(a,s_2)$ to have at least two
+poles on the $s_2$-line. The class of $\tau_\gen\otimes K'$ is then $\delta(Q)$ for the
+connecting map $\delta\colon C'(K')\to H^1(K',\Z/8)$ of $0\to\Z/8\to C\to C'\to0$ and
+the non-constant point $Q\in C'(K')$ given by $k(C')\subset K'$. For $n=1$ and
+$C'\colon y^2+xy=x^3+a_6$ (ordinary, $j=1/a_6$), the substitution $y=xz$ gives
+$z^2+z=x+a_6/x^2$, so the \'etale $\Z/2$-isogeny torsor at $(x,y)$ has Artin--Schreier
+class $x+a_6/x^2$; the $\Z/8$ version is the Witt vector of the tower
+$C'^{(8)}\to C'^{(4)}\to C'^{(2)}\to C'$, not computed here. Since $\delta$ is a
+homomorphism and $s$ is $\sigma$-invariant, $\delta(Q+\sigma Q)=2s\equiv(0,0,s_0)$ and
+$\delta(Q-\sigma Q)=0$, i.e.\ $Q-\sigma Q$ lifts to $C(K')$. We have not derived a
+contradiction from these constraints. \stag{open}
+
+\section{The cubic slot on \texorpdfstring{$\bar U_3$}{U\_3}: Witt trace, chain
+conditions, searches}\label{app:cubic}
+
+\emph{Witt trace.} For a cubic $u^3+Au^2+Bu+C$ with $A=1+s_0+\alpha^2$, $B=s_0+\alpha$,
+$C=s_1+\beta^2+\beta$ and $t=s_0+u^2+u$, the trace $[t]+[t']+[t'']$ has coordinates
+$(e_1,e_2,e_1e_3+e_1^2e_2)$ in the elementary symmetric functions of $t,t',t''$
+(from (3); the ghost components of $\sum[t_i]$ are the power sums $\sum t_i^{2^m}$).
+Moreover $3x=(x_0,x_1+x_0^2,x_2+x_1^2+x_0^2x_1)$. The scripts \texttt{cores\_cubic*.py}
+compute $d:=3s-\operatorname{Tr}[t]$: $d_0=\wp(A)$; after subtracting $\wp[A]$ the
+coordinate $1$ is $\wp(\alpha^4+\alpha^3+\alpha s_0+\beta+s_0^2+s_0)$, automatically in
+$\wp K$ (the $n=2$ statement of Theorem~\ref{thm:A} seen through $\cores$); after
+subtracting $\wp V[y_1]$ the last coordinate is $s_2+R(s_0,s_1,\alpha,\beta)$ with $R$ a
+polynomial of $67$ terms, and it agrees with $\operatorname{Tr}_{K(u)/K}(e_Q)$ modulo
+$\wp K$. Reducing squares ($x^2\equiv x$), $R\equiv R_{\rm red}$ with
+{\small\begin{align*}
+R_{\rm red}={}&\alpha^{11}+s_0\alpha^{10}+s_0\alpha^9+\alpha^8\beta+s_1\alpha^8+s_0\alpha^7
++\alpha^6\beta+s_1\alpha^6+s_0\alpha^6+\alpha^5\beta^2+\alpha^5\beta+\alpha^5+s_1\alpha^5+s_0^2\alpha^5\\
+&+s_0\alpha^4\beta^2+\alpha^4\beta+s_0\alpha^4\beta+s_0s_1\alpha^4+\alpha^3\beta
++\alpha^3+s_0\alpha^3+s_0^3\alpha^3+s_0^4\alpha^3+s_0^2\alpha^2\beta+s_0\alpha^2+s_0^2s_1\alpha^2\\
+&+s_0^3\alpha^2+s_0^5\alpha^2+\alpha\beta^2+s_0\alpha\beta^2+s_0^2\alpha\beta^2
++\alpha\beta+s_0^2\alpha\beta+\alpha+s_1\alpha+s_0\alpha+s_0s_1\alpha+s_0^2s_1\alpha+s_0^4\alpha\\
+&+s_0^5\alpha+\beta^3+s_1\beta^2+s_0\beta^2+s_0^3\beta^2+\beta+s_1\beta
++s_0^3\beta+s_0^4\beta+s_1+s_0s_1+s_0^2s_1+s_0^3s_1+s_0^4s_1 .
+\end{align*}}
+The twisted $G$-action on $W_3$ acts on lines by $(\alpha,\beta)\mapsto(\alpha+1,
+\alpha+\beta+1)$, $(\alpha,\beta+1)$ and preserves \eqref{eq:N1} (checked symbolically).
+\stag{computed}
+
+\emph{Chain conditions at $s_2=\infty$.} Let $\hat K=K_2((1/s_2))$ and
+$e=\sum_{i\le N}c_is_2^i\in\hat K$, $c_i\in K_2$. Then $e\in\wp\hat K$ iff $c_0\in\wp K_2$
+and, for every odd $i_0\ge1$, with $2^Ji_0$ the last index of the chain
+$i_0,2i_0,4i_0,\dots$ carrying a nonzero coefficient,
+\[
+(\mathrm{Ch}_{i_0})\qquad\sum_{j=0}^{J}c_{i_02^j}^{\,2^{J-j}}=0\quad\text{in }K_2 .
+\]
+(The negative part is always $\wp$-exact; the solution $y=\sum b_is_2^i$ of
+$y^2+y=\sum_{i>0}c_is_2^i$ has $b_{i_0}=c_{i_0}$, $b_{2m}=c_{2m}+b_m^2$, and must be a
+finite sum.) In particular a top coefficient $c_N\ne0$ with $N$ odd excludes
+$e\in\wp K$. Proposition~\ref{prop:D}(b) uses: for $\alpha=a_0+a_1s_2$,
+$\beta=b_0+b_1s_2$ (plus arbitrary tails of negative order), $c_{11}=a_1^{11}$ and
+$c_{13}=c_{14}=c_{15}=0$; with $a_1=0$, $c_3=b_1^3$ and $c_6=c_{12}=0$
+(\texttt{deg1\_family.py}). For pole orders $\ge2$ the chain equations are nonlinear in
+the coefficients and Laurent tails enter; no general argument is known to us.
+
+\emph{Searches} (\texttt{f2poly.py}, \texttt{search\_lines.py},
+\texttt{search\_targeted.py}) \stag{computed}. For $\alpha,\beta\in\mathbb F_2[s_0,s_1,s_2]$,
+membership $s_2+R\in\wp K$ is equivalent to membership in $\wp(k[s_0,s_1,s_2])$ and is
+decided exactly by the monomial-chain algorithm (top monomial must be a square; subtract
+$\wp$ of its root; iterate). None of the following families contains a line satisfying
+\eqref{eq:N1}: $\deg\alpha\le1$, $\deg\beta\le2$ ($16384$ lines); $\alpha=0$,
+$\deg\beta\le3$ ($2^{20}$ lines); $\alpha\in\mathbb F_2[s_0,s_1]$ of degree $\le2$ with
+$\beta$ of $s_2$-degree $\le2$ and $(s_0,s_1)$-degree $\le1$ ($2^{15}$); $\alpha$ of
+$s_2$-degree $\le1$ and $(s_0,s_1)$-degree $\le1$ with $\beta$ of $s_2$-degree $\le2$
+resp.\ $\le3$ ($2^{15}$ resp.\ $2^{18}$); $\alpha,\beta$ both of total degree $\le2$
+($2^{20}$). A finite-field specialisation test (\texttt{ff\_test.py}: specialise
+$(s_0,s_1,s_2)\in\mathbb F_8^3$, take the roots $u\in\mathbb F_{512}$ of the cubic and
+compute the absolute trace of $e_Q(u)$) is available as an independent check of the full
+condition $e_Q\in\wp K(u)$ on any candidate; it has not been needed.
+
+\section{Scripts}\label{app:scripts}
+All scripts are Python~3 and live in \texttt{notes/scripts/} of the repository:
+\texttt{witt\_check.py} (ghost-component verification of (3)--(4), prints $\Phi_2$),
+\texttt{wittlib.py}, \texttt{ed2\_witt.py} (negation, $s\pm\wp x$),
+\texttt{genus\_U3.py} (Artin--Schreier reduction on $E_0$, $g(\bar U_3)=7$),
+\texttt{rh\_enum.py} (ramification enumeration, output \texttt{rh\_enum.out}),
+\texttt{cores\_cubic.py}, \texttt{cores\_cubic2.py}, \texttt{cores\_cubic3.py},
+\texttt{resolvent.py} (Witt trace, $R$, invariance under the twisted action),
+\texttt{build\_R.py}, \texttt{f2poly.py}, \texttt{search\_lines.py},
+\texttt{search\_targeted.py}, \texttt{deg1\_family.py}, \texttt{ff\_test.py}.
