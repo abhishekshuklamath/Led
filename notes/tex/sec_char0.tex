@@ -1,0 +1,530 @@
+% Section 10 of "The finite-degree profile of essential dimension of a Z/p^n-torsor
+% in characteristic p": the profile in arbitrary characteristic and the
+% characteristic-zero picture.  Compiled standalone (page/section counters set to
+% continue the main paper) and appended to the PDF; to integrate into the source,
+% drop the body between the BEGIN/END BODY markers into tex_profile/ after
+% Section 9, and append the bibliography items [17]--[24].
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.15in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array,booktabs}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{question}[theorem]{Question}
+
+\newcommand{\ed}{\operatorname{ed}}
+\newcommand{\edd}[1]{\ed^{[#1]}}
+\newcommand{\tr}{\operatorname{trdeg}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\Ind}{\operatorname{Ind}}
+\newcommand{\gen}{\mathrm{gen}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\A}{\mathbb A}
+\newcommand{\Gam}{\Gamma}
+\newcommand{\stag}[1]{\hfill{\normalfont[#1]}}
+\newcommand{\res}{\operatorname{res}}
+\newcommand{\cores}{\operatorname{cores}}
+
+\setcounter{section}{9}
+\setcounter{page}{17}
+
+\begin{document}
+\pagestyle{myheadings}
+\markboth{THE FINITE-DEGREE PROFILE OF ESSENTIAL DIMENSION}{THE FINITE-DEGREE PROFILE OF ESSENTIAL DIMENSION}
+
+% ===================== BEGIN BODY =====================
+\section{The profile in arbitrary characteristic, and the characteristic-zero picture}
+
+\noindent\textit{Addendum (27 September 2026).} Sections 1--9 treat $G=\Z/p^n$ in
+characteristic $p$. This section records what the definition of the profile gives for
+an arbitrary finite group $G$ over an arbitrary field $k$, and what it looks like in
+characteristic $0$ (more generally, in characteristic prime to $|G|$), where the
+mechanisms are entirely different: instead of Artin--Schreier layers, the profile is
+governed by Sylow divisibility (Theorem~\ref{thm:div}) and by the roots-of-unity
+defect $\ed_k(G)-\ed_{k(\mu_e)}(G)$ (Corollary~\ref{cor:rou}). Statements carry the
+tags of Section~1; in addition, \S\ref{ss:prov} says explicitly which statements are
+rewrites of results in the literature and which are new. As in the rest of the note,
+literature is quoted without re-verification and the corresponding statements are
+tagged [cited].
+
+\subsection{Conventions}\label{ss:conv}
+$k$ is any field, $G$ a finite group (constant group scheme over $k$), $F\supseteq k$
+a field, $\tau\colon T\to\operatorname{Spec}F$ a $G$-torsor. The classifying
+homomorphism $\varphi_\tau\colon\Gam_F\to G$ is defined up to conjugation, its image
+$H=\im\varphi_\tau$ up to conjugacy, and $T\cong\coprod_{G/H}\operatorname{Spec}E$
+with $E/F$ Galois with group $H$ (the \emph{splitting field} of $\tau$). We use, in
+every characteristic: (B1) $\ed_k(\tau\otimes_FF')\le\ed_k(\tau)$; (B2)
+$\ed_k(\tau)\ge\ed_{k'}(\tau)$ for $k\subseteq k'\subseteq F$; (B3) $\ed_k(\tau)=0$
+iff $\tau$ descends to the algebraic closure of $k$ in $F$ (for $k$ algebraically
+closed: iff $\tau$ is split; for general $k$ this is \emph{not} ``descends to $k$'':
+$k=\Q$, $F=\Q(i)(t)$, $\tau=F(\sqrt{1+i})$ has $\ed_\Q=0$ but is not
+$F(\sqrt a)$ with $a\in\Q$, since $N_{\Q(i)/\Q}(1+i)=2$ is not a square); (B4)
+Lemma~4.1(i), purely transcendental base change does not change $\ed_k$. For a prime
+$q$, $\ed_k(\tau;q)=\min\{\ed_k(\tau\otimes F'):F'/F\text{ finite separable},\
+q\nmid[F':F]\}$ and $\ed_k(G;q)=\sup_\tau\ed_k(\tau;q)$ \cite[(2.5)]{RS}.
+The generic torsor $\tau_\gen\colon\operatorname{Spec}L\to\operatorname{Spec}K$,
+$L=k(V)$, $K=L^G$, is taken for a faithful representation $V$ (or any faithful
+generically free $G$-variety with $k(V)/k$ regular); $\ed_k(\tau_\gen)=\ed_k(G)$
+\cite{BF,Me}. The profile $\edd d_k(\tau)$ and the jump degrees $d_j(\tau)$ are as in
+Definition~3.1.
+
+\subsection{Formal properties, valid in every characteristic}
+
+\begin{proposition}[shape]\label{prop:shape}
+Let $\tau$ be a $G$-torsor over $F\supseteq k$.
+\begin{enumerate}
+\item[(a)] $d\mapsto\edd d_k(\tau)$ is non-increasing with values in
+$\{0,\dots,\ed_k(\tau)\}$, $\edd1_k(\tau)=\ed_k(\tau)$, and
+$d_{\ed(\tau)}=1\le d_{\ed(\tau)-1}\le\dots\le d_0\le|\im\varphi_\tau|$.
+\item[(b)] If $[F':F]=e$ and $d\ge1$ then $\edd{de}_k(\tau)\le\edd d_k(\tau\otimes
+F')\le\edd d_k(\tau)$; hence $d_j(\tau)\le[F':F]\,d_j(\tau\otimes F')$ for every
+finite $F'/F$ and every $j$.
+\item[(c)] $\edd d_k(\tau)=\min\{j:d_j(\tau)\le d\}$: the jump degrees determine the
+profile.
+\item[(d)] If $k\subseteq k'\subseteq F$ then $\edd d_{k'}(\tau)\le\edd d_k(\tau)$
+for all $d$.
+\item[(e)] $\edd d_k(\tau)=0$ iff some $F'/F$ of degree $\le d$ makes $\tau\otimes
+F'$ descend to the algebraic closure of $k$ in $F'$; for $k$ algebraically closed, iff
+$\tau$ is split by an extension of degree $\le d$.
+\end{enumerate}
+\stag{proved}
+\end{proposition}
+
+\begin{proof}
+(a) Over the splitting field $E$, $[E:F]=|H|$, the torsor is split, so
+$d_0\le|H|$; the rest is (B1). (b) is Proposition~3.2(b) verbatim; if
+$[F'':F']=d_j(\tau\otimes F')$ realises $\ed(\tau\otimes F'')\le j$ then
+$[F'':F]=[F':F]\,d_j(\tau\otimes F')$. (c) is a restatement, (d) is (B2) applied to
+each $\tau\otimes F'$, (e) is (B3).
+\end{proof}
+
+\begin{proposition}[the last jump degree]\label{prop:d0}
+Let $H=\im\varphi_\tau$ and $E$ the splitting field of $\tau$.
+\begin{enumerate}
+\item[(a)] $d_0(\tau)\le\min\{[F':F]:\tau\otimes F'\text{ split}\}=|H|$, with
+equality if $k$ is algebraically closed.
+\item[(b)] Let $k$ be perfect and $E/k$ regular. If $[F':F]<\infty$ and
+$\tau\otimes F'$ descends to the algebraic closure $k_1$ of $k$ in $F'$, then
+$[F':F]\ge|H|\cdot[k_1:k]$. In particular $d_0(\tau)=|H|$.
+\item[(c)] For $\tau_\gen$ over a perfect $k$: $d_0(\tau_\gen)=|G|$, and
+$\ed_k(\tau_\gen\otimes F')=0$ forces $[F':K]\ge|G|\,[k_1:k]$.
+\end{enumerate}
+\stag{proved}
+\end{proposition}
+
+\begin{proof}
+(a) $T\otimes_FF'$ is split iff $E$ embeds $F$-linearly into $F'$, which forces
+$[F':F]\ge|H|$; $F'=E$ works; for $k$ algebraically closed use (B3).
+(b) Let $\tau\otimes F'\cong\tau_0\otimes_{k_1}F'$ with $\tau_0$ over $k_1$, of
+splitting field $l/k_1$ Galois with group $H_0$. Comparing total spaces inside an
+algebraic closure of $F'$ we may arrange $EF'=lF'$. Since $l/k$ is finite separable
+and $E/k$ regular, $l\otimes_kE$ is a field and $[lE:E]=[l:k]=|H_0|[k_1:k]$; as
+$lE\subseteq EF'$,
+\[
+|H_0|[k_1:k]\,|H|=[lE:E][E:F]\le[EF':F]=[lF':F'][F':F]\le|H_0|\,[F':F].
+\]
+(c) $E=L$ is regular over $k$ and $H=G$.
+\end{proof}
+
+\begin{remark}
+Without regularity $d_0<|H|$ is possible ($k=\Q$, $\tau=\Q(t)(\sqrt2)$ is constant,
+$d_0=1$). Proposition~\ref{prop:d0}(c) is the general form of Proposition~3.2(c). For
+$k$ algebraically closed, $\edd d(\tau)\ge1$ for $d<|H|$: the last slot of the profile
+is the only one understood in general.
+\end{remark}
+
+\begin{proposition}[base-field extension bound]\label{prop:bfe}
+Let $k'/k$ be finite of degree $d$. Then $\edd d_k(\tau)\le\ed_{k'}(G)$. More
+precisely, every field factor $F'$ of $F\otimes_kk'$ has $[F':F]\le d$ and
+$\ed_k(\tau\otimes F')\le\ed_{k'}(\tau\otimes F')\le\ed_{k'}(G)$.
+\stag{proved}
+\end{proposition}
+
+\begin{proof}
+$F'\supseteq k'$ and $[F':F]\le d$. A descent $\tau\otimes F'\cong\tau_0\otimes_{F_0}
+F'$ with $k'\subseteq F_0\subseteq F'$ and $\tr_{k'}F_0\le\ed_{k'}(G)$ is also a
+descent over $k$, and $\tr_kF_0=\tr_{k'}F_0$ since $k'/k$ is algebraic.
+\end{proof}
+
+\begin{corollary}[roots-of-unity defect]\label{cor:rou}
+Let $e$ be the exponent of $G$, $\operatorname{char}k\nmid e$, and
+$d_e=[k(\mu_e):k]$. For every $G$-torsor $\tau$ over every $F\supseteq k$,
+\[
+\edd{[F(\mu_e):F]}_k(\tau)\le\edd{d_e}_k(\tau)\le\ed_{k(\mu_e)}(G).
+\]
+In particular: (i) if $G$ is abelian, $\edd{d_e}_k(\tau)\le\operatorname{rank}G$
+\cite{BR}; (ii) if $G$ is a $p$-group and $\operatorname{char}k\ne p$,
+$\edd{p-1}_k(\tau)\le\edd{[k(\mu_p):k]}_k(\tau)\le\ed_{k(\mu_p)}(G)$, the minimal
+dimension of a faithful representation of $G$ over $k(\mu_p)$ \cite{KM}.
+\stag{proved; the values are cited}
+\end{corollary}
+
+\begin{remark}
+For $\tau_\gen$ and $F'=K(\mu_e)$ the torsor $\tau_\gen\otimes F'$ is the generic
+torsor over $k(\mu_e)$, so $\ed_{k(\mu_e)}(\tau_\gen\otimes K(\mu_e))=\ed_{k(\mu_e)}(G)$
+exactly, but whether $\ed_k$ of this torsor equals $\ed_{k(\mu_e)}(G)$ is not known to
+us in general. [open]
+\end{remark}
+
+\subsection{Sylow divisibility of the jump degrees}
+
+\begin{lemma}[$q$-closure]\label{lem:qcl}
+Let $q$ be a prime, $S\le\Gam_F$ a Sylow pro-$q$ subgroup and $F^{(q)}=(F^{\rm sep})^S$.
+Then $F^{(q)}$ is a union of finite subextensions of degree prime to $q$, every finite
+separable extension of $F^{(q)}$ has $q$-power degree, and
+$\ed_k(\tau;q)=\ed_k(\tau\otimes F^{(q)})$ \cite[(2.5)]{RS}. If $F'/F$ is finite
+separable with $q\nmid[F':F]$, then there is an $F$-embedding $F'\hookrightarrow
+F^{(q)}$, and hence $\ed_k(\tau\otimes F')\ge\ed_k(\tau;q)$.
+\stag{cited; last statement proved}
+\end{lemma}
+
+\begin{proof}
+$F'\otimes_FF^{(q)}$ is a product of finite separable extensions of $F^{(q)}$, each of
+$q$-power degree, whose degrees sum to $[F':F]$; if none had degree $1$ the sum would
+be divisible by $q$. So some factor is $F^{(q)}$, giving the embedding, and (B1)
+gives the inequality. (For a \emph{given} embedding $F'\subseteq F^{\rm sep}$ the
+compositum $F'F^{(q)}$ need not be $F^{(q)}$: $F=\Q$, $q=2$, $F'=\Q(\sqrt[3]2)$ has
+$F'\otimes_\Q\Q^{(2)}\cong\Q^{(2)}\times\Q^{(2)}(\sqrt{-3})$.)
+\end{proof}
+
+\begin{lemma}[purely inseparable invariance]\label{lem:pi}
+Let $\operatorname{char}k=p$, $k$ perfect, $G$ any finite group, $F'/F$ finite purely
+inseparable. Then $\ed_k(\tau\otimes F')=\ed_k(\tau)$; consequently
+$\edd d_k(\tau)$ is the minimum over \emph{separable} $F'/F$ of degree $\le d$.
+\stag{proved}
+\end{lemma}
+
+\begin{proof}
+As in Proposition~3.6, with $\sigma\colon F^{1/p^m}\to F$, $x\mapsto x^{p^m}$; the
+$p^m$-power map extends to $F^{1/p^m}F^{\rm sep}\to F^{\rm sep}$ and commutes with all
+automorphisms, so the induced isomorphism $\Gam_{F^{1/p^m}}\to\Gam_F$ is the canonical
+one and the classifying homomorphism of $\sigma_*(\tau\otimes F^{1/p^m})$ is
+$\varphi_\tau$. This recovers Proposition~3.6 without Witt vectors.
+\end{proof}
+
+\begin{proposition}\label{prop:genq}
+For every prime $q$, $\ed_k(\tau_\gen;q)=\ed_k(G;q)$.
+\stag{cited: \cite{RS,Me}; sketch below}
+\end{proposition}
+
+\begin{proof}[Sketch]
+``$\le$'' is the definition. For ``$\ge$'' let $e=\ed_k(\tau_\gen;q)$, realised by a
+prime-to-$q$ extension $K'/K$ and a descent to $K_0$, $\tr_kK_0\le e$; spread out to a
+$G$-torsor $Z\to B$, $\dim B\le e$, and to a $G$-equivariant rational map
+$W'\dashrightarrow Z$ from the normalisation $W'$ of $V$ in $L\otimes_KK'$, finite of
+degree $[K':K]$ over $V$ and \'etale over a dense $G$-stable open $V_1\subseteq V$.
+Given any torsor $\tau$ over an infinite $F$, the twist ${}^\tau V$ is an affine space
+over $F$, so a free $F$-point in ${}^\tau V_1$ exists and gives an equivariant
+$f\colon T\to V_1$; the pullback $T\times_VW'\to T$ is finite \'etale of degree
+$[K':K]$, hence $\cong T\times_FA$ for a finite \'etale $F$-algebra $A$ of that degree.
+Some field factor $F'$ of $A$ has $q\nmid[F':F]$ and $T_{F'}\to W'\dashrightarrow Z$ is
+equivariant into a free $G$-variety, so $\ed_k(\tau\otimes F')\le\dim B\le e$ by
+Lemma~2.3 (valid in any characteristic, Theorem~\ref{thm:geom}).
+\end{proof}
+
+\begin{theorem}[Sylow divisibility]\label{thm:div}
+Let $\operatorname{char}k=0$, or $k$ perfect (then use Lemma~\ref{lem:pi}). Let
+$\tau$ be a $G$-torsor over $F$.
+\begin{enumerate}
+\item[(a)] For every prime $q$ and every $j<\ed_k(\tau;q)$, $q$ divides $d_j(\tau)$:
+every $F'/F$ with $\ed_k(\tau\otimes F')\le j$ has $q\mid[F':F]$.
+\item[(b)] Every prime $q$ with $\ed_k(G;q)>j$ divides $d_j(\tau_\gen)$; hence
+$d_j(\tau_\gen)\ge\prod_{q:\,\ed_k(G;q)>j}q$.
+\item[(c)] For every $d\ge1$,
+$\displaystyle\edd d_k(\tau_\gen)\ \ge\ \min_{1\le d'\le d}\ \max_{q\nmid d'}\ed_k(G;q)
+\ \ge\ \max_{q>d}\ed_k(G;q)$ ($q$ prime).
+\item[(d)] The prime-to-$q$ profile $\edd d_k{}'(\tau)=\min\{\ed_k(\tau\otimes F'):
+[F':F]\le d,\ q\nmid[F':F]\}$ is non-increasing with terminal value $\ed_k(\tau;q)$,
+reached at a finite prime-to-$q$ degree; for $\tau_\gen$ the terminal value is
+$\ed_k(G;q)$.
+\end{enumerate}
+\stag{proved, granting Proposition~\ref{prop:genq}}
+\end{theorem}
+
+\begin{proof}
+(a) is Lemma~\ref{lem:qcl}; (b) adds Proposition~\ref{prop:genq}; (c) a witness for
+$\edd d$ has some degree $d'\le d$ and (a) applies to every $q\nmid d'$; (d) is
+Lemma~\ref{lem:qcl} together with the finiteness argument of Proposition~3.7(a).
+\end{proof}
+
+\begin{remark}
+(i) In the language of Theorem~4.2 and Remark~4.5, (a) is Reichstein--Scavia's
+Theorem~10.1 applied to the correspondence of degree prime to $q$ furnished by a free
+closed point; the proof above via the $q$-closure is the same mechanism.
+(ii) Consistency with Sections 3--9: for $G=\Z/p^n$ in characteristic $p$,
+$\ed_k(G;p)\le1$ and $\ed_k(G;q)=0$ for $q\ne p$, so Theorem~\ref{thm:div} only says
+$p\mid d_0$, consistent with $d_0=p^n$; it says nothing about $d_1,\dots,d_{n-1}$,
+which is the point of this note. In characteristic $0$ the constraint is much stronger.
+\end{remark}
+
+\begin{proposition}[$q$-groups]\label{prop:qgp}
+Let $G$ be a $q$-group of order $q^n$, $\operatorname{char}k\ne q$ ($k$ perfect if
+positive), $c=[k(\mu_q):k]$. Then:
+(a) $\edd d_k(\tau_\gen)=\ed_k(G;q)$ for $c\le d\le q-1$, and
+$\ed_k(G;q)\le\edd d_k(\tau_\gen)\le\ed_k(G)$ for $d<c$;
+(b) $\ed_k(G;q)=\ed_{k(\mu_q)}(G)$ is the minimal dimension of a faithful
+$k(\mu_q)$-representation \cite{KM};
+(c) $q\mid d_j(\tau_\gen)$ for every $j<\ed_k(G;q)$, and $d_0=q^n$;
+(d) if $\mu_q\subset k$: $\edd d(\tau_\gen)=\ed_k(G)$ for $d<q$ and all steps of the
+profile occur at multiples of $q$, i.e.\ $\edd d(\tau_\gen)=\edd{q\lfloor d/q\rfloor}
+(\tau_\gen)$ for $d\ge q$.
+\stag{proved, modulo \cite{KM} and $\ed(\cdot;q)$ being invariant under prime-to-$q$
+extensions of $k$}
+\end{proposition}
+
+\begin{proof}
+Lower bounds: every degree $<q$ is prime to $q$ (Theorem~\ref{thm:div}). Upper bound
+for $d\ge c$: Corollary~\ref{cor:rou} and $\ed_{k(\mu_q)}(G)=\ed_{k(\mu_q)}(G;q)=
+\ed_k(G;q)$ \cite{KM,Me}. (c) is Theorem~\ref{thm:div}(b) and
+Proposition~\ref{prop:d0}(c); (d) is (a)+(c) with $c=1$.
+\end{proof}
+
+Compare Proposition~3.7: in characteristic $p$ the prime-to-$p$ tail of a $p$-group
+collapses to $\le1$; in characteristic $\ne q$ the prime-to-$q$ tail of a $q$-group is
+\emph{constant}, equal to $\ed_k(G;q)$.
+
+\subsection{Geometric meaning and induced torsors in every characteristic}
+
+\begin{theorem}\label{thm:geom}
+Theorem~4.2 and Corollary~4.4 hold for every finite group $G$, every field $k$ and
+every characteristic: $\edd d_k(\tau)\le m$ iff some quasi-projective generically free
+primitive $G$-variety $Z$ of dimension $\le m$ has a closed point of degree $\le d$ in
+the free locus of ${}^\tau Z$, iff there are such $Z$, $F'/F$ of degree $\le d$ and a
+$G$-equivariant morphism $T_{F'}\to Z^{\rm free}$. For $\tau_\gen$ this is a
+$G$-correspondence $V\rightsquigarrow Z$ of degree $\le d$ into $Z^{\rm free}$.
+\stag{proved}
+\end{theorem}
+
+\begin{proof}
+The proof of Theorem~4.2 uses only: the existence of the twist ${}^\tau Z=(T\times_kZ)/G$
+as a quasi-projective $F$-scheme compatible with base change and open immersions
+\cite[\S3]{DR}; the identification of $F$-points of ${}^\tau Z$ with equivariant maps
+$T\to Z_F$ (elementary for finite $G$); the fact that $Z^{\rm free}\to Z^{\rm free}/G$
+is a $G$-torsor (SGA~1, V, finite group acting freely); and spreading out. None of
+these depends on the characteristic or on $G$ being a cyclic $p$-group.
+\end{proof}
+
+\begin{lemma}[induced torsors]\label{lem:ind}
+For finite groups $H\le G$ and an $H$-torsor $\tau_H$ over $F$,
+$\ed_k(\Ind_H^G\tau_H)=\ed_k(\tau_H)$.
+\stag{proved}
+\end{lemma}
+
+\begin{proof}
+``$\le$'': descend and induce. ``$\ge$'': reduce to $T_H$ a field (if
+$T_H=\Ind_{H'}^HT'$ with $T'$ a field, then $\Ind_H^G\tau_H=\Ind_{H'}^G\tau'$ and
+$\ed(\tau_H)\le\ed(\tau')$). Then the argument of Proposition~3.9 goes through for
+non-abelian $G$: a descent $T_0\to\operatorname{Spec}F_0$ has a connected component
+$T_0'$ with stabiliser $H_0$; the components of $T_0'\otimes_{F_0}F$ are among the
+$gT_H$ and are permuted transitively by $H_0$, so after conjugating $H$ we may assume
+$T_H\subseteq T_0'\otimes_{F_0}F$ and $H\le H_0$. With $F_1=(T_0')^H$ and
+$F_1\otimes_{F_0}F=\prod F_i$, the factor $T_0'\otimes_{F_1}F_{i_0}$ containing $T_H$
+is an $H$-torsor over $F_{i_0}$ on whose components $H$ acts transitively; being
+$H$-stable, $T_H$ is that factor, and $F_{i_0}=T_H^H=F$. So $\tau_H$ descends to
+$F_1$, $\tr_kF_1=\tr_kF_0$.
+\end{proof}
+
+\begin{corollary}[subgroup profile]\label{cor:sub}
+For every subgroup $H'\le G$: $\edd{[G:H']}_k(\tau_\gen)\le\ed_k(\tau_\gen\otimes
+L^{H'})=\ed_k(H')$. Hence $d_j(\tau_\gen)\le\min\{[G:H']:\ed_k(H')\le j\}$.
+\stag{proved}
+\end{corollary}
+
+\begin{proof}
+$\tau_\gen\otimes L^{H'}=\Ind_{H'}^G(L/L^{H'})$, and $L/L^{H'}$ is the generic
+$H'$-torsor of $V|_{H'}$ over $k$; apply Lemma~\ref{lem:ind}.
+\end{proof}
+
+This is the general form of Proposition~3.9 and of the root-field reductions of
+Example~\ref{ex:Sn}.
+
+\subsection{Examples in characteristic zero}
+
+\begin{example}[$\Z/n$]\label{ex:cyc}
+Let $\mu_n\subset k$, $\operatorname{char}k\nmid n$. The generic torsor
+$K(\sqrt[n]a)/K$, $K=k(a)$, has $\ed=1$ and $d_0=n$ (Proposition~\ref{prop:d0}), so
+its profile is $(1,\dots,1,0)$. \stag{proved}
+\end{example}
+
+\begin{theorem}[$(\Z/2)^n$]\label{thm:ea}
+Let $k$ be algebraically closed of characteristic $\ne2$, $G=(\Z/2)^n$,
+$F=K=k(a_1,\dots,a_n)$, $\tau_\gen=(a_1,\dots,a_n)\in H^1(F,\Z/2)^n$.
+\begin{enumerate}
+\item[(a)] $\edd{2^j}(\tau_\gen)\le n-j$ for $0\le j\le n$, and $d_0=2^n$.
+\item[(b)] Every $F'/F$ of odd degree has $\ed(\tau_\gen\otimes F')=n$; all $d_j$,
+$j<n$, are even.
+\item[(c)] For every quadratic $F'/F$, $\ed(\tau_\gen\otimes F')\ge n-1$. Hence
+$\edd2=\edd3=n-1$, $d_{n-1}=2$, and $d_{n-2}=4$ for $n\ge2$.
+\item[(d)] $\edd d=1$ for $2^{n-1}\le d<2^n$. Complete profiles: $(1,0)$ for $n=1$;
+$(2,1,1,0)$ for $n=2$; $(3,2,2,1,1,1,1,0)$ for $n=3$.
+\end{enumerate}
+\stag{proved; inputs cited}
+\end{theorem}
+
+\begin{proof}
+(a) Over $F(\sqrt{a_1},\dots,\sqrt{a_j})$ the class is $(1,\dots,1,a_{j+1},\dots,a_n)$.
+(b) $\ed_k(G;2)=\ed_k(G)=n$ \cite{BR,KM}; apply Theorem~\ref{thm:div}. (d) from (a),
+(b), (c) and Proposition~\ref{prop:d0}.
+
+(c) Write $(a_I)=\bigcup_{i\in I}(a_i)\in H^{|I|}(F,\Z/2)$. Suppose
+$\ed(\tau_\gen\otimes F')\le n-2$ for $F'=F(\sqrt f)$. The class descends to $F_0$ with
+$\tr_kF_0\le n-2$, so $H^{n-1}(F_0,\Z/2)=0$ \cite[II.4.2]{Se} and $(a_I)_{F'}=0$ for
+all $|I|=n-1$. By the Arason exact sequence $H^{r-1}(F)\xrightarrow{(f)\cup}H^r(F)
+\xrightarrow{\res}H^r(F(\sqrt f))$ \cite{Ar}, $(a_{[n]\smallsetminus i})\in(f)\cup
+H^{n-2}(F)$ for all $i$. We show by induction on $m$ that for $F_m=k(a_1,\dots,a_m)$
+there is no $g\in F_m^\times$ with $(a_{[m]\smallsetminus i})\in(g)\cup H^{m-2}(F_m)$
+for all $i\in[m]$. For $m=1$: $(a_\emptyset)=1\ne0$ in $H^0$. For $m\ge2$ pass to
+$\hat F=F_{m-1}((a_m))$, where $H^r(\hat F)=H^r(F_{m-1})\oplus H^{r-1}(F_{m-1})\cup(a_m)$
+and units have $(u)=(\bar u)$ \cite[II.4.3]{Se}; the classes $(a_I)$ restrict
+injectively (their residues are nonzero by induction on the residue maps). Write
+$g=a_m^\varepsilon u$ and the given $x_i=y_i+z_i\cup(a_m)$. If $\varepsilon=1$, take
+$i=m$: comparing the two summands of $(a_{[m-1]})=(a_mu)\cup x_m$ gives
+$y_m=(\bar u)\cup z_m$ and $(a_{[m-1]})=(\bar u)\cup(\bar u)\cup z_m=0$ (as $-1\in
+k^{\times2}$), a contradiction. If $\varepsilon=0$, for $i<m$ the second summands give
+$(a_{[m-1]\smallsetminus i})=(\bar u)\cup z_i$ for all $i\in[m-1]$, contradicting the
+induction hypothesis with $g=\bar u$. So no quadratic extension lowers $\ed$ by two;
+with (a), (b) this gives $\edd2=\edd3=n-1$, $d_{n-1}=2$, $d_{n-2}=4$.
+\end{proof}
+
+\begin{remark}
+Whether $\edd{2^j}(\tau_\gen)=n-j$ for $2\le j\le n-2$ is open; the first case is
+$n=4$: is there a quartic extension of $k(a_1,\dots,a_4)$ splitting all six quaternion
+algebras $(a_i,a_j)$? Non-Galois quartics have no kernel description as clean as
+Arason's, which is what makes $\edd4$ hard. [open]
+\end{remark}
+
+\begin{example}[$\Z/p$ over $\Q$]\label{ex:Zp}
+Let $p$ be an odd prime and $\tau$ any $\Z/p$-torsor over $F\supseteq\Q$. By
+Corollary~\ref{cor:rou} and Example~\ref{ex:cyc}, $\edd{[F(\mu_p):F]}_\Q(\tau)\le1$,
+so $d_1(\tau)\le p-1$ for every such torsor, although $\ed_\Q(\Z/p)\ge2$ for
+$p\ge5$ \cite{Le07}: $\ed_k(G)=1$ in characteristic $0$ iff $G\hookrightarrow
+\mathrm{PGL}_2(k)$, and $\Z/p\not\hookrightarrow\mathrm{PGL}_2(\Q)$ for $p\ge5$
+since $\zeta_p+\zeta_p^{-1}\notin\Q$. The profile of the generic $\Z/p$-torsor over
+$\Q$ thus drops to $1$ at a degree dividing $p-1$, prime to $p$, consistent with
+Theorem~\ref{thm:div} since $\ed_\Q(\Z/p;p)=1$. Whether $d_1(\tau_\gen)=
+[\Q(\zeta_p+\zeta_p^{-1}):\Q]=(p-1)/2$ is open.
+\stag{proved from \cite{Le07}}
+\end{example}
+
+\begin{example}[symmetric groups]\label{ex:Sn}
+Let $\operatorname{char}k=0$, $L=k(x_1,\dots,x_n)$, $F=K=k(s_1,\dots,s_n)$, so
+$\tau_\gen$ is the generic degree-$n$ \'etale algebra. For $F_m=F(x_1,\dots,x_m)$,
+$[F_m:F]=n(n-1)\cdots(n-m+1)$, Corollary~\ref{cor:sub} and (B4) give
+\[
+\ed_k(\tau_\gen\otimes F_m)=\ed_k(S_{n-m}),\qquad\text{so}\qquad
+\edd{n(n-1)\cdots(n-m+1)}_k(\tau_\gen)\le\ed_k(S_{n-m}).
+\]
+With $\ed_k(S_n;q)=\lfloor n/q\rfloor$ \cite{MR}, Theorem~\ref{thm:div} gives
+$\edd d(\tau_\gen)\ge\lfloor n/q_d\rfloor$ for the least prime $q_d>d$, so the profile
+of the generic \'etale algebra decays no faster than $\sim n/(2d)$, whereas the
+root-field bound needs degree $\sim n^m$ for a drop of $m$. For $S_6$ (with
+$\ed_k(S_6)=3$, $\ed_k(S_5)=\ed_k(S_4)=2$, $\ed_k(S_3)=1$ \cite{BR}, and
+$\ed_k(A_6)=3$ [cited from memory]): $\edd1=3$; $\edd d\ge2$ for $2\le d\le5$;
+$\edd6\le2$, $\edd{120}\le1$, $d_0=720$; $2\mid d_2$, $6\mid d_1$; so
+$d_2\in\{2,4,6\}$ and $d_1\in6\Z\cap[6,120]$. The discriminant field $L^{A_6}$ is
+\emph{not} a witness for $d_2=2$, since over it $\ed=\ed_k(A_6)=3$.
+\stag{proved from cited inputs}
+\end{example}
+
+\subsection{Provenance: rewrites versus new statements}\label{ss:prov}
+
+\begin{center}
+\small
+\begin{tabular}{@{}p{0.34\textwidth}p{0.6\textwidth}@{}}
+\toprule
+Statement & Status relative to the literature\\
+\midrule
+Prop.~\ref{prop:shape} (shape) & Rewrite of Prop.~3.2 for arbitrary $G$, $k$; formal.\\
+Prop.~\ref{prop:d0} (last jump) & New but elementary; (a) is folklore, (b) the
+regularity refinement is new.\\
+Prop.~\ref{prop:bfe}, Cor.~\ref{cor:rou} & New (elementary); the values quoted are
+\cite{BR,KM}.\\
+Lemma~\ref{lem:qcl} & Rewrite of \cite[(2.5)]{RS}; the embedding argument is standard.\\
+Lemma~\ref{lem:pi} & Rewrite of Prop.~3.6 in a form valid for every finite $G$
+(no Witt vectors).\\
+Prop.~\ref{prop:genq} & Known: \cite{RS,Me} ($\ed_q$ of a versal object).\\
+Thm.~\ref{thm:div} & The mechanism is \cite[Thm.~10.1]{RS}; the statement about jump
+degrees and the bound (c) are new.\\
+Prop.~\ref{prop:qgp} & New corollary of \cite{KM}.\\
+Thm.~\ref{thm:geom} & Rewrite of Thm.~4.2 in full generality; ingredients
+\cite{DR,RS}.\\
+Lemma~\ref{lem:ind}, Cor.~\ref{cor:sub} & Extends Prop.~3.9 to non-abelian $G$;
+probably known to experts, we found no reference.\\
+Ex.~\ref{ex:cyc} & Folklore.\\
+Thm.~\ref{thm:ea} & (a),(b),(d) are immediate from the above; (c), i.e.\
+$\edd2=\edd3=n-1$ and $d_{n-2}=4$, is new (Arason sequence \cite{Ar} + residue
+induction).\\
+Ex.~\ref{ex:Zp} & New observation from \cite{Le07}.\\
+Ex.~\ref{ex:Sn} & The identity $\ed(\tau_\gen\otimes F_m)=\ed(S_{n-m})$ is new but
+easy; inputs \cite{BR,MR}.\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsection{Discussion and open questions}
+In characteristic $0$ the profile of $\tau_\gen$ is squeezed between Sylow
+divisibility (Theorem~\ref{thm:div}: a prime $q$ with $\ed_k(G;q)>j$ divides every
+$d_i$, $i\le j$, and the prime-to-$q$ tail is constant), the roots-of-unity layer
+(Corollary~\ref{cor:rou}: within degree $[k(\mu_e):k]$, prime to $|G|$ when $|G|$ is
+a prime power, the profile drops to the representation-theoretic value
+$\ed_{k(\mu_e)}(G)$), and the subgroup upper bounds (Corollary~\ref{cor:sub}). What is
+unknown is whether non-Galois or non-subgroup extensions can beat the subgroup
+witnesses. In characteristic $p$ for a $p$-group (Sections 3--9) there is no Sylow
+divisibility beyond $p\mid d_0$ and no roots-of-unity layer; the whole profile lives in
+$p$-power degrees and records Artin--Schreier--Witt layers. Theorem~\ref{thm:geom}
+places both regimes in one framework: the profile is the minimal degree of a
+$G$-correspondence into a free $G$-variety of bounded dimension, Theorem~\ref{thm:div}
+isolates the part of that degree forced by \cite[Thm.~10.1]{RS}, and the rest, the
+$q$-power part in characteristic $\ne q$ and the $p$-power part in characteristic $p$,
+is where the profile carries information beyond $\ed$ and $\ed(\cdot;q)$.
+
+\begin{question}
+(1) For $(\Z/2)^n$ over an algebraically closed field of characteristic $\ne2$, is
+$d_j(\tau_\gen)=2^{n-j}$ for all $j$ (known for $j\in\{0,1,n-1,n\}$)? For $(\Z/q)^n$
+with $\mu_q\subset k$, the cyclic-kernel analogue of the Arason sequence should give
+$d_{n-1}=q$ [expected].
+(2) For $\Z/p$ over $\Q$, is $d_1(\tau_\gen)=(p-1)/2$? More generally, when is
+Corollary~\ref{cor:rou} sharp, and can an extension not of the form $Fk'$ do better
+than adjoining roots of unity?
+(3) Determine $d_2(\tau_\gen(S_6))\in\{2,4,6\}$; does $d_j(\tau_\gen(S_n))$ grow
+linearly or super-polynomially in $n$?
+(4) Is the profile of $\tau_\gen(V)$ independent of the faithful representation $V$?
+(Presumably yes, by specialisation as in \cite{RS}.)
+\end{question}
+% ===================== END BODY =====================
+
+\begin{thebibliography}{99}
+\setcounter{enumiv}{16}
+\bibitem{Ar} J.~Kr.~Arason, \emph{Cohomologische Invarianten quadratischer Formen},
+J. Algebra 36 (1975), 448--491.
+\bibitem{BF} G.~Berhuy and G.~Favi, \emph{Essential dimension: a functorial point of
+view (after A.~Merkurjev)}, Doc. Math. 8 (2003), 279--330. (= [1])
+\bibitem{BR} J.~Buhler and Z.~Reichstein, \emph{On the essential dimension of a finite
+group}, Compositio Math. 106 (1997), 159--179. (= [2])
+\bibitem{DR} A.~Duncan and Z.~Reichstein, \emph{Versality of algebraic group actions
+and rational points on twisted varieties}, J. Algebraic Geom. 24 (2015), 499--530.
+(= [3])
+\bibitem{KM} N.~Karpenko and A.~Merkurjev, \emph{Essential dimension of finite
+$p$-groups}, Invent. Math. 172 (2008), 491--508.
+\bibitem{Le07} A.~Ledet, \emph{Finite groups of essential dimension one}, J. Algebra
+311 (2007), 31--37. (= [6])
+\bibitem{Me} A.~S.~Merkurjev, \emph{Essential dimension: a survey}, Transform. Groups
+18 (2013), 415--481. (= [9])
+\bibitem{MR} A.~Meyer and Z.~Reichstein, \emph{Some consequences of the
+Karpenko--Merkurjev theorem}, Doc. Math. Extra Vol. (2010), 445--457.
+\bibitem{RS} Z.~Reichstein and F.~Scavia, \emph{The behavior of essential dimension
+under specialization}, \'Epijournal G\'eom. Alg\'ebrique 6 (2022), Art. 21. (= [12])
+\bibitem{Se} J.-P.~Serre, \emph{Galois cohomology}, Springer, 1997.
+\end{thebibliography}
+
+\end{document}
