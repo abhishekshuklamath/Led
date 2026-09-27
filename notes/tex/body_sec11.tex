@@ -436,3 +436,144 @@ which of $3,5,7,9$ lie in $D(U_3)$? The splitting type over $K$ of the degree-$1
 fibres of the pole-order-$11$ pencil is a finite computation that would decide the
 latter. (Q3), (Q4) are unchanged, except that $d_1^{(p')}(\tau_2)\le p^2-p+1$ for all
 $p$ and $=3$ for $p=2$.
+
+\subsection{A quantitative Reichstein--Vistoli theorem}\label{ss:qRV}
+
+Reichstein--Vistoli \cite{RV} prove $\ed_{k,p}(G)\le1$ for every finite $p$-group $G$ in
+characteristic $p$, i.e.\ every $G$-torsor becomes one-dimensional over \emph{some}
+extension of degree prime to $p$: in the language of the profile, $d_1^{(p')}(\tau)<\infty$
+for every $\tau$. The proof passes through the $p$-closure, a large field, and gives
+neither a bound on the degree nor uniformity in $\tau$. The Riemann--Roch argument of
+Theorem~\ref{thm:B} gives both. Throughout this subsection $k$ is a field of
+characteristic $p$, algebraically closed unless said otherwise, $G$ a finite group, and
+$V$ a faithful representation of $G$ over $k$ with generic torsor $\tau_\gen$ over
+$K=k(V)^G$.
+
+\begin{proposition}[the generic torsor dominates every profile]\label{prop:vers}
+Let $\tau$ be a $G$-torsor over an infinite field $F\supseteq k$. Then for every $d\ge1$
+\[
+\edd d_k(\tau)\le\edd d_k(\tau_\gen),\qquad
+\edd d_k{}'(\tau)\le\edd d_k{}'(\tau_\gen)
+\]
+(the second for the prime-to-$p$ profiles), hence $d_j(\tau)\le d_j(\tau_\gen)$ and
+$d_j^{(p')}(\tau)\le d_j^{(p')}(\tau_\gen)$ for all $j$. Consequently
+$\sup_\tau\edd d_k(\tau)=\edd d_k(\tau_\gen)$, and the profile of $\tau_\gen$ does not
+depend on the faithful representation $V$. \stag{proved}
+\end{proposition}
+
+\begin{proof}
+Let $F'/K$ realise $\edd d_k(\tau_\gen)=m$, $[F':K]=d'\le d$; by Proposition~3.6 (or
+Lemma~\ref{lem:pi}) we may take $F'/K$ separable. By Theorem~\ref{thm:geom} there are a
+quasi-projective generically free primitive $G$-variety $Z$ of dimension $\le m$ and a
+$G$-equivariant morphism $\operatorname{Spec}(L\otimes_KF')\to Z^{\rm free}$. As in the
+proof of Theorem~4.2, let $W'$ be the normalisation of $V$ in $L\otimes_KF'$; then
+$\pi\colon W'\to V$ is finite, $G$-equivariant, generically \'etale of degree $d'$, and
+the equivariant map $W'\dashrightarrow Z^{\rm free}$ is defined on a dense $G$-stable
+open $U$. Choose a dense $G$-stable open $V_1\subseteq V$ over which $\pi$ is \'etale and
+$\pi^{-1}(V_1)\subseteq U$. Twisting by $\tau$ (functoriality of twists,
+\cite[\S3]{DR}) gives a finite \'etale $F$-morphism ${}^\tau\pi^{-1}(V_1)\to{}^\tau V_1$
+of degree $d'$ and an $F$-morphism ${}^\tau\pi^{-1}(V_1)\to{}^\tau Z^{\rm free}$. Now
+${}^\tau V$ is an $F$-form of the vector space $V_F$, hence isomorphic to affine space by
+Hilbert~90, so ${}^\tau V_1(F)$ is non-empty as $F$ is infinite; pick $x\in{}^\tau V_1(F)$.
+Its fibre is $\operatorname{Spec}A$ for an \'etale $F$-algebra $A=\prod_iF_i$ of
+dimension $d'$, and each $\operatorname{Spec}F_i\to{}^\tau Z^{\rm free}$ gives a closed
+point of ${}^\tau Z$ in the free locus of degree $\le[F_i:F]$. The degrees $[F_i:F]$
+sum to $d'\le d$, so $\edd d_k(\tau)\le m$ by Theorem~\ref{thm:geom}; if $p\nmid d'$,
+some $[F_i:F]$ is prime to $p$. The last two statements: the supremum is attained at
+$\tau_\gen$, and two generic torsors (for $V$ and $V'$) are torsors over infinite
+fields, so each dominates the other.
+\end{proof}
+
+\begin{definition}
+For a smooth projective curve $C$ over $k$ with a faithful $G$-action and a $G$-fixed
+$k$-point $\infty$, let $\lambda(C,\infty)$ be the smallest element of the Weierstrass
+semigroup $H(\infty)$ that is prime to $p$, and let $\lambda_k(G)$ be the minimum of
+$\lambda(C,\infty)$ over all such pairs ($\lambda_k(G)=\infty$ if none exists).
+\end{definition}
+
+Such pairs exist for every finite $p$-group and, more generally, for every
+$G\cong P\rtimes\Z/m$ with $P$ a $p$-group and $p\nmid m$: by Harbater and Katz--Gabber
+\cite{Ha,Ka} there is a connected $G$-cover of $\mathbb P^1$ \'etale over
+$\mathbb G_m$ (over $\A^1$ if $G$ is a $p$-group) with inertia group $G$ at $\infty$, and
+the point above $\infty$ is then $G$-fixed. Conversely a $G$-fixed point forces $G$ to be
+an inertia group in characteristic $p$, hence of this form. For $G=\Z/p^n$ the pair
+$(\bar U_n,\infty)$ is defined over $\mathbb F_p$.
+
+\begin{theorem}[quantitative Reichstein--Vistoli]\label{thm:qRV}
+\begin{enumerate}
+\item[(a)] Let $(C,\infty)$ be as in the definition. For every $G$-torsor $\tau$ over
+every field $F\supseteq k$ there is a separable extension $F'/F$ with $p\nmid[F':F]\le
+\lambda(C,\infty)$ and $\ed_k(\tau\otimes F')\le1$. Hence
+\[
+d_1^{(p')}(\tau)\le d_1^{(p')}(\tau_\gen)\le\lambda_k(G)\qquad\text{for every }\tau .
+\]
+\item[(b)] For $G=\Z/p^n$: $\lambda_k(\Z/p^n)\le l_n(p)=1+(p-1)\sum_{j=1}^{n-1}p^{2j-1}$,
+realised by $(\bar U_n,\infty)$, and $\lambda(C,\infty)=l_n(p)$ is the minimum of
+$\lambda(C,\infty)$ over all connected $\Z/p^n$-covers $C\to\mathbb P^1$ \'etale over
+$\A^1$. So every $\Z/p^n$-torsor over every $F\supseteq k$ becomes one-dimensional over
+a prime-to-$p$ extension of degree at most $l_n(p)$; the bound is $1$ for $n=1$,
+$p^2-p+1$ for $n=2$, $11$ at $(2,3)$, $43$ at $(2,4)$, and it is attained by
+$\tau_\gen$ for $p^n=4$ (Theorem~\ref{thm:A}). Together with Proposition~3.4,
+$d_1(\tau)\le\min(p^{n-1},l_n(p))$ for every $\Z/p^n$-torsor.
+\item[(c)] For an arbitrary finite $G$ with Sylow $p$-subgroup $G_p$:
+$d_1^{(p')}(\tau)\le[G:G_p]\cdot\lambda_k(G_p)$ for every $G$-torsor $\tau$ over every
+$F\supseteq k$.
+\end{enumerate}
+\stag{proved; (b) uses the inequality $u_{i+1}\ge pu_i$ for upper breaks of cyclic
+$p^n$-extensions of $k((x))$ \cite{Ga,Th} and the existence results \cite{Ha,Ka}, both
+cited}
+\end{theorem}
+
+\begin{proof}
+(a) If $F$ is finite, $\ed_k(\tau)=0$. Let $F$ be infinite, $X={}^\tau C$, $\infty'\in X(F)$
+the twist of $\infty$. The non-free locus $N\subset C$ is a finite $G$-stable set (fixed
+points of the nontrivial elements of a group acting faithfully on a curve), so ${}^\tau N$
+is a finite set of closed points of $X$. The Weierstrass semigroup of $\infty'$ on $X$
+equals $H(\infty)$ (Riemann--Roch dimensions are invariant under base change, and
+$(X,\infty')_{\bar F}\cong(C,\infty)_{\bar F}$), so there is $f\in F(X)$ with pole divisor
+exactly $\lambda\infty'$, $\lambda=\lambda(C,\infty)$. The fibres $f=c$, $c\in F$, are
+pairwise disjoint effective $F$-rational divisors of degree $\lambda$ not containing
+$\infty'$; all but finitely many avoid ${}^\tau N$. For such a fibre the degrees of its
+closed points sum to $\lambda$, which is prime to $p$, so one closed point has degree
+$e$ prime to $p$, $e\le\lambda$, and lies in the free locus; its residue field $F'$ is
+separable over $F$ (its degree is prime to $p$), and Theorem~\ref{thm:geom} with
+$Z=C^{\rm free}$ gives $\ed_k(\tau\otimes F')\le1$. The chain of inequalities is
+Proposition~\ref{prop:vers}.
+
+(b) The upper bound is Theorem~\ref{thm:B}. For a connected $\Z/p^n$-cover
+$C\to\mathbb P^1$ \'etale over $\A^1$ the argument in the proof of Theorem~\ref{thm:B}
+applies verbatim ($C\to C/\langle g^{p^{n-1}}\rangle$ is an Artin--Schreier cover \'etale
+over the affine part, so the coordinate ring of $C\smallsetminus\{\infty\}$ is free with
+basis $1,y,\dots,y^{p-1}$), and shows $\lambda(C,\infty)=l_n(C,\infty)$, the last lower
+ramification break at $\infty$. Writing the upper breaks as $u_1$ and
+$u_{j+1}=pu_j+\delta_j$ with $\delta_j\ge0$ \cite{Ga,Th}, Herbrand's formula gives
+$l_n=u_1+\sum_{j=1}^{n-1}p^j\bigl((p-1)u_j+\delta_j\bigr)$, which is minimal for
+$u_1=1$ and all $\delta_j=0$, i.e.\ for the upper breaks $(1,p,\dots,p^{n-1})$ of
+$\bar U_n$ (Appendix~\ref{app:genus}). Sharpness at $p^n=4$ is Theorem~\ref{thm:A}; the
+last claim is Proposition~3.4 applied to an arbitrary torsor ($\edd{p^{n-1}}_k(\tau_a)\le
+\tr_kk(a_0)\le1$).
+
+(c) $T/G_p\to\operatorname{Spec}F$ is \'etale of degree $[G:G_p]$, so it has a field
+factor $F_1$ with $p\nmid[F_1:F]\le[G:G_p]$; over $F_1$ the torsor has a point of
+$T/G_p$, hence $\tau\otimes F_1\cong\Ind_{G_p}^G\tau_p$ for a $G_p$-torsor $\tau_p$ over
+$F_1$. By (a) there is $F_2/F_1$ with $p\nmid[F_2:F_1]\le\lambda_k(G_p)$ and
+$\ed_k(\tau_p\otimes F_2)\le1$, and $\ed_k(\tau\otimes F_2)=\ed_k(\tau_p\otimes F_2)$ by
+Lemma~\ref{lem:ind}.
+\end{proof}
+
+\begin{remark}
+(i) What is new relative to \cite{RV} and to Proposition~3.7(b),(c): the explicit bound,
+its uniformity in $\tau$, the identification of the optimal bound from one-point covers
+with a local ramification invariant for cyclic groups, and the versality of the profile
+(Proposition~\ref{prop:vers}), which also answers the question whether the profile of
+$\tau_\gen$ depends on $V$. The mechanism, a free point on a curve with a fixed point, is
+that of \cite[Lemma~9.1]{RS} and Proposition~3.7(c); what replaces largeness is
+Riemann--Roch on the twisted curve. (ii) A crude bound valid for every $(C,\infty)$ is
+$\lambda(C,\infty)\le$ the least integer prime to $p$ that is $\ge2g(C)$, since
+$H(\infty)\supseteq[2g(C),\infty)$; at $(2,3)$ this gives $15$ against $11$.
+(iii) Whether $\lambda_k(\Z/p^n)=l_n(p)$ over \emph{all} curves with a fixed point, not
+only one-point covers, is open, as is the exact value of $d_1^{(p')}(\tau_\gen)$ for
+$n=2$ and $p$ odd (between $2$ and $p^2-p+1$) and at $(2,3)$ (in $\{3,5,7,9,11\}$).
+(iv) The uniform statement is a statement about $\sup_\tau$: by
+Proposition~\ref{prop:vers} it is equivalent to the bound for $\tau_\gen$ alone.
+\end{remark}
