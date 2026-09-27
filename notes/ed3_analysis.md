@@ -1,4 +1,4 @@
-DRAFT — in progress
+**Status: final.** Headline results: (1) d_1^{(p')}(τ_2) = 3 for p = 2 (Theorem A, §1) — closes the [open] item of Theorem 6.2 / Question 6.4 for p = 2; (2) d_1^{(p')}(τ_gen) ≤ l_n(p) = 1 + (p−1)Σ_{j<n} p^{2j−1} for all (p,n), with g(U_3) = 7 and d_1^{(p')}(τ_gen) ∈ {3,5,7,9,11} at (2,3), and 11 ∈ D(U_3) exactly (Theorem B, §2, §5.4); (3) Q2 on Ū_3 is equivalent to an explicit Artin–Schreier condition on lines in E' (Proposition C, §3), whose corestriction shadow (N1) is a single condition s2 + R(α,β) ∈ ℘K; (N1) fails for every line of pole order ≤ 1 at s2 = ∞ (Proposition D, §3.4) and for ≈ 2.4·10⁶ F_2-polynomial lines (§4, plus a 2.1·10⁶-line run still in progress); Q2 remains open, with the evidence pointing to "no cubic witness on Ū_3" (§5).
 
 # Is ed^[3](τ_gen) = 1 at (p,n) = (2,3)?  Cubic witnesses, the Witt-trace obstruction, and Riemann–Roch bounds on the prime-to-p jump degree
 
@@ -19,9 +19,9 @@ Scripts (all in this scratchpad directory):
 
 (S4) [proved here] Necessary condition (corestriction / Witt trace): Tr_{K(u)/K}(e_Q) ∈ ℘K + ε·⟨f⟩, ε ∈ {0,1}, where f is the Artin–Schreier class of the quadratic resolvent of the cubic (ε = 0 whenever the cubic is cyclic, and ε = 0 always granted the standard fact "corestriction = Witt-vector trace"). Explicitly Tr(e_Q) = s2 + R(s0,s1,α,β) with R an explicit 67-term polynomial (script). Coordinates 0 and 1 of the Witt-trace condition hold automatically (checked symbolically), so the whole cohomological content sits in the single Artin–Schreier condition s2 + R(α,β) ∈ ℘K.
 
-(S5) [computed] Search results: see §4 below (appended as they are obtained).
+(S5) [computed] No F_2-polynomial line of the searched shapes (≈ 2.4·10⁶ lines completed, §4) satisfies (N1); [proved here] no line with pole order ≤ 1 at s2 = ∞ (arbitrary K_2-coefficients) satisfies (N1) (Proposition D).
 
-(S6) [heuristic/open] Best judgement: see §5.
+(S6) [open] Q2 itself. [heuristic] Best judgement: no cubic witness on Ū_3, so ed^[3](τ_gen) = 1 would need a faithful Z/8-curve of genus ≥ 3 (genus ≤ 2 excluded, §3.1, §5.3); d_1^{(p')}(τ_gen) most likely > 3, and is ≤ 11.
 
 
 ## 1. The case n = 2, p = 2: d_1^{(p')}(τ_2) = 3  [proved here]
@@ -140,3 +140,5 @@ Our best guess: ed^[3](τ_gen) = 2 on Ū_3, i.e. no cubic witness on the Artin�
 Let H ⊂ Z_{≥0} be the Weierstrass semigroup of ∞ on Ū_n (H = ⟨4,6,11⟩ at (2,3), H = ⟨2,3⟩ at (2,2)). Then D(U_n) ⊇ H ∖ {0}. Indeed for d ∈ H there is f ∈ K(τŪ_n) with pole divisor d·∞''; K(τŪ_n) is a separable field extension of degree d of K(f) (f is a K-morphism of degree d from a geometrically integral curve; separable because it is not purely inseparable in our cases — e.g. at (2,3) the degree 11 is odd; for the general statement restrict to d prime to p or check separability), so by Hilbert's irreducibility theorem (K = k(s0,…,s_{n−1}) is Hilbertian) there are infinitely many c ∈ K for which the fibre f = c is a single closed point of degree d, lying in the free locus. Consequences: at (2,3), D(U_3) ⊇ ⟨4,6,11⟩∖{0} = {4,6,8,10,11,12,14,15,16,17,18,…} (13 is a gap) and D(U_3) ∩ {1,2,3,5,7,9} is exactly the unknown part (1 ∉ D(U_3); 2 ∈ D(U_3) ⟺ Q1 holds on Ū_3; 3 ∈ D(U_3) ⟺ Proposition C's condition holds). At (2,2): D(U_2) = Z_{≥2}. This also shows the correct degree-by-degree reading of Proposition 3.7(c): on Ū_3 the prime-to-2 degrees realised so far are exactly the odd elements ≥ 11 of ⟨4,6,11⟩ (11, 15, 17, 19, …; 13 is a Weierstrass gap) — so 3, 5, 7, 9 and 13 are the open odd degrees on Ū_3.
 - α with s2-degree ≤ 1 and (s0,s1)-degree ≤ 1 (6 monomials), β with s2-degree ≤ 3 and (s0,s1)-degree ≤ 1 (12 monomials): 262144 lines, none.
 - α and β both of total degree ≤ 2 in (s0,s1,s2) (10 monomials each): 1 048 576 lines, none (37 min).
+- α with s2-degree ≤ 1 and (s0,s1)-degree ≤ 2 (12 monomials), β with s2-degree ≤ 2 and (s0,s1)-degree ≤ 1 (9 monomials): 2 097 152 lines; still running at the time of writing (log: `search_a21b12.log`; no hit reported after > 1 h, i.e. after most of the enumeration).
+Total exact searches completed: 1 048 576 + 1 048 576 + 262 144 + 2·32 768 + 16 384 ≈ 2.44·10⁶ lines, no line satisfies (N1).
