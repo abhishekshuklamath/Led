@@ -1,0 +1,15 @@
+# ed2tex log
+- 2026-09-28T18:15:46Z started; reading sources
+- 2026-09-28: sources read (strategy, referee, paper §2-7, addendum §11, App C, ed2_analysis §1-2, ed4 Thm 6.1/Prop 7.1). Plan fixed: unify Steps 3 and 4(i) via a "pencil proposition" (u of degree 2 with g^*u=u+1, D_0 ~ u-fibre => descent field in K). Noted: "ed = 2 for EVERY quadratic K'" is not justified (only >= 2, and = 2 for K(v_2)); will state the theorem as ed^[2] = 2 and flag.
+- 2026-09-28T18:31:21Z: preamble + §0 written
+- 2026-09-28T18:32:22Z: §1 part 1 (Witt, ASW, ed facts, twists, geometric criterion, PGL2) written
+- 2026-09-28T18:33:06Z: §1 part 2 (rigidity, Galois descent, Picard, base change) written
+- 2026-09-28T18:34:14Z: §1 part 3 written; test compile of §0-§1 with bibliography tail
+- 2026-09-28T18:36:04Z: §2 part 1 (reduction, L' field, witness curve, descent field/class, C_2) written
+- 2026-09-28T18:36:54Z: §2 part 2 (twist E_2, points/functions, Q, descent point, D_Q) written; test compile OK
+- 2026-09-28T18:38:07Z: §3 (Step 1) and §4 (Step 2) written; compile after §4 OK
+- 2026-09-28T18:40:00Z: §5 (Thm 11.6(b) reproved, pencil proposition, Step 3) written
+- 2026-09-28T18:41:54Z: §6 (Step 4: Z/4 on elliptic curves, supersingular case via pencil prop, ordinary case via corestriction) written
+- 2026-09-28T18:43:36Z: §7, §8, bibliography written; full compile x3
+- 2026-09-28T18:44:18Z: fixed [A] numbering (Thm 11.16, Remark 11.12) and overfull displays; final compile x3 clean
+- 2026-09-28T18:45:05Z: final: ed2_equals_2.pdf 17 pages, no errors, no undefined refs; done

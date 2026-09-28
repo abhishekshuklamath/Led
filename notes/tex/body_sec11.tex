@@ -210,8 +210,9 @@ $\A^1$ maps nonconstantly to $C$, so $C\cong\mathbb P^1$ (Lemma~2.5(i)), impossi
 contradicting faithfulness.
 \end{proof}
 
-\begin{theorem}[quadratic extensions with $\ed$ exactly $2$]\label{thm:fam}
-$\ed_k(\tau_\gen\otimes K(v_f))=2$ for every $f\notin\wp K$ in each of the classes
+\begin{theorem}[quadratic extensions that are not witnesses]\label{thm:fam}
+$\ed_k(\tau_\gen\otimes K(v_f))\ge2$, i.e.\ $K(v_f)$ is not a witness, for every
+$f\notin\wp K$ in each of the classes
 \begin{enumerate}
 \item[(a)] $f\in K_2+\wp K$ (this contains $K(v_1)$ and $K(z_0)$ of Theorem~7.3);
 \item[(b)] $f\in s_2+K_2+\wp K$ (this contains $K(v_2)$, not covered by Theorem~7.3);
@@ -220,11 +221,15 @@ $f=1/(s_2+s_0s_1)$;
 \item[(d)] $f\in k(s_0,s_1)[s_2]$ a polynomial in $s_2$ of degree $\le7$.
 \end{enumerate}
 In cases (a), (c) already $\ed_k((s_0,s_1)_K\otimes K(v_f))=2$, i.e.\ $f\notin\mathfrak F$.
+Equality $\ed_k(\tau_\gen\otimes K(v_f))=2$ holds in case (b), and in case (a) for
+$f\equiv s_0$ or $f\equiv s_1$ (Theorem~7.3); for the other $f$ the value is $2$ or
+$\ed_k(\Z/8)$, and only the lower bound is claimed.
 \stag{proved}
 \end{theorem}
 
 \begin{proof}
-The upper bound is Theorem~7.1. (a) Replace $f$ by $e\in K_2$ with $f\equiv e$. If
+In case (b) the upper bound is Theorem~7.1 (the class $(s_0,s_1,e)$ has a descent of
+transcendence degree $2$); in general $\ed_k(\tau_\gen\otimes K')\le\ed_k(\tau_\gen)$. (a) Replace $f$ by $e\in K_2$ with $f\equiv e$. If
 $e\equiv s_0$, Proposition~3.9. Otherwise $M:=k(z_0,z_1,v_e)$ is algebraic over
 $k(z_0,z_1)$, $L'=M(z_2)$, and $g^4\colon z\mapsto z+V^2(1)=(z_0,z_1,z_2+1)$ fixes $M$;
 apply Proposition~\ref{prop:fft}. (b) Write $f=s_2+e+\wp h$, $e\in K_2$. Over

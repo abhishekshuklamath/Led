@@ -1,0 +1,1348 @@
+% ed2_equals_2.tex -- complete proof that ed^[2]_k(tau_gen) = 2 at (p,n) = (2,3).
+% Companion to the paper [P] and the addendum [A]; every external input is
+% listed in Section 1 and again in Section 8.
+\documentclass[11pt]{amsart}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{array,booktabs,enumitem}
+\usepackage[hidelinks]{hyperref}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{fact}[theorem]{Fact}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{construction}[theorem]{Construction}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\ed}{\operatorname{ed}}
+\newcommand{\edd}[1]{\ed^{[#1]}}
+\newcommand{\tr}{\operatorname{trdeg}}
+\newcommand{\im}{\operatorname{im}}
+\newcommand{\gen}{\mathrm{gen}}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\A}{\mathbb A}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\F}{\mathbb F}
+\newcommand{\res}{\operatorname{res}}
+\newcommand{\cores}{\operatorname{cores}}
+\newcommand{\Pic}{\operatorname{Pic}}
+\newcommand{\Aut}{\operatorname{Aut}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\Hom}{\operatorname{Hom}}
+\newcommand{\Spec}{\operatorname{Spec}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\Br}{\operatorname{Br}}
+\newcommand{\Supp}{\operatorname{Supp}}
+\newcommand{\divv}{\operatorname{div}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Nm}{\operatorname{N}}
+\newcommand{\ut}{\tilde u}
+\newcommand{\Ltwo}{L_2}
+\newcommand{\Ltwop}{L_2'}
+\newcommand{\Kp}{K'}
+\newcommand{\Lp}{L'}
+\newcommand{\Gtwo}{G_2}
+\newcommand{\Etwo}{E_2}
+\newcommand{\Ctwo}{C_2}
+
+\setcounter{section}{-1}
+
+\begin{document}
+
+\title[The second slot equals two]{The generic $\Z/8$-torsor in characteristic $2$
+stays two-dimensional over every quadratic extension:\\ a complete proof of
+$\ed^{[2]}_k(\tau_{\gen})=2$}
+\author{}
+\date{28 September 2026}
+\maketitle
+
+\section{Statement and outline}\label{sec:statement}
+
+Throughout, $k$ is an algebraically closed field of characteristic $2$,
+$G=\Z/8=\langle g\rangle$, $L=k(z_0,z_1,z_2)$ with $G$ acting by the Witt translation
+$z\mapsto z+1$, $K=L^G=k(s_0,s_1,s_2)$ where $s=(s_0,s_1,s_2)=\wp(z)$, and
+$\tau_{\gen}\colon\Spec L\to\Spec K$ is the generic $\Z/8$-torsor, of class
+$s\in W_3(K)/\wp W_3(K)=H^1(K,\Z/8)$. For a $G$-torsor $\tau$ over a field $F\supseteq k$,
+$\ed_k(\tau)$ is the least transcendence degree over $k$ of a subfield $k\subseteq F_0\subseteq F$
+such that $\tau\cong\tau_0\otimes_{F_0}F$ for a $G$-torsor $\tau_0$ over $F_0$
+(\cite[\S1]{BF}, \cite[Def.~3.1]{P}), and
+\[
+\edd d_k(\tau):=\min\{\ed_k(\tau\otimes_FF'):[F':F]\le d\},\qquad
+d_j(\tau):=\min\{d\ge1:\edd d_k(\tau)\le j\}
+\]
+(\cite[Definition 3.1]{P}). The paper \cite{P} proved $\edd2_k(\tau_{\gen})\in\{1,2\}$
+and $d_1(\tau_{\gen})\in\{2,3,4\}$ \cite[Theorem 7.1]{P}. The purpose of this note is to
+settle the second slot.
+
+\begin{theorem}\label{thm:main}
+Let $k$ be algebraically closed of characteristic $2$, $K=k(s_0,s_1,s_2)$ and
+$\tau_{\gen}$ the generic $\Z/8$-torsor of Witt class $s=(s_0,s_1,s_2)$. Then
+\[
+\ed_k(\tau_{\gen}\otimes_KK')\ \ge\ 2\qquad\text{for every field extension $K'/K$ of degree $2$,}
+\]
+with equality for $K'=K(v_2)$, $v_2^2+v_2=s_2$. Consequently
+\[
+\edd2_k(\tau_{\gen})=2\qquad\text{and}\qquad d_1(\tau_{\gen})\in\{3,4\}.
+\]
+\end{theorem}
+
+\begin{remark}\label{rem:statement}
+(i) Since $\ed_k(\tau_{\gen}\otimes K')\le\ed_k(\tau_{\gen})\le3$, the value
+$\ed_k(\tau_{\gen}\otimes K')$ lies in $\{2,3\}$ for every quadratic $K'$, and it equals
+$2$ for all the extensions listed in \cite[Theorem 7.1]{P} and \cite[Theorem 11.9]{A};
+it equals $2$ for every quadratic $K'$ as soon as $\ed_k(\Z/8)=2$. We do not claim the
+upper bound $2$ for an arbitrary quadratic $K'$: what is proved here, and what
+$\edd2_k(\tau_{\gen})=2$ means, is the lower bound.
+(ii) The theorem is stated for $k$ algebraically closed because every input from
+\cite{P} is.
+\end{remark}
+
+\subsection*{Outline of the proof}
+Suppose $\ed_k(\tau_{\gen}\otimes K')\le1$ for some quadratic $K'/K$. By purely
+inseparable invariance and the exclusion of $K(z_0)$, $K'=K(v_f)$ is separable with
+$f\notin\{0,s_0\}+\wp K$, so $L'=L\otimes_KK'$ is a field. The geometric criterion of
+\cite[Theorem 4.2, Corollary 4.4]{P} turns the hypothesis into a smooth projective curve
+$C$ over $k$ with faithful $G$-action and a $G$-equivariant field embedding
+$\iota\colon k(C)\hookrightarrow L'$; the fixed field $k(B)$, $B=C/G$, embeds into $K'$
+and is the ``descent field'' $F_0$. We pass to the quotient $C_2=C/\langle g^4\rangle$
+with its faithful $\Z/4$-action and to its twist $E_2$ by the $\Z/4$-class $(s_0,s_1)_K$;
+the embedding $\iota$ produces a point $Q\in E_2(K')$ whose image in $B$ is the descent
+point, hence is non-constant. The $K$-rational divisor $D_Q$ of degree $2$ on $E_2$
+attached to $Q$ (``$Q+\sigma Q$'') is the heart of the argument: after the base change
+$L_2=k(z_0,z_1,s_2)$ that trivialises the twist, its class is that of a
+\emph{constant} divisor $D_0$ on $C_2$ with $\Z/4$-invariant class, because rational
+maps from $\A^3$ to a Jacobian are constant (Step~1). Either $\ell(D_0)=1$, and then
+$D_Q$ is supported on constant points, forcing the descent point to be constant
+(Step~2); or $\ell(D_0)=2$, and then $D_0$ moves in a pencil $|D_0|$ that is the pullback
+of a degree-$2$ map $u\colon C_2\to\PP^1$ on which $\Z/4$ acts through $u\mapsto u+1$
+(the hyperelliptic case, Step~3, or the supersingular genus-$1$ case, Step~4(i)); the
+twisted coordinate $\ut=u+z_0$ is $K$-rational, $D_Q$ is a $\ut$-fibre over $\PP^1(K)$,
+and the descent point $t(Q)=\ut(Q)^2+\ut(Q)+s_0$ lies in $K$. That puts the descent
+field inside $K$, which is impossible by the truncation argument of
+\cite[Theorem 11.6(b)]{A}, reproved here. The only remaining case is an ordinary elliptic
+curve $C_2$ on which $\Z/4$ acts by translation (Step~4(ii)); there the class
+$(s_0,s_1)_K\otimes K'$ is the isogeny torsor at a point $b\in B(K')$, and the
+corestriction identity $\cores\circ\delta_{K'}=\delta_K\circ\Nm$ together with
+$B(K)=B(k)$ gives $2\,(s_0,s_1)=0$ in $H^1(K,\Z/4)$, which is false. Section~7 checks
+that the cases are exhaustive and derives the corollaries; Section~8 lists what is cited
+without proof.
+
+\section{Conventions and imported facts}\label{sec:facts}
+
+We use the notation of \cite[Sections 2--7]{P} and \cite[Section 11]{A}; [P] and [A]
+are cited with their own numbering. All curves are over $k$ unless said otherwise; a
+\emph{curve over a field $F$} is a smooth projective geometrically integral $F$-scheme
+of dimension $1$. For a divisor $D$ on a curve $X$ over $F$ we write
+$L(D)=H^0(X,\mathcal O_X(D))$ and $\ell(D)=\dim_FL(D)$. Fix
+\[
+G_2:=G/\langle g^4\rangle\cong\Z/4,\qquad K_2:=k(s_0,s_1),\qquad
+L_2:=k(z_0,z_1,s_2)=L^{\langle g^4\rangle}.
+\]
+The generator $g$ of $G$ and its image in $G_2$ are both written $g$.
+
+\subsection{Witt vectors}\label{ss:witt}
+$W_n(A)=A^n$ with the ring structure defined by the ghost components
+$w_m(x)=\sum_{i\le m}p^ix_i^{p^{m-i}}$; $F(x)=(x_i^p)$ on $\F_p$-algebras,
+$V(x)=(0,x_0,\dots,x_{n-2})$, $\wp=F-\mathrm{id}$, $[a]=(a,0,\dots,0)$
+\cite[\S2.2]{P}. We record the formulas we use, at $p=2$.
+
+\begin{fact}[Witt arithmetic at $p=2$]\label{fact:witt}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $(a+b)_0=a_0+b_0$, $(a+b)_1=a_1+b_1+a_0b_0$, and
+$(a+b)_2=a_2+b_2+a_1b_1+a_0b_0(a_1+b_1)+a_0^3b_0+a_0b_0^3$ \cite[(3)]{P}.
+\item $\wp(a_0,a_1)=(a_0^2+a_0,\;a_1^2+a_1+a_0^3+a_0^2)$ and
+$\wp(a)_2=a_2^2+a_2+C(a_0,a_1)$ with $C$ as in \cite[(4)]{P}.
+\item $x+V^r(y)=(x_0,\dots,x_{r-1},y_0,\dots)$ if $x_r=\dots=x_{n-1}=0$
+\cite[(2)]{P}; $V$ is additive and $\wp V=V\wp$.
+\item $2\cdot(a_0,a_1)=(0,a_0^2)$ in $W_2(A)$ and $2\cdot(a_0,a_1,a_2)=(0,a_0^2,a_1^2)$
+in $W_3(A)$, for every $\F_2$-algebra $A$.
+\item $(0,c)\in\wp W_2(F)$ iff $c\in\wp F$; $(0,c_0,c_1)\in\wp W_3(F)$ iff
+$(c_0,c_1)\in\wp W_2(F)$ \cite[(5)]{P}.
+\end{enumerate}
+\end{fact}
+
+\begin{proof}
+(a),(b),(c) are \cite[\S2.2]{P}; for the reader's convenience: $w_1(a+b)=w_1(a)+w_1(b)$
+reads $(a_0+b_0)^2+2(a+b)_1=a_0^2+2a_1+b_0^2+2b_1$, so $(a+b)_1=a_1+b_1-a_0b_0$
+as a polynomial identity over $\Z$ (the ghost map is injective on $W_2(\Z[a,b])$), and
+reduction modulo $2$ gives (a); (b) is $F-\mathrm{id}$ with $F$ the componentwise
+square. (d) By (a) with $a=b$: $(2a)_0=2a_0=0$ and $(2a)_1=2a_1+a_0^2=a_0^2$; in
+$W_3$, $(2a)_2=2a_2+a_1^2+a_0^2\cdot2a_1+2a_0^4=a_1^2$. (e) If $(0,c)=\wp(x_0,x_1)$
+then $x_0^2+x_0=0$, so $x_0\in\{0,1\}$, $x_0^3+x_0^2=0$, and $c=x_1^2+x_1\in\wp F$;
+conversely $(0,\wp x_1)=\wp(0,x_1)$ by (b). For $W_3$: if $(0,c_0,c_1)=\wp(x)$ then
+again $x_0\in\{0,1\}$, $\wp[x_0]=0$, and $x=[x_0]+V(x_1,x_2)$ gives
+$V(c_0,c_1)=\wp V(x_1,x_2)=V\wp(x_1,x_2)$, so $(c_0,c_1)=\wp(x_1,x_2)$ as $V$ is
+injective on components; the converse is $\wp V=V\wp$.
+\end{proof}
+
+\begin{fact}[Artin--Schreier--Witt theory]\label{fact:asw}
+For every field $F$ of characteristic $2$ there is a group isomorphism
+$H^1(F,\Z/2^n)\cong W_n(F)/\wp W_n(F)$, functorial in $F$, sending the class of $a$ to
+the torsor $\Spec F[x]/(\wp x=a)$ with $1\in\Z/2^n$ acting by $x\mapsto x+1$.
+Truncation $W_n\to W_m$ corresponds to $\Z/2^n\to\Z/2^m$ and $V^{n-m}\colon W_m\to W_n$
+to the inclusion $\Z/2^m\hookrightarrow\Z/2^n$; both commute with $\wp$ and with base
+change. \cite[\S2.2]{P}, \cite[Ch.~V]{Se}.
+\end{fact}
+
+\begin{lemma}\label{lem:Vinj}
+$V\colon W_2(F)/\wp\to W_3(F)/\wp$ is injective, i.e.\ $H^1(F,\Z/4)\to H^1(F,\Z/8)$ is
+injective. Moreover $s_0\notin\wp K$, hence $(0,s_0)\ne0$ in $W_2(K)/\wp$ and
+$(0,s_0,s_1)\ne0$ in $W_3(K)/\wp$; in particular $(s_0,s_1)\ne0$ in $W_2(K)/\wp$.
+\end{lemma}
+
+\begin{proof}
+Injectivity is Fact~\ref{fact:witt}(e). If $s_0=a^2+a$ with $a\in K=k(s_1,s_2)(s_0)$,
+then $a$ is integral over $k(s_1,s_2)[s_0]$, which is integrally closed, so $a$ is a
+polynomial in $s_0$ of some degree $d$, and $a^2+a$ has degree $2d\ne1$: contradiction.
+The rest follows from Fact~\ref{fact:witt}(e), and $(s_0,s_1)\ne0$ because its
+truncation $s_0$ is nonzero in $K/\wp K$.
+\end{proof}
+
+\subsection{The generic torsor and its truncations}
+By \cite[\S2.3, Proposition 3.9]{P}, $L/K$ is Galois with group $G$, its unique
+quadratic subextension is $K_1=L^{\langle g^2\rangle}=K(z_0)$ (with $z_0^2+z_0=s_0$), and
+$L^{\langle g^4\rangle}=L_2=k(z_0,z_1,s_2)$; the group $G_2=G/\langle g^4\rangle$ acts on $L_2$
+by the Witt translation $(z_0,z_1)\mapsto(z_0,z_1)+(1,0)$ of $W_2$, and
+$\wp(z_0,z_1)=(s_0,s_1)$ (truncation of $\wp z=s$). Hence
+\[
+T_2:=\Spec L_2\longrightarrow\Spec K
+\]
+is the $\Z/4$-torsor of class $(s_0,s_1)\in W_2(K)/\wp$, written $(s_0,s_1)_K$; it is
+$\tau_2\otimes_{K_2}K$ where $\tau_2$ is the generic $\Z/4$-torsor over $K_2=k(s_0,s_1)$.
+
+\begin{fact}\label{fact:ed}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item \cite[Lemma 2.1]{P} $\ed_k(\tau_{\gen})=\ed_k(\Z/8)\le3$; \cite[Prop.~6.1]{P}
+$\ed_k(\tau_2)=\ed_k(\Z/4)=2$.
+\item \cite[Lemma 4.1(i)]{P} If $\tau$ is a $G$-torsor over an infinite field
+$F\supseteq k$ and $t$ is transcendental over $F$, then $\ed_k(\tau\otimes F(t))=\ed_k(\tau)$.
+Consequently $\ed_k((s_0,s_1)_K)=\ed_k(\tau_2\otimes_{K_2}K_2(s_2))=2$.
+\item \cite[Prop.~3.2(c)]{P} $\edd d_k(\tau_{\gen})\ge1$ for $d<8$.
+\item \cite[Prop.~3.6]{P} If $F'/F$ is finite purely inseparable, then
+$\ed_k(\tau\otimes F')=\ed_k(\tau)$; the profile only sees separable extensions.
+\item \cite[Prop.~3.9]{P} $\ed_k(\tau_{\gen}\otimes K(z_0))\ge\min(n-1,2)=2$.
+\item \cite[Theorem 7.1]{P} $\edd2_k(\tau_{\gen})\le2$, witnessed by $K(v_2)$,
+$v_2^2+v_2=s_2$ (class $(s_0,s_1,0)$, defined over $k(s_0,s_1)$); $\edd4_k(\tau_{\gen})=1$;
+$\ed_k(\tau_{\gen})\in\{2,3\}$.
+\item \cite[\S3.1]{P}, \cite[Lemma 2.1(b)]{BF} $\ed_k(\tau\otimes F')\le\ed_k(\tau)$ for
+every extension $F'/F$.
+\end{enumerate}
+\end{fact}
+
+\subsection{Twists and the geometric criterion}
+For a quasi-projective $G$-variety $X$ over $k$ and a $G$-torsor $\tau\colon T\to\Spec F$,
+the twist is ${}^\tau X=(T\times_kX)/G$, an $F$-variety; it commutes with base change in
+$F$ \cite[\S2.4]{P}, \cite[\S3]{DR}.
+
+\begin{fact}[{\cite[Fact 2.2(a)]{P}, \cite[Lemma 7.3]{DR}}]\label{fact:twistpts}
+For every field $F'\supseteq F$, ${}^\tau X(F')=\Hom_G(T\times_FF',X)$, the set of
+$G$-equivariant $k$-morphisms.
+\end{fact}
+
+\begin{fact}[{\cite[Theorem 4.2, (1)$\Rightarrow$(3) and last paragraph]{P}}]\label{fact:geom}
+Let $\tau\colon T\to\Spec F$ be a $G$-torsor and suppose $\ed_k(\tau\otimes F')\le m$ for
+a field $F'/F$. Then there is a quasi-projective generically free primitive $G$-variety
+$Z$ over $k$ with $\dim Z\le m$ and a $G$-equivariant morphism $T\times_FF'\to Z^{\rm free}$,
+where $Z^{\rm free}=Z\smallsetminus Z^{g^4}$ is the locus of points with trivial
+stabiliser. Conversely such a map gives $\ed_k(\tau\otimes F')\le\dim Z$ \cite[Lemma 2.3]{P}.
+If $T\times_FF'$ is the spectrum of a field, $Z$ may be taken irreducible with faithful
+$G$-action.
+\end{fact}
+
+\begin{fact}[{\cite[Lemma 2.4]{P}}]\label{fact:image}
+Let $Z$ be an irreducible $G$-variety with faithful action, $T$ connected, and
+$f\colon T\to Z$ equivariant. The closure $Y$ of the image point of $f$ is irreducible and
+$G$-stable, and the image point is free iff $G$ acts faithfully on $Y$. If $\dim Z=1$
+and the image point is free, then $f$ is dominant.
+\end{fact}
+
+\begin{fact}[{\cite[Lemma 2.5(ii)]{P}}]\label{fact:pgl}
+$\mathrm{PGL}_2(k)$ has no element of order $4$. Every element of order $2$ of
+$\mathrm{PGL}_2(k)$ is conjugate to $u\mapsto u+1$.
+\end{fact}
+
+\begin{proof}
+A $2$-element of $\mathrm{PGL}_2(k)$ lifts to $A\in\mathrm{GL}_2(k)$ with $A^{2^m}=\lambda$
+scalar; replacing $A$ by $A/\mu$ with $\mu^{2^m}=\lambda$ ($k$ is algebraically closed) we
+may assume $A^{2^m}=1$.
+Then $(A-1)^{2^m}=A^{2^m}-1=0$, so $N:=A-1$ is nilpotent, $N^2=0$, and
+$A^2=1+2N=1$: no element of order $4$. If the image of $A$ has order $2$ then $N\ne0$,
+so $N$ is conjugate to $\left(\begin{smallmatrix}0&1\\0&0\end{smallmatrix}\right)$ and $A$
+to $\left(\begin{smallmatrix}1&1\\0&1\end{smallmatrix}\right)$, which acts on $\PP^1$ by
+$u\mapsto u+1$.
+\end{proof}
+
+\subsection{Abelian varieties, rational maps, Galois descent}
+
+\begin{fact}[rigidity]\label{fact:rigid}
+Let $A$ be an abelian variety over $k$, and let $P$ be a $k$-variety that is a torsor
+under $A$ (a principal homogeneous space).
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item Every $k$-morphism $\PP^1_k\to A$ is constant \cite[Cor.~3.8]{Mi}; equivalently
+\cite[Lemma 2.5(iv)]{P}.
+\item (Weil) Every rational map from a smooth $k$-variety to $A$ extends to a morphism
+\cite[Thm.~3.1]{Mi}, \cite[8.4, Cor.~6]{BLR}.
+\item Every $k$-morphism $\Spec F\to P$, where $F=k(t_1,\dots,t_m)$ is purely
+transcendental over $k$, factors through a $k$-point of $P$.
+\item \cite[Lemma 4.1(ii)]{P} If $F\supseteq k$ is a field and $F'=F(t_1,\dots,t_m)$ is
+purely transcendental over $F$, then $A(F')=A(F)$; the same holds for an abelian variety
+over $F$.
+\end{enumerate}
+\end{fact}
+
+\begin{proof}
+(a),(b) are cited. (c) Since $k$ is algebraically closed, $P(k)\ne\emptyset$ and $P\cong A$
+as $k$-varieties (translate a $k$-point to the origin); so a $k$-morphism
+$\Spec F\to P$ is a rational map $\A^m_k\dashrightarrow A$, which by (b) extends to a
+morphism $\phi\colon\A^m\to A$. For $x\in\A^m(k)$ let $\ell_x\subseteq\A^m$ be the line
+through $0$ and $x$ (a point if $x=0$); $\phi|_{\ell_x}$ extends to $\PP^1\to A$ and is
+constant by (a), so $\phi(x)=\phi(0)$ for all $x$, and $\phi$ is constant ($\A^m$ is
+reduced and $k$ algebraically closed). Hence $\Spec F\to P$ factors through the
+$k$-point $\phi(0)$. (d) The proof in \cite{P} is written for an elliptic curve but uses
+only that $A$ is proper and that $\PP^1_{\bar F}\to A_{\bar F}$ is constant (a); it
+applies verbatim to any abelian variety over $F$.
+\end{proof}
+
+\begin{fact}[Galois descent]\label{fact:descent}
+Let $M/F$ be a finite Galois extension with group $\Gamma$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item For $F$-schemes $S,X$: $\Hom_F(S,X)\to\Hom_M(S_M,X_M)$ is injective with image
+the morphisms commuting with the natural $\Gamma$-actions; in particular
+$X(M)^\Gamma=X(F)$ \cite[6.1, Thm.~6 and 6.2, Example B]{BLR}.
+\item A descent datum on a quasi-projective $M$-scheme $Y$ relative to $M/F$, i.e.\ a
+$\Gamma$-action by automorphisms $\phi_\gamma$ of the $F$-scheme $Y$ covering
+$\Spec(\gamma)$ on $\Spec M$, is effective: there is an $F$-scheme $X$, unique up to
+unique isomorphism, with an $M$-isomorphism $\psi\colon X_M\to Y$ such that
+$\psi\circ(\mathrm{id}_X\times\Spec\gamma)=\phi_\gamma\circ\psi$ for all $\gamma$
+\cite[6.2, Example B]{BLR}, \cite[V.20, Prop.~12]{SeAG}. $X$ is a curve over $F$ iff $Y$
+is a curve over $M$ (these properties are local for the fpqc topology). $F$-morphisms
+$X\to X'$ between descended schemes are the $M$-morphisms $Y\to Y'$ compatible with the
+descent data (by (a)). If $X$ is a curve then $F(X)=M(Y)^\Gamma$, where $\Gamma$ acts on
+$M(Y)=M(X_M)=F(X)\otimes_FM$ through the $\phi_\gamma^*$.
+\item If $X$ is an $F$-scheme, $X_M$ carries the descent datum $\mathrm{id}_X\times\Spec\gamma$,
+and (a) is the special case of (b) for this datum. A Galois-invariant divisor on $X_M$
+descends uniquely to a divisor on $X$ (for $X$ a curve: closed points of $X$ correspond
+to $\Gamma$-orbits of closed points of $X_M$, with $x\otimes_FM=\sum_{y\mapsto x}y$).
+\end{enumerate}
+\end{fact}
+
+\begin{fact}[Picard schemes]\label{fact:pic}
+Let $C$ be a curve over $k$ of genus $g$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item The Picard functor of $C/k$ is represented by a smooth $k$-group scheme
+$\Pic_{C/k}$, locally of finite type, whose identity component $J=\Pic^0_{C/k}$ is an
+abelian variety of dimension $g$ (the Jacobian) and whose connected components are the
+$\Pic^d_{C/k}$, $d\in\Z$, each a torsor under $J$ \cite[8.2, Thm.~3; 8.4, Thm.~3]{BLR},
+\cite[Thm.~9.4.8, Prop.~9.5.3, Cor.~9.5.4]{Kl}.
+\item Since $C(k)\ne\emptyset$, for every field $F\supseteq k$ the natural map
+$\Pic(C_F)\to\Pic_{C/k}(F)$ is bijective and respects degrees
+\cite[8.1, Prop.~4]{BLR}. Under it, for $\alpha\in\Aut(C)$ the pullback $\alpha_F^*$ on
+$\Pic(C_F)$ corresponds to $(\alpha^*)_F$, where $\alpha^*$ is the automorphism of the
+$k$-group scheme $\Pic_{C/k}$ induced by functoriality.
+\end{enumerate}
+\end{fact}
+
+\begin{fact}[cohomology and base change]\label{fact:bc}
+Let $X$ be a curve over $F$, $F'/F$ a field extension, $D$ a divisor on $X$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $L(D_{F'})=L(D)\otimes_FF'$; in particular $\ell(D_{F'})=\ell(D)$ and
+$\deg D_{F'}=\deg D$ \cite[III.9.3]{Ha}.
+\item $\Pic(X)\to\Pic(X_{F'})$ is injective.
+\item Two $F$-morphisms $X\to Y$ that agree after base change to $F'$ are equal.
+\item For a nonconstant $h\in F(X)$ and the associated morphism $h\colon X\to\PP^1_F$,
+the fibre divisor $h^*(c)$, $c\in\PP^1(F)$, is effective, $F$-rational, of degree
+$\deg h=[F(X):F(h)]$, and $h^*(c)_{F'}=(h_{F'})^*(c)$.
+\end{enumerate}
+\end{fact}
+
+\begin{proof}
+(a) is flat base change. (b) If $\deg D=0$ and $D_{F'}$ is principal then
+$\ell(D)=\ell(D_{F'})=1$ by (a); a nonzero $h\in L(D)$ has $\divv h+D\ge0$ of degree $0$,
+so $D=\divv(h^{-1})$. (c) $\Spec F'\to\Spec F$ is faithfully flat, hence an epimorphism
+of schemes. (d) is standard \cite[II.6.9, II.6.10]{Ha}; pullback of Cartier divisors
+commutes with base change.
+\end{proof}
+
+\subsection{Curves: linear systems, hyperelliptic curves, elliptic curves}
+
+\begin{fact}[Riemann--Roch and consequences]\label{fact:rr}
+Let $C$ be a curve over $k$ of genus $g$ and $D$ a divisor on $C$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\ell(D)-\ell(K_C-D)=\deg D+1-g$ \cite[IV.1.3]{Ha}. If $g=1$ and $\deg D>0$
+then $\ell(D)=\deg D$.
+\item If $g\ge1$ and $\deg D\ge1$ then $\ell(D)\le\deg D$.
+\item If $g\ge1$, $\deg D=2$ and $\ell(D)=2$, then $|D|$ is base point free and defines a
+morphism $u\colon C\to\PP^1$ of degree $2$ with $D\sim u^*(a)$ for every $a\in\PP^1(k)$;
+$u$ is separable, and $k(C)/k(u)$ is Galois with group $\{1,\iota\}$ generated by an
+involution $\iota$ of $C$ with $C/\iota\cong\PP^1$. Conversely the fibres of any
+degree-$2$ morphism $C\to\PP^1$ form such a pencil.
+\item (uniqueness of the $g^1_2$) If $g\ge2$, any two divisors $D,D'$ of degree $2$ with
+$\ell(D)=\ell(D')=2$ are linearly equivalent.
+\end{enumerate}
+\end{fact}
+
+\begin{proof}
+(a) is cited; for $g=1$, $K_C=0$ and $\ell(-D)=0$. (b) For a point $P$,
+$\ell(D)\le\ell(D-P)+1$ (evaluation at $P$ in a local coordinate). By induction on
+$\deg D$ this gives $\ell(D)\le\ell(D-(\deg D-1)P)+\deg D-1$ with $\deg(D-(\deg D-1)P)=1$;
+and a divisor $D_1$ of degree $1$ with $\ell(D_1)\ge2$ gives a nonconstant $h$ with
+$\divv h+D_1\ge0$, hence a degree-$1$ map $C\to\PP^1$, i.e.\ $C\cong\PP^1$ and $g=0$. So
+$\ell(D_1)\le1$ and $\ell(D)\le\deg D$. (c) If $P$ were a base point of $|D|$ then
+$\ell(D-P)=\ell(D)=2$ with $\deg(D-P)=1$, contradicting (b). So $|D|$ is base point
+free; with $L(D)=\langle h_0,h_1\rangle$ the map $u=h_1/h_0\colon C\to\PP^1$ has
+$u^*(a)=\divv(h_1-ah_0)+D\sim D$ (and $u^*(\infty)=\divv(h_0)+D$), and $\deg u=\deg D=2$.
+If $k(C)/k(u)$ were inseparable of degree $2$, it would be purely inseparable, so
+$k(C)=k(u^{1/2})$ and $C\cong\PP^1$, contradicting $g\ge1$; a separable extension of
+degree $2$ is Galois, and the nontrivial element of its Galois group is induced by an
+involution $\iota$ of $C$ with $k(C/\iota)=k(C)^\iota=k(u)$. The converse is clear.
+(d) Let $u,u'\colon C\to\PP^1$ be the degree-$2$ maps of (c) for $D,D'$, and let
+$\Gamma\subseteq\PP^1\times\PP^1$ be the image of $(u,u')$, an irreducible curve of
+bidegree $(a,b)$, and $e:=\deg(C\to\Gamma)$. The projections give $eb=\deg u=2$ and
+$ea=\deg u'=2$. If $e=2$ then $a=b=1$ and $\Gamma$ is the graph of an automorphism
+$\alpha$ of $\PP^1$, so $u'=\alpha\circ u$ and $D'\sim u'^*(a_0)=u^*(\alpha^{-1}a_0)\sim D$.
+If $e=1$ then $\Gamma$ has bidegree $(2,2)$, arithmetic genus $(2-1)(2-1)=1$, and $C$ is
+its normalisation, so $g\le1$: excluded.
+\end{proof}
+
+\begin{fact}[elliptic curves in characteristic $2$]\label{fact:ell}
+Let $E$ be an elliptic curve over $k$ with origin $O$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\Aut(E)=E(k)\rtimes\Aut(E,O)$: every automorphism of the curve $E$ is uniquely
+$t_P\circ\alpha$ with $P\in E(k)$, $t_P$ the translation, $\alpha\in\Aut(E,O)$, and
+every $\alpha\in\Aut(E,O)$ is a group automorphism, $\alpha\circ t_P=t_{\alpha P}\circ\alpha$
+\cite[III.4.8]{Sil}.
+\item $E$ is supersingular iff $j(E)=0$ iff $E(k)[2]=0$; if $E$ is ordinary then
+$E(k)[2^r]\cong\Z/2^r$ for all $r$ \cite[V.3.1, Exercise 5.7]{Sil}. If $j(E)\ne0$ then
+$\Aut(E,O)=\{\pm1\}$; if $j(E)=0$ then $\Aut(E,O)$ has order $24$ with Sylow
+$2$-subgroups isomorphic to the quaternion group $Q_8$ \cite[App.~A, Prop.~1.2]{Sil},
+\cite[Lemma 2.5(iii)]{P}.
+\item $\End(E)$ is a domain, torsion-free as a $\Z$-module; for $\phi\in\End(E)$,
+$\phi+\hat\phi=1+\deg\phi-\deg(1-\phi)\in\Z$ and $\phi^2-(\phi+\hat\phi)\phi+\deg\phi=0$
+\cite[III.4.2, III.6.2, III.6.3]{Sil}. A nonzero isogeny is surjective on $k$-points,
+and $\#\ker(\phi)(k)\le\deg\phi$ \cite[II.2.3, III.4.10]{Sil}.
+\item For a finite subgroup $\Phi\subseteq E(k)$ there is an elliptic curve $E'$ and a
+separable isogeny $\phi\colon E\to E'$ with kernel $\Phi$, unique up to isomorphism; if
+$\Phi$ is cyclic of order $4$ generated by $P$, then $\phi$ is finite \'etale of degree
+$4$ and $E'\cong E/\langle t_P\rangle$ \cite[III.4.12]{Sil}.
+\end{enumerate}
+\end{fact}
+
+\subsection{Galois cohomology}
+
+\begin{fact}[restriction, corestriction, connecting maps]\label{fact:gc}
+Let $F'/F$ be a finite separable extension of fields, $\Gamma_F\supseteq\Gamma_{F'}$
+the absolute Galois groups (for a separable closure $F^s\supseteq F'$), and $M$ a
+discrete $\Gamma_F$-module.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\res\colon H^q(F,M)\to H^q(F',M)$ and $\cores\colon H^q(F',M)\to H^q(F,M)$ are
+morphisms of cohomological $\delta$-functors; in degree $0$, $\cores$ is the norm
+$M^{\Gamma_{F'}}\to M^{\Gamma_F}$, $m\mapsto\sum_{\gamma\in\Gamma_F/\Gamma_{F'}}\gamma m$;
+and $\cores\circ\res=[F':F]$ \cite[Prop.~1.5.2, Cor.~1.5.7]{NSW}, \cite[I.2.4]{Se}.
+\item For a finite abelian group $A$ with trivial action, $H^1(F,A)$ is the group of
+isomorphism classes of $A$-torsors over $F$ (finite \'etale $F$-schemes with a simply
+transitive $A$-action) \cite[I.5.2]{Se}; $\res$ is base change; a torsor that has an
+$F$-point is trivial; an $A$-equivariant $F$-morphism between $A$-torsors over $F$ is an
+isomorphism \cite[proof of Lemma 2.3]{P}. For $A=\Z/2^n$ this is the group of
+Fact~\ref{fact:asw}.
+\item Let $0\to A\to E\xrightarrow{\phi}B\to0$ be an exact sequence of commutative
+group varieties over $k$ with $\phi$ finite \'etale and $A$ finite constant. Then
+$0\to A\to E(F^s)\to B(F^s)\to0$ is an exact sequence of $\Gamma_F$-modules, and the
+connecting homomorphism $\delta_F\colon B(F)\to H^1(F,A)$ sends $b$ to the class of the
+$A$-torsor $\phi^{-1}(b)=E\times_{B,b}\Spec F$ (with $A$ acting by translation)
+\cite[I.5.4--5.6]{Se}. By (a), $\cores_{F'/F}\circ\delta_{F'}=\delta_F\circ\Nm_{F'/F}$
+on $B(F')$, where $\Nm_{F'/F}(b)=\sum_{\gamma\in\Gal(F'/F)}\gamma b\in B(F)$ when $F'/F$
+is Galois.
+\end{enumerate}
+\end{fact}
+
+\begin{proof}
+Only (c) needs comment. $E(F^s)\to B(F^s)$ is surjective because $\phi^{-1}(b)$ is a
+finite \'etale $F^s$-scheme, hence a finite disjoint union of copies of $\Spec F^s$. The
+description of $\delta_F(b)$: choose $e\in E(F^s)$ with $\phi(e)=b$; the cocycle
+$\gamma\mapsto\gamma(e)-e\in A$ is by definition $\delta_F(b)$, and it is the cocycle of
+the torsor $\phi^{-1}(b)$ with respect to its $F^s$-point $e$. The last identity is (a)
+applied to the sequence of $\Gamma_F$-modules, restricted to $\Gamma_{F'}$: $\cores$
+commutes with $\delta$, and on $H^0$ it is the norm; the sum over $\Gamma_F/\Gamma_{F'}$
+is the sum over $\Gal(F'/F)$ when $F'/F$ is Galois.
+\end{proof}
+
+\begin{fact}[{\cite[Theorem 11.6]{A}}]\label{fact:caseA}
+The statement is reproved below as Theorem~\ref{thm:caseA}; the only inputs are
+Facts~\ref{fact:asw}, \ref{fact:ed}(a),(b) and inflation--restriction.
+\end{fact}
+
+\section{Setup: a hypothetical witness and the point \texorpdfstring{$Q\in E_2(K')$}{Q in E2(K')}}\label{sec:setup}
+
+\subsection{Reduction to a separable witness with \texorpdfstring{$L\otimes_KK'$}{L(x)K'} a field}
+
+\begin{definition}\label{def:witness}
+A \emph{witness} is a separable quadratic extension $K'/K$ with
+$\ed_k(\tau_{\gen}\otimes_KK')=1$.
+\end{definition}
+
+\begin{lemma}\label{lem:reduce}
+If $\ed_k(\tau_{\gen}\otimes_KF')\le1$ for some field extension $F'/K$ of degree $2$,
+then $F'=K(v_f)$ with $v_f^2+v_f=f\in K\smallsetminus\wp K$ is a witness and
+$f\notin\{0,s_0\}+\wp K$, i.e.\ $F'\ne K(z_0)$.
+\end{lemma}
+
+\begin{proof}
+If $F'/K$ were purely inseparable, Fact~\ref{fact:ed}(d),(f) would give
+$\ed_k(\tau_{\gen}\otimes F')=\ed_k(\tau_{\gen})\ge2$. So $F'/K$ is separable of degree
+$2$, hence an Artin--Schreier extension $K(v_f)$, $f\notin\wp K$. By Fact~\ref{fact:ed}(c),
+$\ed_k(\tau_{\gen}\otimes F')\ge1$, so it equals $1$. By Fact~\ref{fact:ed}(e), $F'\ne K(z_0)$;
+since $z_0^2+z_0=s_0$, $K(z_0)=K(v_{s_0})$, and two Artin--Schreier extensions $K(v_f)$,
+$K(v_{f'})$ coincide iff $f\equiv f'$ mod $\wp K$ (Fact~\ref{fact:asw} for $n=1$), so
+$f\not\equiv s_0$; and $f\not\equiv0$ as $[F':K]=2$.
+\end{proof}
+
+From now on $K'=K(v_f)$ is a witness, $\sigma$ denotes the generator of
+$\Gal(K'/K)$, and $f\notin\{0,s_0\}+\wp K$.
+
+\begin{lemma}\label{lem:Lprime}
+Put $L':=L\otimes_KK'$ and $L_2':=L_2\otimes_KK'$.
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $L'$ is a field, Galois over $K'$ with group $G$ (acting through the first factor),
+and $(L')^G=K'$. The involution $\sigma$ acts on $L'$ through the second factor and
+commutes with $G$.
+\item $L_2'=(L')^{\langle g^4\rangle}$ is a field, Galois over $K'$ with group $G_2$, and
+$\Spec L_2'\to\Spec K'$ is the base change $T_2\times_KK'$, i.e.\ the $\Z/4$-torsor of
+class $\res_{K'/K}(s_0,s_1)=(s_0,s_1)_K\otimes K'$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) $L'=L[v]/(v^2+v-f)$, which is a field iff $f\notin\wp L$. By inflation--restriction
+for $L/K$ (Galois with group $G$, trivial action on $\Z/2$),
+$\ker(H^1(K,\Z/2)\to H^1(L,\Z/2))=H^1(G,\Z/2)=\Hom(\Z/8,\Z/2)\cong\Z/2$, generated by the
+class of the unique quadratic subextension $K(z_0)$ of $L/K$, which is $[s_0]$. Hence
+$f\in\wp L$ iff $f\in\{0,s_0\}+\wp K$, which is excluded. Thus $L'$ is a field; it is the
+base change of the Galois extension $L/K$, so it is Galois over $K'$ with group $G$ and
+fixed field $K\otimes_KK'=K'$. The statement about $\sigma$ is clear.
+(b) $L_2\otimes_KK'\subseteq L\otimes_KK'$ is a $K'$-subalgebra of a field, finite over
+$K'$, hence a field, of degree $[L_2:K]=4$ over $K'$; it is fixed by $g^4$, and
+$(L')^{\langle g^4\rangle}$ has degree $[L':K']/2=4$ over $K'$ by Galois theory. So they
+coincide. The rest is the definition of $\res$ (Fact~\ref{fact:gc}(b)) and the
+description of $T_2$ in Section~\ref{sec:facts}.
+\end{proof}
+
+\subsection{The witness curve and the descent field}
+
+\begin{proposition}\label{prop:curve}
+There exist a curve $C$ over $k$ with a faithful action of $G$ and a $G$-equivariant
+$k$-algebra embedding $\iota\colon k(C)\hookrightarrow L'$.
+\end{proposition}
+
+\begin{proof}
+By Fact~\ref{fact:geom} applied to $\tau_{\gen}$ and $F'=K'$ (with $m=1$; note
+$T\times_KK'=\Spec L'$ is the spectrum of a field by Lemma~\ref{lem:Lprime}), there are
+an irreducible quasi-projective $G$-variety $Z$ with faithful action, $\dim Z\le1$, and a
+$G$-equivariant morphism $x\colon\Spec L'\to Z^{\rm free}$. If $\dim Z=0$ the converse
+part of Fact~\ref{fact:geom} gives $\ed_k(\tau_{\gen}\otimes K')=0$, contradicting
+Definition~\ref{def:witness}; so $Z$ is a curve. By Fact~\ref{fact:image}, $x$ is
+dominant. Let $C$ be the smooth projective model of $Z$; the $G$-action on $Z$ extends to
+$C$ (functoriality of normalisation and of the projective closure of a curve), faithfully,
+and the dominant $x$ corresponds to a $k$-embedding $\iota\colon k(C)=k(Z)\hookrightarrow L'$,
+equivariant because $x$ is.
+\end{proof}
+
+Fix $C$ and $\iota$ as in Proposition~\ref{prop:curve}. Since $G$ acts faithfully on
+$C$, it acts faithfully on $k(C)$, and by Artin's theorem $k(C)/k(C)^G$ is Galois with
+group $G$. Let $B:=C/G$ be the curve with $k(B)=k(C)^G$, and $t\colon C\to B$ the
+quotient morphism (finite of degree $8$). As $\iota$ is equivariant,
+$\iota(k(B))\subseteq(L')^G=K'$.
+
+\begin{definition}\label{def:F0}
+The \emph{descent field} of the witness is $F_0:=\iota(k(B))\subseteq K'$, a subfield
+containing $k$ with $\tr_kF_0=1$. The \emph{descent class} is
+$\beta\in W_3(F_0)/\wp W_3(F_0)=H^1(F_0,\Z/8)$, the class of the $G$-torsor
+$\Spec k(C)\to\Spec k(B)$ transported along $\iota|_{k(B)}\colon k(B)\xrightarrow{\ \sim\ }F_0$.
+\end{definition}
+
+\begin{lemma}\label{lem:descentclass}
+$s\equiv\beta$ in $W_3(K')/\wp W_3(K')$; that is, $\tau_{\gen}\otimes K'$ is the base
+change to $K'$ of a $\Z/8$-torsor defined over $F_0$.
+\end{lemma}
+
+\begin{proof}
+The $K'$-algebra $k(C)\otimes_{k(B)}K'$ (with $k(B)\to K'$ the map $\iota|_{k(B)}$) is
+the base change of the $G$-torsor $\Spec k(C)\to\Spec k(B)$ along $\Spec K'\to\Spec k(B)$,
+so it is a $G$-torsor over $K'$ of class $\res_{K'/F_0}(\beta)$. The map
+$k(C)\otimes_{k(B)}K'\to L'$, $a\otimes c\mapsto\iota(a)c$, is a well-defined
+$G$-equivariant $K'$-algebra homomorphism between $G$-torsors over $K'$, hence an
+isomorphism (Fact~\ref{fact:gc}(b)). Since $L'/K'$ is $\tau_{\gen}\otimes K'$, of class
+$\res_{K'/K}(s)$, the claim follows from Fact~\ref{fact:asw}.
+\end{proof}
+
+\subsection{The \texorpdfstring{$\Z/4$}{Z/4}-quotient and its twist}
+
+Let $C_2:=C/\langle g^4\rangle$, the curve with $k(C_2)=k(C)^{\langle g^4\rangle}$.
+
+\begin{lemma}\label{lem:C2}
+$G_2=G/\langle g^4\rangle$ acts faithfully on $C_2$, with $C_2/G_2=B$, and
+$\iota_2:=\iota|_{k(C_2)}\colon k(C_2)\hookrightarrow(L')^{\langle g^4\rangle}=L_2'$ is a
+$G_2$-equivariant $k$-embedding. The corresponding morphism $x\colon\Spec L_2'\to C_2$
+is dominant and satisfies $x\circ\Spec(g)=g_{C_2}\circ x$ for $g\in G_2$, where $\Spec(g)$
+is the automorphism of $\Spec L_2'$ induced by the field automorphism $g$ of $L_2'$.
+\end{lemma}
+
+\begin{proof}
+The elements of $G$ acting trivially on $k(C_2)=k(C)^{\langle g^4\rangle}$ form the
+subgroup of $G=\Gal(k(C)/k(B))$ fixing this intermediate field pointwise, which is
+$\langle g^4\rangle$ by the fundamental theorem of Galois theory. Hence $G_2$ acts
+faithfully on $k(C_2)$, i.e.\ on $C_2$, and $k(C_2)^{G_2}=k(C)^G=k(B)$. The image of
+$\iota_2$ lies in $(L')^{\langle g^4\rangle}=L_2'$ (Lemma~\ref{lem:Lprime}(b)) by
+equivariance. A $k$-embedding of the function field of a curve into a field is the same
+as a morphism from the spectrum of that field whose image is the generic point, and the
+identity $\iota_2\circ g_{C_2}^*=g\circ\iota_2$ translates into
+$x\circ\Spec(g)=g_{C_2}\circ x$.
+\end{proof}
+
+\begin{construction}[the twist $E_2$]\label{con:twist}
+Let $Y:=C_2\times_k\Spec L_2$, an $L_2$-curve, and for $g\in G_2$ let
+\[
+\phi_g:=g_{C_2}\times\Spec(g)\colon Y\to Y ,
+\]
+where $\Spec(g)$ is induced by the field automorphism $g$ of $L_2$. Each $\phi_g$ is an
+automorphism of the $k$-scheme $Y$ covering $\Spec(g)$ on $\Spec L_2$, and
+$g\mapsto\phi_g$ is a group homomorphism because $G_2$ is abelian
+($\Spec(g)\circ\Spec(h)=\Spec(hg)=\Spec(gh)$). So $(\phi_g)_g$ is a descent datum on
+$Y$ relative to the Galois extension $L_2/K$ (whose group is $G_2$, Section~\ref{sec:facts}).
+By Fact~\ref{fact:descent}(b) it is effective: there is a curve $E_2$ over $K$ with an
+$L_2$-isomorphism
+\[
+\psi\colon E_2\otimes_KL_2\xrightarrow{\ \sim\ }Y=C_2\otimes_kL_2,\qquad
+\psi\circ(\mathrm{id}_{E_2}\times\Spec g)=\phi_g\circ\psi\quad(g\in G_2).
+\]
+$E_2$ is the twist ${}^{(s_0,s_1)_K}C_2=(T_2\times_kC_2)/G_2$ of \cite[\S2.4]{P}
+(the quotient of $Y=T_2\times_kC_2$ by the free action $\phi$), but we shall only use the
+following consequences of the descent description, which agree with
+Fact~\ref{fact:twistpts}.
+\end{construction}
+
+\begin{lemma}\label{lem:E2}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item For every field $F\supseteq K$ the map $P\mapsto x_P:=\mathrm{pr}_1\circ\psi\circ(P\times_K\mathrm{id}_{\Spec L_2})$
+is a bijection from $E_2(F)$ onto the set of $k$-morphisms
+$x\colon\Spec(F\otimes_KL_2)\to C_2$ with $x\circ\Spec(\mathrm{id}_F\otimes g)=g_{C_2}\circ x$ for all $g\in G_2$.
+\item $K(E_2)=L_2(Y)^{G_2}$, where $L_2(Y)=\operatorname{Frac}(k(C_2)\otimes_kL_2)$ and
+$g$ acts through $\phi_g^*$, i.e.\ by $g_{C_2}^*\otimes g$ on $k(C_2)\otimes_kL_2$.
+Every element $h$ of $L_2(Y)^{G_2}$, viewed in $K(E_2)$, defines a $K$-morphism
+$h\colon E_2\to\PP^1_K$ whose base change to $L_2$ is (via $\psi$) the morphism
+$Y\to\PP^1_{L_2}$ defined by $h$.
+\item There is a unique $K$-morphism $t_E\colon E_2\to B_K$ with
+$(t\times\mathrm{id})\circ\psi=t_E\otimes\mathrm{id}_{L_2}$. For $P\in E_2(F)$,
+$t_E(P)\in B_K(F)=B(F)$ is the unique $F$-point $b$ of $B$ with
+$b\circ\mathrm{pr}=t\circ x_P$, where $\mathrm{pr}\colon\Spec(F\otimes_KL_2)\to\Spec F$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) By Fact~\ref{fact:descent}(a),(b), $\Hom_K(\Spec F,E_2)$ is the set of
+$L_2$-morphisms $y\colon\Spec(F\otimes_KL_2)\to Y$ with
+$\phi_g\circ y=y\circ\Spec(\mathrm{id}_F\otimes g)$ for all $g$, the bijection being
+$P\mapsto\psi\circ(P\times\mathrm{id})$. An $L_2$-morphism $y$ to $Y=C_2\times_k\Spec L_2$
+is the same as its first component $x=\mathrm{pr}_1\circ y$, a $k$-morphism to $C_2$
+(the second component is the structure map). The compatibility condition has first
+component $g_{C_2}\circ x=x\circ\Spec(\mathrm{id}\otimes g)$ and second component
+$\Spec(g)\circ\mathrm{pr}_2\circ y=\mathrm{pr}_2\circ y\circ\Spec(\mathrm{id}\otimes g)$,
+which holds automatically. (b) is Fact~\ref{fact:descent}(b); a rational function on a
+curve over a field defines a morphism to $\PP^1$ compatibly with base change.
+(c) $t\times\mathrm{id}\colon Y\to B\times_k\Spec L_2=B_K\otimes_KL_2$ satisfies
+$(\mathrm{id}_B\times\Spec g)\circ(t\times\mathrm{id})=(t\times\mathrm{id})\circ\phi_g$
+because $t\circ g_{C_2}=t$; by Fact~\ref{fact:descent}(b) it descends to a unique
+$t_E$. For $P\in E_2(F)$, $(t_E(P))\times\mathrm{id}_{L_2}=(t\times\mathrm{id})\circ\psi\circ(P\times\mathrm{id})$
+has first component $t\circ x_P$, and the first component of $b\times\mathrm{id}_{L_2}$
+is $b\circ\mathrm{pr}$; finally $b\mapsto b\circ\mathrm{pr}$ is injective because
+$\mathrm{pr}$ is faithfully flat, hence an epimorphism.
+\end{proof}
+
+\begin{definition}\label{def:Q}
+$Q\in E_2(K')$ is the point with $x_Q=x$, the dominant equivariant morphism of
+Lemma~\ref{lem:C2} (note $K'\otimes_KL_2=L_2'$, and $\Spec(\mathrm{id}_{K'}\otimes g)$
+is the $\Spec(g)$ of Lemma~\ref{lem:C2}).
+\end{definition}
+
+\begin{lemma}[the descent point; $Q$ is non-constant]\label{lem:descentpt}
+Let $b:=t_E(Q)\in B(K')$. Then the morphism $b\colon\Spec K'\to B$ has image the
+generic point of $B$, and the induced map $b^*\colon k(B)\to K'$ equals
+$\iota|_{k(B)}$; hence $b^*(k(B))=F_0$. In particular $b$ does not factor through any
+$k$-point of $B$.
+\end{lemma}
+
+\begin{proof}
+By Lemma~\ref{lem:E2}(c), $b\circ\mathrm{pr}=t\circ x$. The morphism $t\circ x$ has
+image the generic point of $B$ ($x$ is dominant, $t$ surjective) and induces
+$\iota\circ t^*=\iota|_{k(B)}$ on $k(B)$; hence $b$ has image the generic point, and
+$\mathrm{pr}^*\circ b^*=\iota|_{k(B)}$ with $\mathrm{pr}^*$ the inclusion $K'\subseteq L_2'$.
+\end{proof}
+
+\begin{definition}[the involution and the divisor $D_Q$]\label{def:DQ}
+$\Gal(K'/K)=\{1,\sigma\}$ acts on $E_2(K')$ by $P\mapsto\sigma P:=P\circ\Spec(\sigma)$.
+Let $\xi_Q\in E_2$ be the image of $Q$, a closed point whose residue field $\kappa(\xi_Q)$
+is embedded in $K'$ by $Q$, so $\deg\xi_Q:=[\kappa(\xi_Q):K]\in\{1,2\}$. Put
+\[
+D_Q:=\frac{2}{\deg\xi_Q}\,\xi_Q ,
+\]
+an effective $K$-rational divisor of degree $2$ on $E_2$, and
+$\Delta:=\psi(D_Q\otimes_KL_2)$, an effective divisor of degree $2$ on $Y=C_2\otimes_kL_2$.
+\end{definition}
+
+\begin{lemma}\label{lem:DQ}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $D_Q\otimes_KK'=Q+\sigma Q$ as divisors on $E_2\otimes_KK'$.
+\item $\phi_g(\Delta)=\Delta$ for all $g\in G_2$.
+\item $\Supp(D_Q\otimes_KL_2)=\xi_Q\times_K\Spec L_2$, and the morphism
+$Q\times_K\mathrm{id}_{L_2}\colon\Spec L_2'\to E_2\otimes_KL_2$ factors through this closed
+subscheme; its composite with $\mathrm{pr}_1\circ\psi$ is $x$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) If $\deg\xi_Q=2$ then $\kappa(\xi_Q)\cong K'$ and $\xi_Q\otimes_KK'=\Spec(K'\otimes_KK')$
+consists of the two $K'$-points given by the two $K$-embeddings $\kappa(\xi_Q)\to K'$,
+namely $Q$ and $\sigma Q$, which are distinct; so $D_Q\otimes K'=\xi_Q\otimes K'=Q+\sigma Q$.
+If $\deg\xi_Q=1$ then $\xi_Q\otimes K'$ is the single $K'$-point $Q=\sigma Q$ and
+$D_Q\otimes K'=2\xi_Q\otimes K'=Q+\sigma Q$. (b) $D_Q\otimes_KL_2$ is invariant under
+$\mathrm{id}\times\Spec g$, and $\psi$ intertwines $\mathrm{id}\times\Spec g$ with
+$\phi_g$. (c) $Q$ factors through $\xi_Q$, so $Q\times\mathrm{id}$ factors through
+$\xi_Q\times_K\Spec L_2$, which is the support of $D_Q\otimes L_2$; the last assertion is
+Definition~\ref{def:Q}.
+\end{proof}
+
+\section{Step 1: the class of \texorpdfstring{$D_Q$}{D\_Q} is constant}\label{sec:step1}
+
+\begin{proposition}\label{prop:step1}
+There is an effective divisor $D_0=P_1+P_2$ on $C_2$, with $P_1,P_2\in C_2(k)$, such that
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item $\Delta\sim D_0\otimes_kL_2$ on $Y=C_2\otimes_kL_2$;
+\item $g^*D_0\sim D_0$ on $C_2$ for every $g\in G_2$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+\emph{(i) The class of $\Delta$ is constant.} By Fact~\ref{fact:pic}(b) (with $F=L_2$;
+$C_2(k)\ne\emptyset$ as $k$ is algebraically closed) the class $[\Delta]\in\Pic(Y)$ is an
+$L_2$-point $\lambda\colon\Spec L_2\to\Pic_{C_2/k}$, of degree $2$, i.e.\ a $k$-morphism
+$\Spec L_2\to\Pic^2_{C_2/k}$. By Fact~\ref{fact:pic}(a), $\Pic^2_{C_2/k}$ is a torsor
+under the Jacobian $J$ of $C_2$. The field $L_2=k(z_0,z_1,s_2)$ is purely transcendental
+of transcendence degree $3$ over $k$: $K=k(s_0,s_1,s_2)\subseteq L_2\subseteq L$ with
+$[L:K]=8$, so $\tr_kL_2=3$ and the three generators are algebraically independent.
+Hence, by Fact~\ref{fact:rigid}(c), $\lambda$ factors through a $k$-point
+$\lambda_0\in\Pic^2_{C_2/k}(k)=\Pic^2(C_2)$ (Fact~\ref{fact:pic}(b) with $F=k$), say
+$\lambda_0=[D_1]$ with $D_1$ a divisor of degree $2$ on $C_2$. The identification of
+Fact~\ref{fact:pic}(b) is natural in $F$, so the composite
+$\Spec L_2\to\Spec k\xrightarrow{\lambda_0}\Pic^2_{C_2/k}$ is the class of
+$D_1\otimes_kL_2$. Thus $\Delta\sim D_1\otimes_kL_2$ on $Y$.
+
+\emph{(ii) The class contains an effective divisor.} Since $\Delta$ is effective,
+$1\in L(\Delta)$, so $\ell(\Delta)\ge1$; linear equivalence preserves $\ell$, and
+$\ell(D_1\otimes L_2)=\ell(D_1)$ by Fact~\ref{fact:bc}(a). So $\ell(D_1)\ge1$: choose
+$0\ne h\in L(D_1)$ and put $D_0:=D_1+\divv h$, an effective divisor of degree $2$ on
+$C_2$, linearly equivalent to $D_1$. Since $k$ is algebraically closed, $D_0=P_1+P_2$
+with $P_i\in C_2(k)$. As $\divv(h)\otimes L_2=\divv(h)$, $D_0\otimes L_2\sim D_1\otimes L_2\sim\Delta$,
+which is (a).
+
+\emph{(iii) Invariance.} Let $g\in G_2$. Writing $D_0\otimes L_2=\mathrm{pr}_1^*D_0$ we get
+\[
+\phi_g^*(D_0\otimes L_2)=(\mathrm{pr}_1\circ\phi_g)^*D_0=(g_{C_2}\circ\mathrm{pr}_1)^*D_0
+=\mathrm{pr}_1^*(g_{C_2}^*D_0)=(g^*D_0)\otimes L_2 .
+\]
+By Lemma~\ref{lem:DQ}(b), $\phi_g^*\Delta=\Delta$ (apply (b) to $g^{-1}$). Pullback along
+the automorphism $\phi_g$ preserves linear equivalence, so (a) gives
+$\Delta=\phi_g^*\Delta\sim\phi_g^*(D_0\otimes L_2)=(g^*D_0)\otimes L_2$, hence
+$(g^*D_0)\otimes L_2\sim D_0\otimes L_2$ on $Y$. By Fact~\ref{fact:bc}(b) ($\Pic(C_2)\to\Pic(Y)$
+is injective), $g^*D_0\sim D_0$ on $C_2$.
+\end{proof}
+
+\begin{remark}
+The referee's formulation ``$\Pic_{E_2/K}$ is the twist of $\Pic_{C_2/k}$'' is not needed:
+we only use $\Pic(Y)=\Pic_{C_2/k}(L_2)$ for the constant curve $C_2$, where the Picard
+scheme is over $k$ and $C_2$ has $k$-points. The step ``$\ell(D_1)\ge1$, so $D_0$ may be
+taken effective'' is the first of the two gaps flagged in the referee report; without it,
+$\ell(D_0)\in\{1,2\}$ below would be unjustified (a general class of degree $2$ on a curve
+of genus $\ge3$ has $\ell=0$).
+\end{remark}
+
+\section{Step 2: the dichotomy \texorpdfstring{$\ell(D_0)\in\{1,2\}$}{l(D0) in \{1,2\}}, and \texorpdfstring{$\ell(D_0)=1$}{l(D0)=1} is impossible}\label{sec:step2}
+
+\begin{lemma}\label{lem:genus}
+$g(C_2)\ge1$.
+\end{lemma}
+
+\begin{proof}
+If $g(C_2)=0$ then $C_2\cong\PP^1_k$ and the faithful action of $G_2\cong\Z/4$ embeds
+$\Z/4$ into $\Aut(\PP^1)=\mathrm{PGL}_2(k)$, contradicting Fact~\ref{fact:pgl}.
+\end{proof}
+
+\begin{corollary}\label{cor:l12}
+$\ell(D_0)\in\{1,2\}$.
+\end{corollary}
+
+\begin{proof}
+$D_0$ is effective, so $\ell(D_0)\ge1$; and $\ell(D_0)\le\deg D_0=2$ by
+Fact~\ref{fact:rr}(b) and Lemma~\ref{lem:genus}.
+\end{proof}
+
+\begin{proposition}[$\ell(D_0)=1$ is impossible]\label{prop:step2a}
+$\ell(D_0)=2$.
+\end{proposition}
+
+\begin{proof}
+Suppose $\ell(D_0)=1$. By Fact~\ref{fact:bc}(a), $\ell(D_0\otimes L_2)=1$, and by
+Proposition~\ref{prop:step1}(a), $\Delta=D_0\otimes L_2+\divv h$ with $0\ne h\in L(D_0\otimes L_2)=L_2\cdot1$;
+so $h$ is a nonzero constant and
+\[
+\Delta=D_0\otimes_kL_2=(P_1\times\Spec L_2)+(P_2\times\Spec L_2)
+\]
+as divisors on $Y$, where $P_i\times\Spec L_2$ are the $L_2$-rational points of $Y$ over
+$P_i$. In particular $\Supp\Delta\subseteq\{P_1\times\Spec L_2,P_2\times\Spec L_2\}$.
+By Lemma~\ref{lem:DQ}(c), the morphism $\psi\circ(Q\times_K\mathrm{id}_{L_2})\colon\Spec L_2'\to Y$
+factors through $\psi(\Supp(D_Q\otimes L_2))=\Supp\Delta$. Since $\Spec L_2'$ is a
+one-point space, its image is one of the points $P_i\times\Spec L_2$, and composing with
+$\mathrm{pr}_1\colon Y\to C_2$ we find that $x=\mathrm{pr}_1\circ\psi\circ(Q\times\mathrm{id})$
+has image the $k$-point $P_i\in C_2$. This contradicts the dominance of $x$
+(Lemma~\ref{lem:C2}). Hence $\ell(D_0)\ne1$, and Corollary~\ref{cor:l12} gives $\ell(D_0)=2$.
+\end{proof}
+
+\begin{remark}
+This covers in particular every non-hyperelliptic $C_2$ of genus $\ge2$ (for which
+$\ell(D)\le1$ for every divisor of degree $2$, by Fact~\ref{fact:rr}(c)), and every
+hyperelliptic $C_2$ of genus $\ge2$ with $D_0\not\sim g^1_2$. The argument also covers the
+case $Q\in E_2(K)$, where $D_Q=2\xi_Q$. Note that the contradiction is obtained from the
+dominance of $x$, i.e.\ from the non-constancy of the descent point
+(Lemma~\ref{lem:descentpt}): a constant $x$ would give a constant $b=t_E(Q)$.
+\end{remark}
+
+\begin{corollary}\label{cor:pencil}
+There is a morphism $u\colon C_2\to\PP^1_k$ of degree $2$ such that $D_0\sim u^*(a)$ for
+every $a\in\PP^1(k)$; $k(C_2)/k(u)$ is Galois of degree $2$, generated by an involution
+$\iota_u$ of $C_2$ with $C_2/\iota_u\cong\PP^1$. If $g(C_2)\ge2$, then \emph{every}
+degree-$2$ morphism $u'\colon C_2\to\PP^1$ satisfies $u'^*(a)\sim D_0$, and
+$u'=\alpha\circ u$ for an automorphism $\alpha$ of $\PP^1$.
+\end{corollary}
+
+\begin{proof}
+Fact~\ref{fact:rr}(c),(d) applied to $D_0$ (Proposition~\ref{prop:step2a},
+Lemma~\ref{lem:genus}); for the last claim, $u'^*(a)$ has $\ell=2$ and degree $2$
+(Fact~\ref{fact:rr}(c), converse part), so $u'^*(a)\sim D_0\sim u^*(a')$, and the proof of
+Fact~\ref{fact:rr}(d) (case $e=2$) gives $u'=\alpha\circ u$.
+\end{proof}
+
+\section{Step 3: the hyperelliptic case, via a twisted pencil}\label{sec:step3}
+
+\subsection{No descent field inside \texorpdfstring{$K$}{K}}
+
+\begin{theorem}[{\cite[Theorem 11.6(b)]{A}}]\label{thm:caseA}
+Let $K'=K(v_f)$ be a separable quadratic extension of $K$, $F_0\subseteq K'$ a subfield
+containing $k$ with $\tr_kF_0=1$, and $\beta\in W_3(F_0)$ with $s\equiv\beta$ mod
+$\wp W_3(K')$. Then $F_0\not\subseteq K$.
+\end{theorem}
+
+\begin{proof}
+Suppose $F_0\subseteq K$. Then $s$ and $\beta$ both lie in $W_3(K)$ and have the same
+image in $H^1(K',\Z/8)=W_3(K')/\wp$. Inflation--restriction for $K'/K$, with trivial
+action on $\Z/8$, gives the exact sequence
+\[
+0\to H^1(\Gal(K'/K),\Z/8)\to H^1(K,\Z/8)\to H^1(K',\Z/8),
+\]
+with $H^1(\Gal(K'/K),\Z/8)=\Hom(\Z/2,\Z/8)\cong\Z/2$,
+whose nonzero element is the image of the class $[f]\in H^1(K,\Z/2)$ of $K'/K$ under
+the map induced by the inclusion $\Z/2\hookrightarrow\Z/8$, i.e.\ (Fact~\ref{fact:asw})
+$V^2[f]=(0,0,f)$. Hence
+\[
+s\equiv\beta+\varepsilon\,(0,0,f)\pmod{\wp W_3(K)},\qquad\varepsilon\in\{0,1\}.
+\]
+Apply the truncation $W_3(K)\to W_2(K)$, a ring homomorphism commuting with $\wp$
+(Fact~\ref{fact:asw}): $(0,0,f)$ maps to $0$, so
+$(s_0,s_1)\equiv(\beta_0,\beta_1)\pmod{\wp W_2(K)}$ with $\beta_0,\beta_1\in F_0$.
+Thus the $\Z/4$-torsor $(s_0,s_1)_K$ is the base change of a torsor over $F_0$, and
+$\ed_k((s_0,s_1)_K)\le\tr_kF_0=1$. But $\ed_k((s_0,s_1)_K)=2$ by Fact~\ref{fact:ed}(b).
+\end{proof}
+
+\begin{corollary}\label{cor:F0notinK}
+For our witness, $F_0=\iota(k(B))\not\subseteq K$.
+\end{corollary}
+
+\begin{proof}
+Lemma~\ref{lem:descentclass} provides $\beta\in W_3(F_0)$ with $s\equiv\beta$ over $K'$.
+\end{proof}
+
+\subsection{The twisted pencil}
+
+\begin{proposition}[pencil proposition]\label{prop:pencil}
+Suppose there is $u\in k(C_2)$ with $[k(C_2):k(u)]=2$ such that
+\begin{enumerate}[label=\textup{(H\arabic*)}]
+\item $g^*u=u+1$ for the generator $g$ of $G_2$ (hence $(g^i)^*u=u+i$);
+\item $D_0\sim u^*(a)$ for some (equivalently every) $a\in\PP^1(k)$.
+\end{enumerate}
+Then $F_0\subseteq K$, contradicting Corollary~\ref{cor:F0notinK}. In particular no such
+$u$ exists.
+\end{proposition}
+
+\begin{proof}
+\emph{(1) The quotient $B=\PP^1_t$.} Put $t:=u^2+u=q\circ u$ with $q\colon\PP^1_k\to\PP^1_k$,
+$w\mapsto w^2+w$ (a morphism of degree $2$ with $q(\infty)=\infty$). By (H1), $t$ is
+$G_2$-invariant, so $k(t)\subseteq k(C_2)^{G_2}=k(B)$; and
+$[k(C_2):k(t)]=\deg(q\circ u)=\deg q\cdot\deg u=4=[k(C_2):k(B)]$. Hence $k(B)=k(t)$:
+$B=\PP^1_t$, and the quotient morphism $t\colon C_2\to B$ is the composite $q\circ u$.
+
+\emph{(2) The $K$-rational coordinate $\ut$.} Put
+\[
+\ut:=u\otimes1+1\otimes z_0\ \in\ k(C_2)\otimes_kL_2\subseteq L_2(Y).
+\]
+By (H1) and $g(z_0)=z_0+1$ (Section~\ref{sec:facts}),
+$(g^*\otimes g)(\ut)=(u+1)\otimes1+1\otimes(z_0+1)=\ut$; so $\ut\in L_2(Y)^{G_2}=K(E_2)$
+(Lemma~\ref{lem:E2}(b)). It defines a $K$-morphism $\ut\colon E_2\to\PP^1_K$ whose base
+change to $L_2$ is, via $\psi$, the morphism $Y\to\PP^1_{L_2}$ given by $u+z_0$, that is
+$\tau_{z_0}\circ u_{L_2}$ with $\tau_{z_0}\colon\PP^1_{L_2}\to\PP^1_{L_2}$, $w\mapsto w+z_0$.
+For $c\in\PP^1(K)$ let $F_c:=\ut^*(c)$, an effective $K$-rational divisor on $E_2$
+(Fact~\ref{fact:bc}(d)). By Fact~\ref{fact:bc}(d),
+\[
+\psi(F_c\otimes_KL_2)=(\tau_{z_0}\circ u_{L_2})^*(c)=u_{L_2}^*(\tau_{z_0}^{-1}c)=
+\begin{cases}u_{L_2}^*(c+z_0)&c\in K,\\ u_{L_2}^*(\infty)&c=\infty,\end{cases}
+\]
+so $\deg F_c=\deg u=2$ and $\deg\ut=2$.
+
+\emph{(3) Descent of the linear equivalence to $K$.} Any two points of $\PP^1(L_2)$ are
+linearly equivalent on $\PP^1_{L_2}$, so all fibres $u_{L_2}^*(a')$, $a'\in\PP^1(L_2)$,
+are linearly equivalent on $Y$; and $u_{L_2}^*(a)=u^*(a)\otimes_kL_2$ for $a\in\PP^1(k)$.
+Hence, by (H2) and Proposition~\ref{prop:step1}(a),
+\[
+\psi(F_c\otimes L_2)\sim u^*(a)\otimes L_2\sim D_0\otimes L_2\sim\Delta=\psi(D_Q\otimes L_2)
+\quad\text{on }Y,
+\]
+and transporting along the isomorphism $\psi^{-1}$: $D_Q\otimes_KL_2\sim F_c\otimes_KL_2$
+on $E_2\otimes_KL_2$. By Fact~\ref{fact:bc}(b), $D_Q\sim F_c$ on $E_2$ for every
+$c\in\PP^1(K)$. (This is the second gap flagged by the referee: the linear equivalence
+obtained over $L_2$ does descend to $K$, because $\Pic(E_2)\to\Pic(E_2\otimes L_2)$ is
+injective.)
+
+\emph{(4) The $K$-rational members of $|F_c|$ are the $\ut$-fibres.} Take $c=0$ and write
+$\Phi:=\ut^*(0)=\divv_0(\ut)$. By
+Fact~\ref{fact:bc}(a), $\ell(\Phi)=\ell(\Phi\otimes L_2)=\ell(u^*(a)\otimes L_2)=\ell(D_0)=2$.
+The functions $1$ and $\ut^{-1}$ lie in $L(\Phi)$ (indeed $\divv(\ut^{-1})+\Phi=\divv_\infty(\ut)\ge0$)
+and are linearly independent over $K$ since $\ut$ is not constant; so
+$L(\Phi)=K\cdot1\oplus K\cdot\ut^{-1}$. An effective divisor $D'$ on $E_2$ with $D'\sim\Phi$
+is $D'=\Phi+\divv h$ with $0\ne h=\alpha+\beta\ut^{-1}$, $\alpha,\beta\in K$:
+\begin{itemize}
+\item if $\beta=0$, $D'=\Phi=\ut^*(0)$;
+\item if $\alpha=0$, $D'=\divv_0(\ut)-\divv(\ut)=\divv_\infty(\ut)=\ut^*(\infty)$;
+\item if $\alpha\beta\ne0$, $h=\alpha(\ut-c')/\ut$ with $c':=\beta/\alpha\in K$, and
+$D'=\divv(\ut-c')-\divv(\ut)+\divv_0(\ut)=\divv(\ut-c')+\divv_\infty(\ut)=\divv_0(\ut-c')=\ut^*(c')$,
+using $\divv_\infty(\ut-c')=\divv_\infty(\ut)$.
+\end{itemize}
+Since $D_Q$ is effective and $D_Q\sim\Phi$ by (3), $D_Q=\ut^*(c')$ for some $c'\in\PP^1(K)$.
+
+\emph{(5) $\ut(Q)=c'$.} The point $Q\colon\Spec K'\to E_2$ factors through
+$\xi_Q\subseteq\Supp D_Q=\Supp\ut^*(c')=\ut^{-1}(c')$. Hence $\ut\circ Q\colon\Spec K'\to\PP^1_K$
+factors through the closed point $c'\in\PP^1_K$, whose residue field is $K$; a
+$K'$-point of $\PP^1_K$ with image a $K$-rational closed point $c'$ is the point $c'$
+itself. So $\ut(Q)=c'\in\PP^1(K)\subseteq\PP^1(K')$.
+
+\emph{(6) $t_E=q_K\circ\ut$.} Let $q_K\colon\PP^1_K\to\PP^1_K$ be $w\mapsto w^2+w+s_0$,
+$\infty\mapsto\infty$. By (1) and Lemma~\ref{lem:E2}(c), the base change of
+$t_E\colon E_2\to B_K=\PP^1_K$ to $L_2$ is, via $\psi$, $t\times\mathrm{id}=q_{L_2}\circ u_{L_2}$;
+the base change of $q_K\circ\ut$ is $q_{L_2}\circ\tau_{z_0}\circ u_{L_2}$, and
+\[
+q_{L_2}(\tau_{z_0}(w))=(w+z_0)^2+(w+z_0)+s_0=w^2+w+(z_0^2+z_0+s_0)=w^2+w
+\]
+because $z_0^2+z_0=s_0$ and the characteristic is $2$. So the two morphisms agree after
+base change to $L_2$, hence are equal (Fact~\ref{fact:bc}(c)).
+
+\emph{(7) Conclusion.} By (5) and (6), $b=t_E(Q)=q_K(\ut(Q))=q_K(c')\in\PP^1(K)$. By
+Lemma~\ref{lem:descentpt}, $b$ has image the generic point of $B=\PP^1_k$; if $c'=\infty$
+then $b=\infty$ is a $k$-point, which is excluded. So $c'\in K$ and $b$ is the $K$-point
+$c'^2+c'+s_0$ of $\PP^1_K$, i.e.\ $b^*(t)=c'^2+c'+s_0\in K$. By Lemma~\ref{lem:descentpt},
+$\iota(t)=b^*(t)$ and $F_0=\iota(k(B))=\iota(k(t))=k(\iota(t))\subseteq K$.
+\end{proof}
+
+\begin{remark}
+The formula $\ut=u+z_0$ is the case $n=1$ of the coordinate $h=y-z$ of
+\cite[Prop.~5.2(a)]{P}: a $K'$-point of the twist of $\PP^1_u$ (with $G_2$ acting through
+$u\mapsto u+1$) is a $G_2$-equivariant map $\Spec L_2'\to\PP^1_u$, i.e.\ an element $u(Q)$
+of $L_2'\cup\{\infty\}$ with $g(u(Q))=u(Q)+1$; then $u(Q)+z_0$ is $G_2$-invariant, i.e.\
+lies in $K'$. Our argument works with the function $\ut$ on $E_2$ rather than with
+points, so that the linear system $|F_c|$ can be used.
+\end{remark}
+
+\subsection{Verification of the hypotheses in the hyperelliptic case}
+
+\begin{proposition}[Step 3]\label{prop:step3}
+$g(C_2)\ge2$ is impossible.
+\end{proposition}
+
+\begin{proof}
+Assume $g(C_2)\ge2$ and let $u\colon C_2\to\PP^1$ be the degree-$2$ map of
+Corollary~\ref{cor:pencil}, with $D_0\sim u^*(a)$; write $L(D_0)=\langle h_0,h_1\rangle$,
+$u=h_1/h_0$, so that $k(u)\subseteq k(C_2)$ is the subfield generated by the ratios of
+elements of $L(D_0)$ (these ratios are exactly the M\"obius transforms $(\alpha+\beta u)/(\gamma+\delta u)$).
+
+\emph{(i) $G_2$ preserves $k(u)$.} Let $h\in\Aut(C_2)$. Then $h^*D_0$ has degree $2$ and
+$\ell(h^*D_0)=\ell(D_0)=2$ ($h^*$ is an automorphism of $k(C_2)$ mapping $L(D_0)$ onto
+$L(h^*D_0)$), so $h^*D_0\sim D_0$ by Fact~\ref{fact:rr}(d): $h^*D_0=D_0+\divv h'$ and
+$L(h^*D_0)=h'^{-1}L(D_0)$. A ratio of two elements of $L(D_0)$ is mapped by $h^*$ to a
+ratio of two elements of $L(h^*D_0)$, which is a ratio of two elements of $L(D_0)$. Hence
+$h^*(k(u))=k(u)$, and $h\mapsto\rho(h):=h^*|_{k(u)}$ is a homomorphism
+$\Aut(C_2)\to\Aut_k(k(u))=\mathrm{PGL}_2(k)$ (the group $G_2$ is abelian, so the
+contravariance of $h\mapsto h^*$ is harmless).
+
+\emph{(ii) $\ker\rho|_{G_2}=\{1,g^2\}$ and $\rho(g)$ has order $2$.} The kernel of $\rho$
+on $\Aut(C_2)$ consists of the automorphisms acting trivially on $k(u)$, i.e.\ of the
+elements of $\Gal(k(C_2)/k(u))=\{1,\iota_u\}$ (Corollary~\ref{cor:pencil}). By
+Fact~\ref{fact:pgl}, $\rho(g)$ has order $\le2$, so $g^2\in\ker\rho\cap G_2\subseteq\{1,\iota_u\}$;
+as $g^2\ne1$, $g^2=\iota_u$ and $\ker\rho\cap G_2=\{1,g^2\}$; since $g\notin\ker\rho$,
+$\rho(g)$ has order exactly $2$.
+
+\emph{(iii) Normal form.} By Fact~\ref{fact:pgl}, $\rho(g)$ is conjugate in
+$\mathrm{PGL}_2(k)$ to $u\mapsto u+1$; conjugating means replacing $u$ by a M\"obius
+transform $u'=(\alpha+\beta u)/(\gamma+\delta u)$, which is again a degree-$2$ function
+with $u'^*(a)\sim u^*(a')\sim D_0$ (the fibres of $u'$ are the fibres of $u$). After this
+change of coordinate, $g^*u=u+1$.
+
+So (H1) and (H2) of Proposition~\ref{prop:pencil} hold, and Proposition~\ref{prop:pencil}
+gives a contradiction.
+\end{proof}
+
+\section{Step 4: genus one}\label{sec:step4}
+
+In this section $g(C_2)=1$. We choose an origin and regard $C_2$ as an elliptic curve
+$E$; $g\in\Aut(E)$ is an automorphism of order $4$ of the curve $E$.
+
+\subsection{Faithful \texorpdfstring{$\Z/4$}{Z/4}-actions on elliptic curves in characteristic \texorpdfstring{$2$}{2}}
+
+\begin{lemma}\label{lem:Z4}
+Let $E$ be an elliptic curve over $k$ with origin $O$ and $\varphi\in\Aut(E)$ an
+automorphism of order $4$; write $\varphi=t_P\circ\alpha$ with $P\in E(k)$,
+$\alpha\in\Aut(E,O)$ (Fact~\ref{fact:ell}(a)).
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item If $E$ is supersingular, then $\alpha$ has order $4$ and there is $R\in E(k)$ with
+$t_R\circ\varphi\circ t_{-R}=\alpha$; in particular $\varphi$ fixes the point $-R$.
+\item If $E$ is ordinary, then $\alpha=1$ and $\varphi=t_P$ with $P$ of order $4$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+The projection $\Aut(E)\to\Aut(E,O)$ is a homomorphism, so $\alpha^4=1$. If $\alpha=1$,
+$\varphi=t_P$ has order $\operatorname{ord}P$. If $\alpha^2=1\ne\alpha$, then
+$(\alpha-1)(\alpha+1)=0$ in the domain $\End(E)$ gives $\alpha=-1$, and
+$\varphi^2=t_P\alpha t_P\alpha=t_Pt_{\alpha P}\alpha^2=t_{P-P}=1$, so $\varphi$ does not
+have order $4$. Hence either $\alpha=1$ and $\operatorname{ord}P=4$, or $\alpha$ has
+order $4$.
+(a) If $E$ is supersingular, $E(k)[2]=0$ (Fact~\ref{fact:ell}(b)), so $E(k)$ has no
+element of order $4$ and $\alpha$ has order $4$. For $R\in E(k)$,
+$t_R\varphi t_{-R}=t_Rt_P\alpha t_{-R}=t_{R+P}t_{-\alpha R}\alpha=t_{P+(1-\alpha)R}\alpha$
+(Fact~\ref{fact:ell}(a)). Since $\alpha\ne1$, $1-\alpha$ is a nonzero isogeny, surjective
+on $E(k)$ (Fact~\ref{fact:ell}(c)); choose $R$ with $(1-\alpha)R=-P$. Then
+$t_R\varphi t_{-R}=\alpha$, and $\varphi(-R)=t_{-R}\alpha t_R(-R)=t_{-R}(\alpha(O))=-R$.
+(b) If $E$ is ordinary, $j(E)\ne0$ and $\Aut(E,O)=\{\pm1\}$ (Fact~\ref{fact:ell}(b)), so
+$\alpha$ has order $\le2$, hence $\alpha=1$ and $\operatorname{ord}P=4$.
+\end{proof}
+
+\begin{remark}
+\cite[Lemma C.2]{A} (= \cite[Lemma 1.3]{ed2}) says more in the supersingular case: the
+six elements of order $4$ of $\Aut(E,O)\cong\mathrm{SL}_2(\F_3)$ are conjugate, so
+$(E,\varphi)$ is isomorphic to $(E_0,\text{Witt action})$ of \cite[Theorem 6.2]{P}, with
+$E_0\colon y_1^2+y_1=y_0^3+y_0^2$ and $(y_0,y_1)\mapsto(y_0+1,y_1+y_0)$. We do not need
+this identification: the abstract argument below only uses the fixed point of (a).
+\end{remark}
+
+\subsection{The supersingular case}
+
+\begin{proposition}[Step 4(i)]\label{prop:step4i}
+$g(C_2)=1$ with $C_2$ supersingular is impossible.
+\end{proposition}
+
+\begin{proof}
+Let $E=C_2$. By Lemma~\ref{lem:Z4}(a) the automorphism $g$ of $E$ has a fixed point,
+which we call $\infty$ and take as the origin; then $g=\alpha\in\Aut(E,\infty)$ is a
+group automorphism of order $4$ (Fact~\ref{fact:ell}(a)).
+
+\emph{(a) $E(k)^{\alpha}=0$.} In the domain $\End(E)$, $(\alpha^2-1)(\alpha^2+1)=\alpha^4-1=0$
+and $\alpha^2\ne1$, so $\alpha^2=-1$. With $a:=\alpha+\hat\alpha\in\Z$ and $\deg\alpha=1$,
+Fact~\ref{fact:ell}(c) gives $\alpha^2-a\alpha+1=0$, i.e.\ $a\alpha=0$, so $a=0$ because
+$\End(E)$ is torsion-free and $\alpha\ne0$. Hence $\deg(1-\alpha)=1+\deg\alpha-a=2$, and
+$\ker(1-\alpha)(k)=\{R\in E(k):\alpha R=R\}$ is a group of order $\le2$
+(Fact~\ref{fact:ell}(c)), hence killed by $2$, hence contained in $E(k)[2]=0$
+(Fact~\ref{fact:ell}(b)).
+
+\emph{(b) $D_0\sim2\infty$.} By Proposition~\ref{prop:step1}(b), $g^*D_0\sim D_0$, and
+$g^*\infty=\infty$ since $g$ fixes $\infty$; so the class $[D_0-2\infty]\in\Pic^0(E)$ is
+$g^*$-invariant. Under the group isomorphism $E(k)\to\Pic^0(E)$, $R\mapsto[R-\infty]$
+\cite[III.3.4]{Sil}, $g^*$ corresponds to $R\mapsto g^{-1}(R)=\alpha^{-1}(R)$ (the pullback
+of the point divisor $R$ along the automorphism $g$ is the point $g^{-1}(R)$, and
+$g^{-1}(\infty)=\infty$). Let $R\in E(k)$ with $[R-\infty]=[D_0-2\infty]$; then
+$\alpha^{-1}R=R$, so $R\in E(k)^\alpha=0$ by (a), $R=\infty$, and $D_0\sim2\infty$.
+
+\emph{(c) A coordinate with $g^*u=u+1$.} By Fact~\ref{fact:rr}(a), $\ell(2\infty)=2$ and
+$\ell(\infty)=1$; let $L(2\infty)=\langle1,u\rangle$. Then $u$ has pole divisor exactly
+$2\infty$, so $\deg u=[k(E):k(u)]=2$ and $u^*(\infty)=2\infty$. Since $g(\infty)=\infty$,
+$g^*$ maps $L(2\infty)$ into itself ($\divv(g^*h)=g^*\divv h\ge-2g^*\infty=-2\infty$), so
+$g^*u=au+b$ with $a\in k^\times$, $b\in k$. As $(g^*)^4=1$ on $L(2\infty)$, comparing the
+coefficient of $u$ gives $a^4=1$, i.e.\ $(a+1)^4=0$, $a=1$. If $b=0$ then $u$ would be
+$G_2$-invariant, i.e.\ $u\in k(B)$, whence $[k(E):k(u)]\ge[k(E):k(B)]=4$, a contradiction.
+So $b\ne0$, and replacing $u$ by $u/b$ we get $g^*u=u+1$.
+
+Now (H1) holds, and (H2) holds because $D_0\sim2\infty=u^*(\infty)$ by (b). Proposition~\ref{prop:pencil}
+gives a contradiction.
+\end{proof}
+
+\begin{remark}
+In the model $(E_0,\text{Witt action})$ one can take $u=y_0$ and $t=y_0^2+y_0$; this is
+the picture of \cite[Theorem 6.2]{P}, and \cite[Corollary 11.7]{A} is the special case
+$C=\bar U_3$ (where $C_2=E_0$ and $E_2=E'\otimes_{K_2}K$). The argument above is the
+generalisation to an arbitrary $\Z/8$-curve $C$ with supersingular $C/\langle g^4\rangle$;
+it needs neither \cite[Prop.~7.5]{P} nor the explicit equations.
+\end{remark}
+
+\subsection{The ordinary case: the corestriction argument}
+
+\begin{proposition}[Step 4(ii)]\label{prop:step4ii}
+$g(C_2)=1$ with $C_2$ ordinary is impossible.
+\end{proposition}
+
+\begin{proof}
+Let $E=C_2$ with any origin $O$. By Lemma~\ref{lem:Z4}(b), $g=t_P$ with $P\in E(k)$ of
+order $4$, so $G_2=\{t_{iP}\}$ acts by translations. By Fact~\ref{fact:ell}(d) there is a
+finite \'etale isogeny $\phi\colon E\to E'$ of degree $4$ with kernel $\langle P\rangle$
+and $E'\cong E/\langle t_P\rangle$; since $k(E/\langle t_P\rangle)=k(E)^{G_2}=k(B)$, we may
+take $B=E'$ (an elliptic curve) and $t=\phi$. We have the exact sequence
+\[
+0\to\Z/4\xrightarrow{\ i\mapsto iP\ }E\xrightarrow{\ \phi\ }B\to0
+\]
+of Fact~\ref{fact:gc}(c), with connecting maps $\delta_F\colon B(F)\to H^1(F,\Z/4)$.
+
+\emph{(a) $\delta_{K'}(b)=\res_{K'/K}(s_0,s_1)$, where $b=t_E(Q)\in B(K')$.} By
+Lemma~\ref{lem:E2}(c), $\phi\circ x=b\circ\mathrm{pr}$ for $x=x_Q\colon\Spec L_2'\to E$.
+So $x$ factors through a $K'$-morphism $x'\colon\Spec L_2'\to\phi^{-1}(b)=E\times_{B,b}\Spec K'$.
+The scheme $\phi^{-1}(b)$ is the $\Z/4$-torsor of class $\delta_{K'}(b)$, with $1\in\Z/4$
+acting by $t_P=g_E$; the scheme $\Spec L_2'$ is the $\Z/4$-torsor of class
+$\res_{K'/K}(s_0,s_1)$, with $1$ acting by $\Spec(g)$ (Lemma~\ref{lem:Lprime}(b),
+Fact~\ref{fact:asw}); and $x\circ\Spec(g)=g_E\circ x$ (Lemma~\ref{lem:C2}). Hence $x'$ is
+a $\Z/4$-equivariant morphism of $\Z/4$-torsors over $K'$, so it is an isomorphism
+(Fact~\ref{fact:gc}(b)), and the two classes coincide.
+
+\emph{(b) $\Nm_{K'/K}(b)\in B(k)$ and $\delta_K$ vanishes on it.} $\Nm(b)=b+\sigma b$ is
+$\sigma$-invariant, hence lies in $B(K)$ (Fact~\ref{fact:descent}(a)), and $B(K)=B(k)$ by
+Fact~\ref{fact:rigid}(d) applied to the elliptic curve $B$ over $k$ and the purely
+transcendental extension $K=k(s_0,s_1,s_2)$ of $k$. For $b_0\in B(k)$, the torsor
+$\phi^{-1}(b_0)\times_k\Spec K$ is the base change of the $\Z/4$-torsor $\phi^{-1}(b_0)$
+over $k$, which has a $k$-point ($\phi$ is surjective on $k$-points) and is therefore
+trivial; so $\delta_K(b_0)=0$.
+
+\emph{(c) Contradiction.} By Fact~\ref{fact:gc}(c),(a) and (a),(b):
+\begin{align*}
+0=\delta_K(\Nm_{K'/K}b)&=\cores_{K'/K}\,\delta_{K'}(b)=\cores_{K'/K}\res_{K'/K}(s_0,s_1)\\
+&=2\cdot(s_0,s_1)\qquad\text{in }H^1(K,\Z/4)=W_2(K)/\wp .
+\end{align*}
+By Fact~\ref{fact:witt}(d), $2\cdot(s_0,s_1)=(0,s_0^2)$, and by Fact~\ref{fact:witt}(b),
+$(0,s_0^2)-(0,s_0)=(0,s_0^2+s_0)=\wp(0,s_0)\in\wp W_2(K)$; so $2\cdot(s_0,s_1)\equiv(0,s_0)$,
+which is nonzero in $W_2(K)/\wp$ by Lemma~\ref{lem:Vinj}. Contradiction.
+\end{proof}
+
+\begin{remark}\label{rem:iso}
+(i) Step 4(ii) uses neither Step 1 nor the non-constancy of $b$: it shows that
+$\res_{K'/K}(s_0,s_1)$ is not of the form $\delta_{K'}(b)$ for any $\Z/4$-isogeny
+$E\to B$ of elliptic curves over $k$, any separable quadratic $K'/K$ and any $b\in B(K')$.
+(ii) The identification $\Z/4\cong\ker\phi$, $1\mapsto P$, was chosen to match
+$g=t_P$; another choice would change $\delta$ by an automorphism of $\Z/4$ acting on
+$H^1$, which does not affect the conclusion $2\cdot\delta_{K'}(b)\ne0$.
+\end{remark}
+
+\section{Completeness of the case analysis, proof of the Theorem, corollaries}\label{sec:assembly}
+
+\begin{proposition}[completeness]\label{prop:complete}
+Let $K'$ be a witness and $C_2=C/\langle g^4\rangle$ as in Section~\ref{sec:setup}. Then
+exactly one of the following holds, and each leads to a contradiction:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item $g(C_2)=0$: impossible by Lemma~\ref{lem:genus};
+\item $g(C_2)=1$ and $C_2$ is supersingular: impossible by Proposition~\ref{prop:step4i};
+\item $g(C_2)=1$ and $C_2$ is ordinary: impossible by Proposition~\ref{prop:step4ii};
+\item $g(C_2)\ge2$: impossible by Proposition~\ref{prop:step3}.
+\end{enumerate}
+Hence no witness exists.
+\end{proposition}
+
+\begin{proof}
+The genus of $C_2$ is a non-negative integer, and an elliptic curve in characteristic $2$
+is either supersingular or ordinary; so the four cases are exhaustive and mutually
+exclusive. In cases (ii) and (iv) the input is the effective divisor $D_0$ of
+Proposition~\ref{prop:step1} with $\ell(D_0)=2$ (Proposition~\ref{prop:step2a}); in
+case (iv) Corollary~\ref{cor:pencil} and Proposition~\ref{prop:step3} apply, in case (ii)
+Proposition~\ref{prop:step4i}; case (iii) uses only Lemma~\ref{lem:Z4}(b) and the
+corestriction argument. Each case ends in a contradiction with one of: Fact~\ref{fact:pgl} (case (i));
+the dominance of $x$, i.e.\ the non-constancy of the descent point
+(Proposition~\ref{prop:step2a}, which is used in cases (ii) and (iv)); Corollary~\ref{cor:F0notinK},
+i.e.\ Theorem~\ref{thm:caseA} (cases (ii) and (iv), through Proposition~\ref{prop:pencil});
+Lemma~\ref{lem:Vinj} (case (iii)).
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+Let $F'/K$ be a field extension of degree $2$ and suppose $\ed_k(\tau_{\gen}\otimes F')\le1$.
+By Lemma~\ref{lem:reduce}, $F'=K(v_f)$ is a witness with $f\notin\{0,s_0\}+\wp K$, and
+Sections~\ref{sec:setup}--\ref{sec:step4} apply; Proposition~\ref{prop:complete} gives a
+contradiction. Hence $\ed_k(\tau_{\gen}\otimes F')\ge2$ for every quadratic $F'/K$. For
+$F'=K(v_2)$, Fact~\ref{fact:ed}(f) gives $\ed_k(\tau_{\gen}\otimes K(v_2))\le2$, so equality
+holds there, and $\edd2_k(\tau_{\gen})=\min_{[F':K]\le2}\ed_k(\tau_{\gen}\otimes F')=2$
+(the extension $F'=K$ contributes $\ed_k(\tau_{\gen})\ge2$ by Fact~\ref{fact:ed}(f)).
+Finally $d_1(\tau_{\gen})=\min\{d:\edd d_k(\tau_{\gen})\le1\}$: since
+$\edd1=\ed_k(\tau_{\gen})\ge2$ and $\edd2=2$, $d_1\ge3$; since $\edd4=1$
+(Fact~\ref{fact:ed}(f)), $d_1\le4$.
+\end{proof}
+
+\begin{corollary}\label{cor:consequences}
+\begin{enumerate}[label=\textup{(\alph*)}]
+\item For every quasi-projective generically free primitive $G$-variety $Z$ over $k$ of
+dimension $\le1$, the twist ${}^{\tau_{\gen}}Z$ has no free closed point of degree $1$ or
+$2$: $D(Z)\cap\{1,2\}=\emptyset$ in the notation of \cite[Definition 4.3]{P}. In
+particular this holds for every curve $Z$ with faithful $G$-action, and for
+$Z=\bar U_3$ it recovers \cite[Corollary 11.7]{A}.
+\item $\ed_k(\tau_{\gen}\otimes K')\ge2$ for every quadratic $K'/K$; the families of
+\cite[Theorem 11.9]{A} and the extensions of \cite[Theorem 7.3]{P} are no longer special.
+\item The profile at $(2,3)$ reads
+$\edd1\in\{2,3\}$, $\edd2=2$, $\edd3\in\{1,2\}$, $\edd4=\dots=\edd7=1$, $\edd8=0$;
+$d_2\in\{1,2\}$, $d_1\in\{3,4\}$, $d_0=8$. Whether $\edd3=1$ (a cubic witness) is
+untouched by this note: Steps 1 and 4(ii) use the norm over a quadratic extension and the
+$\sigma$-invariance of $D_Q$ in an essential way.
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
+(a) A free closed point of degree $d\le2$ on ${}^{\tau_{\gen}}Z$ with residue field $F'$
+gives, by \cite[Theorem 4.2, (2)$\Rightarrow$(3)$\Rightarrow$(1)]{P}, $[F':K]=d$ and
+$\ed_k(\tau_{\gen}\otimes F')\le1$, contradicting Theorem~\ref{thm:main}. (b) is
+Theorem~\ref{thm:main}. (c) combines Theorem~\ref{thm:main} with \cite[Theorem 7.1]{P}
+and \cite[Theorem 11.16]{A}.
+\end{proof}
+
+\subsection{The two ``windows'' of the external notes are closed}
+
+The addendum \cite[Remark 11.12]{A} and the note \cite[Cor.~7.2]{S} list
+two remaining shapes for a quadratic witness: (1) the descent class is the \'etale
+$\Z/8$-isogeny torsor of an ordinary elliptic curve at a non-constant point (``isogeny
+shape''), and (2) $f$ a polynomial in $s_2$ of degree $\ge8$ (a witness curve which is the
+Artin--Schreier--Witt curve of a polynomial Witt vector). Both are excluded by
+Theorem~\ref{thm:main}, since no witness exists at all. For (1) the corestriction
+argument gives the exclusion directly and at level $3$, and shows that the ``necessary
+condition'' of \cite[Prop.~7.1]{S} is vacuous:
+
+\begin{proposition}[the isogeny shape is impossible]\label{prop:isogeny3}
+Let $0\to\Z/8\to C\xrightarrow{\phi}C'\to0$ be an \'etale isogeny of elliptic curves over
+$k$ with cyclic kernel of order $8$, let $K'/K$ be a separable quadratic extension, and
+let $b\in C'(K')$. Then $\delta_{K'}(b)\ne\res_{K'/K}(s)$ in $H^1(K',\Z/8)$. In
+particular $\tau_{\gen}\otimes K'$ is never of the isogeny shape, for any $K'$ and any
+$b$ (constant or not), and the group $C'(K)/\phi(C(K))$ of \cite[Prop.~7.1]{S} is
+$C'(k)/\phi(C(k))=0$.
+\end{proposition}
+
+\begin{proof}
+Suppose $\delta_{K'}(b)=\res_{K'/K}(s)$. As in Proposition~\ref{prop:step4ii}(b),(c),
+$\Nm_{K'/K}(b)\in C'(K)=C'(k)$ (Fact~\ref{fact:rigid}(d)), $\delta_K$ vanishes on
+$C'(k)$, and Fact~\ref{fact:gc} gives
+$0=\delta_K(\Nm b)=\cores\,\delta_{K'}(b)=\cores\res(s)=2s$. By Fact~\ref{fact:witt}(d),
+$2s=(0,s_0^2,s_1^2)$, and
+\[
+(0,s_0^2,s_1^2)-(0,s_0,s_1)=V\bigl(F(s_0,s_1)-(s_0,s_1)\bigr)=V\wp(s_0,s_1)=\wp V(s_0,s_1)\in\wp W_3(K)
+\]
+(Fact~\ref{fact:witt}(c)); so $2s\equiv(0,s_0,s_1)=V(s_0,s_1)$, which is nonzero in
+$W_3(K)/\wp$ by Lemma~\ref{lem:Vinj}. Contradiction. The last assertion:
+$C'(K)=C'(k)$ and $\phi$ is surjective on $k$-points.
+\end{proof}
+
+\begin{remark}
+(i) Thus the assertion in \cite[Prop.~7.1]{S} that ``$Q+\sigma Q$ has exact order $8$ in
+$C'(K)/\phi(C(K))$'' cannot hold: its hypothesis is contradictory. (ii) For a witness
+whose cover $C\to B$ is \'etale with $g(B)\ge2$ one could run the same norm argument
+after pulling the cyclic cover back from a $\Z/8$-isogeny of $\operatorname{Jac}(B)$
+along an Abel--Jacobi map; this is not needed, since such a $C$ has $g(C_2)\ge2$ and
+falls under Step~3 (or Step~2).
+\end{remark}
+
+\section{What is cited without proof}\label{sec:inputs}
+
+For a reader checking the argument line by line, here is the complete list of external
+inputs; everything else in this note is proved above.
+
+\subsection*{From \cite{P}}
+\begin{itemize}
+\item \S2.2: the Artin--Schreier--Witt isomorphism $H^1(F,\Z/2^n)=W_n(F)/\wp$ and its
+compatibility with truncation, $V$, and base change (Fact~\ref{fact:asw}); the formulas
+(2), (3), (4) (Fact~\ref{fact:witt}(a)--(c); (3) and its consequence (d) are re-derived,
+(5) is reproved as (e)).
+\item \S2.3: $L/K$ is Galois with group $G$, $L^{\langle g^{2^j}\rangle}=k(z_0,\dots,z_{j-1},s_j,\dots)$,
+and $G/\langle g^4\rangle$ acts on $(z_0,z_1)$ by the Witt translation of $W_2$ with
+$\wp(z_0,z_1)=(s_0,s_1)$ (used for $T_2$, Lemma~\ref{lem:Lprime}).
+\item Lemma 2.1 ($\ed_k(\tau_{\gen})=\ed_k(\Z/8)\le3$); Fact 2.2(a) (twist points; we use
+it only to identify our $E_2$ with the twist, Construction~\ref{con:twist}); Lemma 2.3 and
+Theorem 4.2, (1)$\Rightarrow$(3) and (2)$\Rightarrow$(1) (Fact~\ref{fact:geom},
+Corollary~\ref{cor:consequences}(a)); Lemma 2.4 (Fact~\ref{fact:image}); Lemma 2.5(ii)
+(Fact~\ref{fact:pgl}, reproved); Proposition 3.2(c); Proposition 3.6; Proposition 3.9;
+Lemma 4.1(i); Lemma 4.1(ii) (Fact~\ref{fact:rigid}(d), whose proof is quoted);
+Proposition 6.1 ($\ed_k(\Z/4)=2$); Theorem 7.1 (upper bounds $\edd2\le2$ via $K(v_2)$,
+$\edd4=1$, and $\ed_k(\tau_{\gen})\ge2$).
+\end{itemize}
+
+\subsection*{From \cite{A}}
+Nothing is used without proof: Theorem 11.6(b) is reproved as Theorem~\ref{thm:caseA},
+and Lemma C.2 is replaced by Lemma~\ref{lem:Z4}. Corollary 11.7, Proposition 11.8,
+Theorems 11.9--11.10 and Corollary 11.11 are only referred to in remarks.
+
+\subsection*{Standard references}
+\begin{itemize}
+\item Galois descent for quasi-projective schemes, descent of morphisms and of points,
+$X(M)^\Gamma=X(F)$ \cite[6.1--6.2]{BLR}, \cite[V.20]{SeAG} (Fact~\ref{fact:descent}).
+\item Existence and structure of the Picard scheme of a curve over $k$; $\Pic^d$ is a
+torsor under the Jacobian; $\Pic(C_F)=\Pic_{C/k}(F)$ when $C(k)\ne\emptyset$
+\cite[8.1, 8.2, 8.4]{BLR}, \cite{Kl} (Fact~\ref{fact:pic}).
+\item Weil's extension theorem and the absence of rational curves on abelian varieties
+\cite[Thm.~3.1, Cor.~3.8]{Mi} (Fact~\ref{fact:rigid}(a),(b)).
+\item Flat base change for $H^0$, morphisms to $\PP^1$ and fibre divisors
+\cite[II.6, III.9.3]{Ha}; Riemann--Roch \cite[IV.1.3]{Ha} (Fact~\ref{fact:bc}(a),(d),
+Fact~\ref{fact:rr}(a)); arithmetic genus of a $(2,2)$-curve on $\PP^1\times\PP^1$ and
+$g(\tilde\Gamma)\le p_a(\Gamma)$ (proof of Fact~\ref{fact:rr}(d)).
+\item Elliptic curves \cite{Sil}: $\Aut(E)=E(k)\rtimes\Aut(E,O)$ (III.4.8); dual isogeny,
+trace and degree (III.6.2--6.3); $\#\ker\le\deg$ (III.4.10); quotients by finite
+subgroups (III.4.12); supersingularity in characteristic $2$ (V.3.1, Ex.~5.7);
+$\Aut(E,O)$ for $j\ne0$ and $j=0$ (App.~A, Prop.~1.2); $E(k)\cong\Pic^0(E)$ (III.3.4)
+(Facts~\ref{fact:ell}).
+\item Group cohomology: restriction, corestriction as morphisms of $\delta$-functors,
+$\cores\circ\res=[F':F]$, inflation--restriction \cite[Ch.~I, \S1.5]{NSW}, \cite[I.2, I.5]{Se};
+torsors and $H^1$ \cite[I.5]{Se} (Fact~\ref{fact:gc}).
+\item Artin's theorem on fixed fields; quotients of curves by finite groups; the smooth
+projective model of a curve and functoriality of its automorphisms.
+\end{itemize}
+
+\begin{thebibliography}{BLR}
+\bibitem[A]{A} Addendum to [P]: \emph{Section 11 (supplements at $(2,2)$ and $(2,3)$) and
+Appendices A--F}, 27 September 2026 (files \texttt{body\_sec11.tex}, \texttt{body\_app.tex}).
+\bibitem[BF]{BF} G.~Berhuy and G.~Favi, \emph{Essential dimension: a functorial point of
+view (after A.~Merkurjev)}, Doc. Math. 8 (2003), 279--330.
+\bibitem[BLR]{BLR} S.~Bosch, W.~L\"utkebohmert and M.~Raynaud, \emph{N\'eron models},
+Ergeb. Math. Grenzgeb. (3) 21, Springer, 1990.
+\bibitem[E]{ed2} \emph{Q1 at $(p,n)=(2,3)$: quadratic witnesses for $\ed^{[2]}(\tau_{\gen})=1$ --- a research note}, file \texttt{ed2\_analysis.md}, September 2026.
+\bibitem[DR]{DR} A.~Duncan and Z.~Reichstein, \emph{Versality of algebraic group actions
+and rational points on twisted varieties}, J. Algebraic Geom. 24 (2015), 499--530.
+\bibitem[Ha]{Ha} R.~Hartshorne, \emph{Algebraic geometry}, GTM 52, Springer, 1977.
+\bibitem[Kl]{Kl} S.~L.~Kleiman, \emph{The Picard scheme}, in: Fundamental algebraic
+geometry, Math. Surveys Monogr. 123, AMS, 2005, 235--321.
+\bibitem[Mi]{Mi} J.~S.~Milne, \emph{Abelian varieties}, in: Arithmetic geometry (Storrs
+1984), Springer, 1986, 103--150.
+\bibitem[NSW]{NSW} J.~Neukirch, A.~Schmidt and K.~Wingberg, \emph{Cohomology of number
+fields}, 2nd ed., Grundlehren 323, Springer, 2008.
+\bibitem[P]{P} \emph{The finite-degree profile of essential dimension of a
+$\Z/p^n$-torsor in characteristic $p$}, manuscript, September 2026.
+\bibitem[S]{S} \emph{The second slot of the finite-degree profile of the generic
+$\Z/8$-torsor in characteristic 2: polynomial witnesses of degree $\le12$ do not exist},
+note, September 2026.
+\bibitem[Se]{Se} J.-P.~Serre, \emph{Galois cohomology}, Springer, 1997.
+\bibitem[SeAG]{SeAG} J.-P.~Serre, \emph{Algebraic groups and class fields}, GTM 117,
+Springer, 1988.
+\bibitem[Sil]{Sil} J.~H.~Silverman, \emph{The arithmetic of elliptic curves}, 2nd ed.,
+GTM 106, Springer, 2009.
+\end{thebibliography}
+
+\end{document}
